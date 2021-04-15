@@ -18,4 +18,4 @@ For a guide to using the Ace SMART tool, refer to the [Ace SMART user guide](htt
 
 ## Wiki
 
-This repository also contains the [public wiki](/wiki) for Ace SMART.
+This repository also contains the [public wiki](https://github.com/daisy/ace-smart/wiki) for Ace SMART.
