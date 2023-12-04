@@ -138,7 +138,7 @@
 		</div>
 		
 		<footer>
-			<p><a target="_blank" href="http://www.github.com/DAISY/ace-smart-src/issues">Report a problem</a> | 
+			<p><a target="_blank" href="http://www.github.com/daisy/ace-smart/issues">Report a problem</a> | 
 				<a target="_blank" href="http://www.daisy.org/terms-use">Terms of Use</a> | 
 				<a target="_blank" href="attribution.html">Attribution</a> | 
 				<a href="user-guide/" target="_blank">User Guide</a> | 
