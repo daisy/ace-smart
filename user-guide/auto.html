@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Automated Inspection - Ace SMART</title>
+		<link rel="stylesheet" type="text/css" href="../css/a11y.css" />
+		<link rel="stylesheet" type="text/css" href="css/user-guide.css" />
+	</head>
+
+	<body class="page">
+		<header>
+			<h1><img src="../images/daisy_logo.png" class="logo" alt="DAISY"/> 
+				<span>Ace <span class="smart_hd">SMART</span> &#8212; User Guide</span></h1>
+			<nav class="menubar">
+				<a href="index.html">Table of Contents</a>
+			</nav>
+		</header>
+		<main>
+			<section id="ace">
+				<h2>Automated Inspection</h2>
+				
+				<p>You will typically use the SMART tool together with the Ace automated accessibility checker, with Ace
+					run first to discover any issues that can be detected by machine.
+				
+				<div class="note" role="note">
+					<p><strong>Note</strong>: Information on how to install and use Ace is available from the <a
+						href="https://inclusivepublishing.org/toolbox/accessibility-checker/getting-started/">Inclusive
+						Publishing site</a>.</p>
+				</div>
+				
+				<p>If you are fixing an EPUB publication, you should continue running Ace until it does not report any
+					more errors before moving on to the SMART tool. If you are only creating a report about the
+					publication, you do not need to fix the issues as they will be imported into the SMART tool.</p>
+				
+				<p>Aside from its use checking for errors, the Ace tool is important to run first because it produces a
+					data file named <code>report.json</code>. This file contains information about the EPUB publication
+					and any issues in it. It is also the one that will be loaded into the SMART interface to prepare
+					the manual evaluation process. Without this file, you will have to start a blank evaluation and
+					manually add all the necessary information about the publication.</p>
+				
+				<p>Do not discard the <code>report.html</code> file that Ace also produces, as it contains additional
+					information that helps expedite certain manual inspection processes (e.g., checking whether images
+					are decorative or have meaningful alternative texts).</p>
+				
+				<div class="note" role="note">
+					<p><strong>Note</strong>: If you are using the Ace graphical user interface, you will need to use
+						the Export option to obtain these files.</p>
+				</div>
+			</section>
+		</main>
+		
+		<nav class="user-links">
+			<div class="prev-link"><a href="overview.html">Overview</a></div>
+			<div class="next-link"><a href="load-ace.html">Loading an Ace Report</a></div>
+		</nav>
+		
+		<footer>
+			<p>Copyright &#169; 2022 <a href="http://daisy.org">DAISY Consortium</a>. All Rights Reserved.</p>
+			<p><a href="http://www.github.com/DAISY/ace-smart-src/issues">Report a problem</a> | <a
+					href="http://www.daisy.org/terms-use">Terms of Use</a></p>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,18 @@
+<div class="sc-body">
+	<p>Check if the publication contains any controls that only require a single tap or click event to
+		operate.</p>
+	<p>If yes, for each such control at least one of the following must be true:</p>
+	<ul>
+		<li>No action occurs solely from the down event (i.e., immediately when the control is pressed or
+			clicked down without releasing), only on the up event.</li>
+		<li>It is possible to cancel the event by moving your finger or mouse away from the item being clicked,
+			or there is a way to undo the action after the event is triggered.</li>
+		<li>The up event cancels the down event (i.e., the action only occurs so long as a finger is pressing on
+			the screen or a mouse button is being held down, then it automatically ends).</li>
+		<li>The action is essential on the tap or mouse down event (e.g., application where the user will expect
+			an action as soon as the event is initiated, such as expecting a sound from a simulated instrument
+			or seeing a letter appear when a key on a simulated keyboard is pressed).</li>
+	</ul>
+	<p>This success criterion does not apply to click and tap actions that control the reading system
+		interface.</p>
+</div>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Loading an Ace Report - Ace SMART</title>
+		<link rel="stylesheet" type="text/css" href="../css/a11y.css" />
+		<link rel="stylesheet" type="text/css" href="css/user-guide.css" />
+	</head>
+
+	<body class="page">
+		<header>
+			<h1><img src="../images/daisy_logo.png" class="logo" alt="DAISY"/> 
+				<span>Ace <span class="smart_hd">SMART</span> &#8212; User Guide</span></h1>
+			<nav class="menubar">
+				<a href="index.html">Table of Contents</a>
+			</nav>
+		</header>
+		<main>
+			<section id="ace-load">
+				<h2>Loading an Ace Report</h2>
+				
+				<p>The most common way to begin a new evaluation of a publication is by loading the JSON report output
+					by the Ace tool. This report is contained in the file named <code>report.json</code> (see <a
+						href="auto.html">Automated Inspection</a> for more information about this file).</p>
+				
+				<p>To load a report, you can drag the file from your file system and drop it in the box under the
+						"<strong>Start an Evaluation</strong>" heading.</p>
+				
+				<figure>
+					<figcaption>Figure 1 &#8212; The drag and drop area is surrounded by a dashed border. Files can
+						be dropped anywhere within the outline.</figcaption>
+					<img src="images/dnd.png" width="600" alt="Drag and drop area" />
+				</figure>
+				
+				<p>If you are not able to drag and drop the report, it is also possible to select it from the file
+					system. Click on the link within the drag and drop area to open the file selection dialog.</p>
+				
+				<p>Once a file is dropped into the application, or selected from the file system, the SMART tool will
+					automatically load a new evaluation form. It will attempt to customize the evaluation interface
+					based on the information in the report (e.g., disable any tests that are not relevant to
+					the content of the publication and set any missing accessibility metadata it can infer).</p>
+				
+				<p>Once complete, the tool will display an alert indicating what optimizations it has made, if any.</p>
+				
+				<figure>
+					<figcaption>Figure 2 &#8212; The alert shows which content type checks the SMART tool has disabled
+						followed by a list of inferred discovery metadata.</figcaption>
+					<img src="images/ace_alert.png" width="400" alt="SMART load alert dialog" />
+				</figure>
+				
+				<div class="note">
+					<p><strong>Note</strong>: If automatic detection results in incorrect tests being disabled, they can
+						be re-enabled in the <a href="conformance.html">Conformance Verification tab</a>.</p>
+				</div>
+			</section>
+		</main>
+		
+		<nav class="user-links">
+			<div class="prev-link"><a href="auto.html">Automated Inspection</a></div>
+			<div class="next-link"><a href="load-blank.html">Loading a Blank Evaluation</a></div>
+		</nav>
+		
+		<footer>
+			<p>Copyright &#169; 2022 <a href="http://daisy.org">DAISY Consortium</a>. All Rights Reserved.</p>
+			<p><a href="http://www.github.com/daisy/ace-smart-src/issues">Report a problem</a> | <a
+					href="http://www.daisy.org/terms-use">Terms of Use</a></p>
+		</footer>
+	</body>
+</html>

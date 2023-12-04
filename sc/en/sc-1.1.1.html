@@ -1,0 +1,45 @@
+
+<div class="sc-body">
+	<p>Verify the following:</p>
+	<ul>
+		<li data-scope="img">
+			<p>For each image:</p>
+			<ul>
+				<li id="img-non-empty">
+					<p>If the image is decorative, ensure it has an empty <code>alt</code> attribute
+						(<code>alt=""</code>). A decorative image is one that does not contain
+						information the user needs to be aware of; it only exists to make the
+						publication more visually appealing. Common examples include: ornamental
+						graphics around chapter numbers and headings, and stock imagery found at the
+						beginning of chapters or used to illustrate points being made in the text.</p>
+				</li>
+				<li id="img-empty">
+					<p>If the image is not decorative and has an empty <code>alt</code> attribute, one
+						of the following must true:</p>
+					<ul>
+						<li>its <code>figcaption</code> element or the surrounding text must describe
+							the image;</li>
+						<li>the image must be part of a group of images in which only one carries the
+							alternative text.</li>
+					</ul>
+				</li>
+				<li>
+					<p>Otherwise, ensure that the <code>alt</code> text meaningfully describes the
+						image.</p>
+					<p>Refer to the Ace report for the list of images and their alt text values.</p>
+				</li>
+			</ul>
+		</li>
+		
+		<li data-scope="audio" class="hidden">Ensure each <code>audio</code> element has a label
+			(<code>aria-label</code> attribute).</li>
+		
+		<li data-scope="video">Ensure each <code>video</code> element has a label
+			(<code>aria-label</code> attribute) that references where to find the transcript or
+			indicates that audio descriptions are available.</li>
+		
+		<li>Ensure any <code>object</code> and <code>embed</code> tags do not embed non-text content
+			without a text alternative (i.e., their fallback content must not also be
+			inaccessible).</li>
+	</ul>
+</div>

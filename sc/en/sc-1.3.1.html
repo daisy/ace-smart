@@ -1,0 +1,54 @@
+<div class="sc-body">
+	<p>Verify that the author has encoded all essential information and relationships in the markup.</p>
+	<p class="sc-note">Note: You must inspect the markup of each content document to verify this success
+		criterion, as it ensures that the markup matches the visual presentation of the content.</p>
+	<p>Some common problems areas to check include:</p>
+	<ul>
+		<li>
+			<a href="http://kb.daisy.org/publishing/docs/html/headings.html" target="_blank">Headings</a>
+			<ul>
+				<li>The author used HTML heading tags identify all section headings.</li>
+				<li>The author has not used <code>h1</code>-<code>h6</code> elements to tag subtitles.</li>
+				<li>The choice of heading tag correctly reflects the section heading depth (e.g., an
+						<code>h2</code> heading is used for the immediate subsections of an <code>h1</code>
+					heading).</li>
+				<li>The author has not used headings for purely formatting purposes (e.g., to make non-heading
+					text appear bigger).</li>
+			</ul>
+		</li>
+		<li>
+			<a href="http://kb.daisy.org/publishing/docs/html/tables.html" target="_blank">Tables</a>
+			<ul>
+				<li>The author has correctly associated table headers with cells using the <code>scope</code> or
+						<code>headers</code> attribute.</li>
+				<li>Complex tables include a description of their structure.</li>
+			</ul>
+		</li>
+		<li>
+			<a href="http://kb.daisy.org/publishing/docs/html/lists.html" target="_blank">Lists</a>
+			<ul>
+				<li>The author has used the correct type of list to convey the ordering (ordered or
+					unordered).</li>
+				<li>The author has used list tagging for lists (i.e., they are not styled paragraphs).</li>
+			</ul>
+		</li>
+		<li>
+			<a href="http://kb.daisy.org/publishing/docs/css/color.html" target="_blank">Color</a>
+			<ul>
+				<li>Content offset from the main narrative by shading or colored borders also includes semantic
+					markup (e.g., the <code>aside</code> tag with an appropriate role);</li>
+			</ul>
+		</li>
+		<li>
+			<a href="http://kb.daisy.org/publishing/docs/html/notes.html" target="_blank">Footnotes</a>
+			<ul>
+				<li>Footnotes in the body text include the role <code>doc-footnote</code>.</li>
+				<li>Footnotes references include the role <code>doc-noteref</code>.</li>
+				<li>Groups of notes at the end of a section or the publication include the role
+						<code>doc-endnotes</code> on their <code>section</code> tag.</li>
+			</ul>
+		</li>
+	</ul>
+	<p>For more markup best practices, refer to the <a href="http://kb.daisy.org/publishing/">DAISY Accessible
+			Publishing Knowledge Base</a>.</p>
+</div>

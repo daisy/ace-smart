@@ -1,0 +1,136 @@
+
+#born_accessible {
+	max-width: 90rem !important;
+}
+
+#born_accessible h3 {
+	margin-bottom: 0;
+	font-size: 135%;
+	font-weight: normal;
+}
+
+#born_accessible h4 {
+	font-size: 120%;
+	font-weight: normal;
+	color: rgb(0,0,180);
+	margin: 7rem 0 0 0;
+}
+
+#born_accessible > section {
+	margin-top: 4rem;
+}
+
+
+#born_accessible > section#ba-info legend + * {
+	clear: none;
+}
+
+#born_accessible > section#ba-scoring > div.form-data {
+	margin-top: 3rem;
+}
+
+#born_accessible > fieldset + section {
+	margin-top: 5rem;
+}
+
+#born_accessible fieldset {
+	max-width: 90rem !important;
+}
+
+#born_accessible div.form-data fieldset:first-child {
+	margin-top: 1rem;
+}
+
+#born_accessible dl {
+	margin-left: 20rem;
+	margin-top: -0.8rem;
+}
+
+#born_accessible dt {
+	margin-top: 1rem !important;
+}
+
+#born_accessible dd {
+	font-size: 1.3rem;
+}
+
+#born_accessible fieldset.spaced-values > label {
+	padding-left: 2rem;
+}
+
+#born_accessible fieldset.spaced-values > legend + label {
+	padding-left: 0rem;
+}
+
+#born_accessible fieldset.test {
+	border: 0.2rem solid rgb(255, 255, 180);
+	background-color: rgb(250,250,250);
+}
+
+#born_accessible fieldset > .ba-label {
+	padding: 0.5rem 0 0.5rem 2rem;
+}
+
+#born_accessible fieldset > .ba-label > .radio-desc {
+	font-size: 1.5rem !important;
+}
+
+#born_accessible div.ba-score {
+	font-size: 2rem;
+	margin: 5rem 0;
+	padding: 1rem;
+	border-bottom: 0.3rem solid rgb(0,0,220);
+}
+
+#born_accessible fieldset > div.ba-note {
+	margin-left: 2.5rem;
+	margin-top: 1rem;
+}
+
+#born_accessible fieldset > div.ba-note > label > span {
+	display: block;
+	font-size: 1.3rem;
+	font-weight: bold;
+}
+
+#born_accessible div.not-applicable {
+	font-style: italic;
+	padding: 1rem;
+	display: none;
+	width: 80%;
+}
+
+#born_accessible .bad {
+	background-color: rgb(255,204,204);
+}
+
+#born_accessible .mid {
+	background-color: rgb(255, 237, 210);
+}
+
+#born_accessible .good {
+	background-color: rgb(204,255,204);
+}
+
+#born_accessible .na {
+	background-color: rgb(241,241,241);
+}
+
+span#ba_final_score_status {
+	padding-left: 2.7rem;
+}
+
+#born_accessible p#ba-epp {
+	margin-top: 0;
+	font-weight: bold;
+}
+
+#born_accessible span#ba-epp-num {
+	color: rgb(180,0,0);
+}
+
+#ba-info .err {
+	border: none !important;
+	border-left: 0.3rem solid rgb(255, 100, 100) !important;
+	padding-left: 2rem;
+}

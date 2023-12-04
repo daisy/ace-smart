@@ -1,0 +1,131 @@
+
+<section id="born_accessible" class="js-tabcontent">
+	<h2>Born Accessible Report</h2>
+	
+	<section id="ba-info">
+		<h3>Report Summary</h3>
+		
+		<div class="data form-data" id="ba-content-inputs">
+			<label class="data">
+				<span>Executive Summary:</span>
+				<textarea rows="8" id="ba-executive-summary"></textarea>
+			</label>
+			<div id="design-elements">
+				<label class="data">
+					<span>Images:</span>
+					<input type="text" placeholder="0" id="ba-image-count"/>
+				</label>
+				<label class="data">
+					<span>Pages:</span>
+					<input type="text" placeholder="0" id="ba-page-count"/>
+				</label>
+				<label class="data">
+					<span>Lists:</span>
+					<input type="text" placeholder="0" id="ba-list-count"/>
+				</label>
+				<label class="data">
+					<span>Tables:</span>
+					<input type="text" placeholder="0" id="ba-table-count"/>
+				</label>
+				<label class="data">
+					<span>Links:</span>
+					<input type="text" placeholder="0" id="ba-link-count"/>
+				</label>
+				<label class="data">
+					<span>Audio:</span>
+					<input type="text" placeholder="0" id="ba-audio-count"/>
+				</label>
+				<label class="data">
+					<span>Video:</span>
+					<input type="text" placeholder="0" id="ba-video-count"/>
+				</label>
+				<label class="data">
+					<span>Math Equations:</span>
+					<input type="text" placeholder="0" id="ba-math-count"/>
+				</label>
+				<label class="data">
+					<span>Heading Level 1:</span>
+					<input type="text" placeholder="0" id="ba-h1-count"/>
+				</label>
+				<label class="data">
+					<span>Heading Level 2:</span>
+					<input type="text" placeholder="0" id="ba-h2-count"/>
+				</label>
+				<label class="data">
+					<span>Heading Level 3:</span>
+					<input type="text" placeholder="0" id="ba-h3-count"/>
+				</label>
+				<label class="data">
+					<span>Heading Level 4:</span>
+					<input type="text" placeholder="0" id="ba-h4-count"/>
+				</label>
+				<label class="data">
+					<span>Heading Level 5:</span>
+					<input type="text" placeholder="0" id="ba-h5-count"/>
+				</label>
+				<label class="data">
+					<span>Heading Level 6:</span>
+					<input type="text" placeholder="0" id="ba-h6-count"/>
+				</label>
+			</div>
+		</div>
+	</section>
+	
+	<section id="ba-scoring">
+		<h3>Scoring</h3>
+		
+		<div class="form-data">
+			<fieldset id="ba-test-exclusions" class="spaced-values">
+				<legend>Exclude Tests For:</legend>
+				<label><input type="checkbox" class="ba-excl-test" value="images"/> Images</label>
+				<label><input type="checkbox" class="ba-excl-test" value="audio"/> Audio</label>
+				<label><input type="checkbox" class="ba-excl-test" value="video"/> Video</label>
+				<label><input type="checkbox" class="ba-excl-test" value="math"/> Math</label>
+				<label><input type="checkbox" class="ba-excl-test" value="javascript"/> Scripting</label>
+			</fieldset>
+			
+			<fieldset class="spaced-values">
+				<legend>Show only tests with score:</legend>
+				<label><input type="checkbox" class="test-filter" value="Unverified"/> Unverified</label>
+				<label><input type="checkbox" class="test-filter" value="N/A"/> N/A</label>
+				<label><input type="checkbox" class="test-filter" value="0"/> 0</label>
+				<label><input type="checkbox" class="test-filter" value="1"/> 1</label>
+				<label><input type="checkbox" class="test-filter" value="2"/> 2</label>
+				<label><input type="checkbox" class="test-filter" value="3"/> 3</label>
+				<label><input type="checkbox" class="test-filter" value="4"/> 4</label>
+			</fieldset>
+		</div>
+		
+		<!-- tests are auto-generated -->
+		<div id="ba-tests"></div>
+	</section>
+	
+	<script src="extensions/born_accessible/js/GCA_Consulting.js?v=1.23"></script>
+	<script src="extensions/born_accessible/js/born_accessible.js?v=2022-08-23T12:00:00Z"></script>
+	<script>
+		// <![CDATA[
+		
+		/* update design elements count */ 
+		$("section#ba-info input[type='text']").keyup(function() {
+			var counters = document.querySelectorAll("section#ba-info input[type='text']");
+			var pages = 0;
+			var elements = 0;
+			for (var i = 0; i < counters.length; i++) {
+				if (counters[i].id == 'ba-page-count') {
+					pages = Number(counters[i].value);
+				}
+				else {
+					if (!RegExp(/ba-h[1-6]-count/i).test(counters[i].id)) {
+						elements += Number(counters[i].value);
+					}
+				}
+			}
+			if (pages != 0) {
+				var epp = elements / pages;
+				document.getElementById('ba-epp-num').textContent = epp.toFixed(2);
+			}
+		});
+		
+		// ]]>
+	</script>
+</section>

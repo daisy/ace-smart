@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+  <name>Database Manager</name>
+  <author>Dan Hoover</author>
+
+  <website>http://userspice.com</website>
+
+
+  <version>1.9.170730</version>
+
+
+  <release>November 19,2018</release>
+
+
+  <tested>4.4</tested>
+
+
+  <description>An extremely lightweight phpMyAdmin-type plugin based on https://sourceforge.net/projects/phpminiadmin/ by Oleg Savchuk.</description>
+
+
+  <button>Run DBMan</button>
+</plugin>

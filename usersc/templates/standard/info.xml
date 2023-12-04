@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+  <name>Standard</name>
+  <author>Dan Hoover</author>
+
+  <website>https://UserSpice.com</website>
+
+
+  <version>1.1.0</version>
+
+
+  <release>September 4, 2019</release>
+
+
+  <tested>5.0.x</tested>
+
+
+
+
+  <dbnav>1</dbnav>
+
+
+  <dropnav>1</dropnav>
+
+
+  <filenav>1</filenav>
+
+  
+  <navstyle>Default</navstyle>
+
+
+  <library>Boostrap 4</library>
+
+<navopts>Default</navopts>
+</template>

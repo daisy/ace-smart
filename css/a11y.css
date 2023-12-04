@@ -1,0 +1,1334 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+@font-face{
+	font-family: 'Open Sans Light';
+	src: url(../fonts/OpenSans-Light.ttf) format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face{
+	font-family: 'Raleway';
+	src: url(../fonts/Raleway-Regular.ttf) format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+html{
+	font-size: 62.5%;
+}
+
+body{
+	font-family: sans-serif;
+	font-size: 1.4rem;
+	margin: 0;
+	padding: 0;
+	background-color: rgb(251,251,251);
+	color: rgb(0, 0, 0);
+}
+
+header {
+	border-bottom: 0.1rem solid lightgrey;
+}
+
+header > * {
+	padding-left: 3rem !important;
+}
+
+/* user identification */
+
+div.id {
+	color: rgb(0,0,0);
+	margin: 1rem 5rem 0 0;
+	float: right;
+}
+
+div.id code {
+	font-size: 1.6rem;
+}
+
+div.id code > a {
+	font: inherit;
+	color: rgb(0,0,220);
+}
+
+div.id code > a:hover {
+	font: inherit;
+	color: red;
+}
+
+div.id a.logout {
+	font-size: 1.1rem;
+	margin-left: 1rem;
+}
+
+a.logout img {
+	height: 3rem;
+	vertical-align: bottom;
+	padding-top: 0rem;
+}
+
+span.super {
+	vertical-align: super;
+}
+
+/* title and logo */
+
+h1{
+	font-family: Roboto, 'Open Sans Light', Helvetica, Arial, sans-serif;
+	font-weight: normal;
+	font-size: 2.5rem;
+	margin: 0;
+	padding: 1rem 0 0.2rem 2rem !important;
+	background-color: rgb(255,255,255);
+	color: rgb(0,0,0);
+	min-height: 3.5rem;
+}
+
+h1 > span {
+	padding-left: 0.7rem;
+}
+
+h1 > span:first-child {
+	padding-right: 0.5rem;
+}
+
+img.logo{
+	vertical-align: bottom;
+	height: 30px;	
+}
+
+span.smart_hd {
+	color: rgb(27,95,161);
+	font-style: italic;
+}
+
+/* scrolling tabs */
+
+form.report {
+	height: 84vh;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+/* page content */
+
+main,
+footer{
+	display: block;
+	margin: 0 0.3rem;
+}
+
+main {
+	font-size: 1.6rem;
+	background-color: rgb(255,255,255);
+	margin-top: 0.5rem;
+	padding-left: 3rem;
+}
+
+body.page main {
+	padding: 0 2rem 2rem 2rem;
+	margin-top: 6.8rem;
+}
+
+body.faq main {
+	margin-top: 0 !important;
+}
+
+main.start {
+	height: 77vh;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+
+main > * {
+	line-height: 2.2rem;
+}
+
+main > section,
+main > form > section {
+	max-width: 80rem;
+}
+
+
+footer{
+	font-weight: bold;
+	font-size: 90%;
+	text-align: center;
+	background-color: rgb(245, 245, 245);
+	padding: 0.5rem 1rem;
+	margin-top: 0.3rem;
+	height: 11vh;
+}
+
+main.start + footer {
+	height: 10vh;
+}
+
+footer img{
+	padding-left: 1rem;
+	vertical-align: middle;
+}
+
+
+/* headings */
+
+h2{
+	font-family: Raleway;
+	font-size: 2.4rem;
+	font-weight: normal;
+	color: rgb(0, 0, 180);
+	margin-top: 1rem;
+}
+
+h3{
+	color: rgb(0, 0, 90);
+	font-weight: normal;
+	font-size: 1.6rem;
+}
+
+body.page h2{
+	margin-top: 0;
+	padding-top: 2rem;
+}
+
+body.page h3{
+	font-size: 1.8rem;
+	border-left: 0.4rem solid blue;
+	padding-left: 0.5rem;
+	margin-top: 5rem;
+}
+
+.no-title{
+	margin-top: 4rem;
+	font-size: 1.8rem;
+}
+
+/* links */
+
+a{
+	color: rgb(0, 0, 220);
+	text-decoration: none;
+}
+
+a:hover{
+	color: rgb(238, 0, 0);
+	text-decoration: underline;
+}
+
+a:not([href]):hover {
+	text-decoration: none;
+	color: rgb(120,120,120);
+}
+
+a:not([href]) {
+	color: rgb(120,120,120);
+}
+
+/* menubar */
+
+div.menubar {
+	padding-top: 0.2rem;
+	border-bottom: 0.1rem solid rgb(0, 0, 0);
+	background-color: rgb(27,95,161);
+}
+
+nav.appmenu {
+	float: right;
+	margin-right: 0;
+	margin-top: -4.8rem;
+	padding: 1.5rem 4rem 0.5rem 4rem !important;
+}
+
+a#save-button,
+a#validate-button {
+	margin-right: 2rem;
+}
+
+a#save-button:hover,
+a#close-button:hover,
+a#validate-button:hover {
+	border-bottom: 0.3rem solid rgb(220,0,0);
+}
+
+/* report loading */
+
+#local-load {
+	text-align: left;
+	font-size: 90%;
+	margin-left: 0.4rem;
+}
+
+a#ace-review {
+	float: right;
+	margin-top: -2.5rem;
+	font-size: 85%;
+}
+
+/* pub info */
+
+section#start label,
+section#start fieldset legend {
+	font-size: 100%;
+}
+
+/* conformance guidelines */
+
+div.reporting {
+	padding-top: 2rem;
+}
+
+div.reporting > fieldset > legend {
+	width: auto;
+}
+
+section.a,
+section.aa,
+section.aaa,
+section.epub{
+	margin-left: 1rem;
+	margin-top: 3rem;
+	padding: 2rem;
+	border-radius: 1rem;
+	box-shadow: 0 0 0.2rem 0 gray;
+	border: 0.1rem solid rgb(255,255,120);
+	background-color: rgb(253,253,253);
+}
+
+section.aaa{
+	display: none;
+}
+
+span.a-label,
+span.aa-label,
+span.aaa-label,
+span.epub-label {
+	margin-top: 0.5rem;
+	color: rgb(0,0,0);
+	margin-left: 2rem;
+	font-size: 87%;
+}
+
+section.a > h3,
+section.aa > h3,
+section.aaa > h3,
+section.epub > h3,
+section.warning > h3 {
+	padding-top: 0;
+	margin-top: 0;
+}
+
+p.info {
+	float: right;
+	margin-top: -4.5rem;
+}
+
+p.sc-note{
+	font-style: italic;
+	text-indent: -4rem;
+	margin: 1rem 2rem 2rem 4.5rem;
+}
+
+div.buttons{
+	padding: 4rem 1rem 2rem 1rem;
+}
+
+input.button_hlt {
+	font-weight: bold;
+	padding: 0.6rem 0.2rem;
+	width: 10rem;
+	border-style: ridge;
+	border-color: rgb(161, 161, 161);
+	background-color: rgb(239,239,239);
+	color: rgb(0,0,0);
+	border-radius: 0.6rem;
+}
+
+input.button_hlt:hover {
+	box-shadow: 0 0 1rem 0 green;
+}
+
+input.preview {
+	float: left;
+	margin-right: 1.5rem;
+}
+
+input[type = "checkbox"]{
+	cursor: pointer;
+}
+
+label.show-xtra{
+	display: block;
+	margin: 0.5rem 0;
+}
+
+p.superseded-aa{
+	display: none;
+}
+
+div.link {
+	margin-top: 3rem;
+}
+
+details + details {
+	margin-top: 1rem;
+}
+
+hr {
+	margin: 2rem auto;
+	border-color: rgb(240,245,255);
+}
+
+aside#stats {
+	position: fixed;
+	right: 14rem;
+	top: 16rem;
+	font-size: 90%;
+	padding: 1rem 1rem 0 3rem;
+	border-radius: 1rem;
+	min-width: 14rem;
+	background-color: rgb(248,248,248);
+	box-shadow: 0 0 0.1rem 0 black;
+}
+
+aside#stats h4 {
+	margin: 0;
+}
+
+aside#stats ul {
+	padding-left: 0;
+	list-style-type: none;
+}
+
+aside#stats ul > li > span.statLabel {
+	display: inline-block;
+	min-width: 8rem;
+}
+
+
+/* help links */
+
+p.help {
+	float: right;
+	margin-top: -4rem;
+	font-size: 0.8rem;
+}
+
+p.help + * {
+	clear: both; 
+}
+
+p.help a {
+	font-size: 1.4rem;
+	color: rgb(0,80,255);
+}
+
+/* conformance results */
+
+div.conformance-result {
+	padding: 1rem 0 1rem 1.5rem;
+	margin-bottom: 1rem;
+}
+
+span.hd {
+	font-size: 110%;
+	color: rgb(0,0,120);
+}
+
+span#conformance-result-status {
+	padding-left: 4rem;
+}
+
+fieldset#eval-info legend {
+	margin-bottom: 2rem;
+}
+
+
+/* report generation */
+
+#generate details {
+	margin-top: 2rem;
+	margin-left: 1rem;
+}
+
+#generate fieldset {
+	box-shadow: none;
+	padding: 0;
+	border-radius: 0;
+	background-color: inherit;
+	margin-left: 2rem;
+	border-left: 0.3rem solid rgb(200,200,200);
+	padding-left: 2rem;
+}
+
+#generate fieldset:first-of-type {
+	margin-top: 2rem;
+}
+
+/* lists */
+
+ul{
+	list-style-type: square;
+	margin-top: 0.5rem;
+}
+
+li{
+	margin-top: 0.7rem;
+}
+
+
+/* tables */
+
+td.option {
+	min-width: 10rem;
+}
+
+td.center {
+	text-align: center;
+}
+
+
+p.instr {
+	font-size: small;
+}
+
+section.warning {
+	font-size: 90%;
+	margin-left: 1rem;
+	margin-top: 3rem;
+	padding: 2rem;
+	border-radius: 1rem;
+	box-shadow: 0 0 0.5rem 0 gray;
+	border: 0.1rem solid red;
+	background-color: rgb(255,250,245);
+}
+
+section.warning h3 {
+	color: rgb(190,0,0);
+	font-weight: bold;
+}
+
+section#conformance-options,
+section.warning,
+li.manifest,
+li.bindings,
+li.epub-switch,
+li.epub-trigger {
+	display: none;
+}
+
+/* fieldsets */
+
+fieldset,
+div.conformance-result,
+div.onix {
+	border: none;
+	background-color: rgb(251,251,251);
+	border-radius: 0.5rem;
+	box-shadow: 0 0 0.2rem 0 grey;
+	padding: 2rem;
+}
+
+div.onix,
+div.conformance-result {
+	margin-left: 0.2rem;
+}
+
+fieldset {
+	margin-top: 4rem;
+}
+
+fieldset#accessModeSufficient fieldset {
+	box-shadow: none !important;
+	border: none !important;
+	background-color: inherit !important;
+	margin-top: 1rem;
+	padding: 0;
+}
+
+fieldset#accessModeSufficient fieldset > legend {
+	padding-top: 1rem !important;
+	font-size: small;
+}
+
+legend + * {
+	clear: both;
+}
+
+legend + fieldset {
+	margin-top: 0.5em;
+}
+
+legend{
+	float: left;
+	margin-bottom: 0.4rem;
+	margin-left: -0.3rem;
+	width: 100%;
+	font-size: 110%;
+	color: rgb(0,0,120);
+}
+
+fieldset > .note{
+	font-size: 1.1rem;
+	border: none !important;
+	margin: 1rem 0 0 0 !important;
+	padding: 0 !important;
+}
+
+fieldset.flat {
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+fieldset.flat > legend {
+	font-weight: normal;
+	float: left;
+	display: inline !important;
+	margin: 0;
+	padding: 0;
+}
+
+fieldset.status {
+	box-shadow: none !important;
+	border: dotted 0.1rem rgb(0,0,0);
+	border-radius: 2rem;
+	background-color: rgb(255,255,255);
+	padding: 1rem;
+	margin-left: -1rem;
+	padding-left: 2rem;
+}
+
+fieldset.status > label {
+	margin-left: 2rem; 
+}
+
+section#verification > div.form-data > fieldset,
+div.form-data > fieldset,
+div.form-data > label {
+	margin: 1rem;
+}
+
+section#verification > div.form-data > fieldset > legend {
+	width: 18rem;
+}
+
+section#verification > div.form-data > fieldset > label {
+	width: 7rem;
+}
+
+fieldset select {
+	margin-left: 0.4rem;
+	min-width: 11rem;
+}
+
+div.form-data {
+	background-color: rgb(251,251,251);
+	padding: 0.3rem 0 0.3rem 1rem;
+	border-radius: 0.5rem;
+	box-shadow: 0 0 0.2rem 0 grey;
+	margin-left: 0.2rem !important;
+}
+
+div.form-data > fieldset {
+	box-shadow: none !important;
+	border-left: none;
+}
+
+div.form-data > fieldset > legend {
+	padding-top: 0 !important;
+}
+
+p + fieldset {
+	margin-top: -2.5rem;
+}
+
+#conformance fieldset > a {
+	display: inline-block;
+	margin-left: 2.4rem;
+	margin-right: 0;
+}
+
+div.conf-control {
+	background-color: inherit !important;
+	box-shadow: none;
+}
+
+div.w85 {
+	width: 85rem;
+}
+
+div.conf-control legend {
+	width: auto;
+}
+
+div#additional-opt {
+	margin-top: 1rem;
+	float: right;
+	font-size: 90%;
+}
+
+fieldset.row {
+	display: inline-block;
+	width: auto;
+	background-color: inherit;
+	border-radius: inherit;
+	box-shadow: none;
+}
+
+fieldset.row legend {
+	font-size: 100% !important;
+}
+
+#conformance-options fieldset.row {
+	display: block;
+	margin-top: 2rem;
+}
+
+#conformance-options fieldset.row legend {
+	width: 22rem;
+}
+
+#conformance-options fieldset.row a {
+	color: rgb(0,0,220) !important;
+	padding-left: 1.5rem;
+	display: inline-block;
+}
+
+fieldset.filter {
+	box-shadow: 0 0 0.1rem 0 black;
+	border-radius: 2rem;
+	margin-left: 1rem;
+	margin-top: 2rem;
+	padding: 1rem 2rem;
+	max-width: 75rem;
+}
+
+/* discovery metadata */
+
+section#discovery div.error{
+	font-style: italic;
+	padding: 0.5rem;
+	display: none;
+}
+
+section#discovery div.cols {
+	column-width: 20rem;
+	column-fill: balance;
+	margin-top: 3rem;
+}
+
+section#discovery label{
+	display: inline-block;
+	width: 20rem;
+	margin-top: 1rem;
+}
+
+section#discovery legend label {
+	width: auto;
+}
+
+section#discovery input#gen{
+	margin-left: 1rem;
+}
+
+div.failure,
+div.info{
+	display: none;
+}
+
+div.failure{
+	margin-top: 1.5rem;
+}
+
+div.autogen {
+	font-size: 85%;
+	float: right;
+	margin-top: -2.7rem;
+	margin-right: 8rem;
+}
+
+a.usage {
+    display: inline-block;
+    float: right;
+}
+
+/* notes */
+
+div.note,
+div.caution{
+	padding: 0 0.8rem;
+	margin-top: 1rem;
+	border: 0.1rem solid rgb(0, 180, 0);
+	border-radius: 1rem;
+	width: 80%;
+	margin-left: 5%;
+}
+
+div.caution{
+	border-color: rgb(180, 0, 0);
+}
+
+div.note > p{
+	font-size: 95%;
+	text-indent: -3.9rem;
+	margin-left: 4rem;
+}
+
+div.caution > p{
+	font-size: 95%;
+	text-indent: -6rem;
+	margin-left: 6rem;
+}
+
+img.note-close{
+	position: relative;
+	top: 0.2rem;
+	right: -0.5rem;
+	float: right;
+}
+
+p.small{
+	font-size: 1.2rem;
+}
+
+div.instr {
+	font-size: 85%;
+	margin-bottom: 0.8rem;
+}
+
+
+/* buttons */
+
+section > button {
+	display: block;
+	min-width: 10rem;
+	border-radius: 0.5rem;
+	padding: 0.4rem 0.5rem;
+	margin-top: 1rem;
+}
+
+/* config options */
+
+section#config{
+	z-index: 9;
+}
+
+details#options{
+	max-width: 65rem;
+	margin-top: 1rem;
+	padding: 0.5rem;
+}
+
+details#options > summary{
+	margin-bottom: 1rem;
+	color: rgb(0, 0, 90);
+}
+
+details#options fieldset{
+	margin-top: 0.7rem;
+	padding-top: 0;
+	border: none;
+}
+
+details#options fieldset > legend{
+	font-weight: normal
+}
+
+details#options span.label{
+	font-size: 95%;
+	margin-left: 1.5rem;
+}
+
+section#config small{
+	font-style: italic;
+}
+
+textarea{
+	width: 90%;
+}
+
+label.data > textarea{
+	width: 39.8rem;
+	display: inline-block;
+}
+
+div.combo {
+	margin: 1rem;
+}
+
+/* n/a notes */
+
+p.img,
+p.av,
+p.forms{
+	font-size: 90%;
+	font-weight: bold;
+	margin-left: 3rem;
+}
+
+/* title inputs */
+
+label.data{
+	display: block;
+	margin-top: 0.8rem;
+}
+
+label.data > span,
+div.data > span,
+div.combo > label:first-child span {
+	display: inline-block;
+	width: 20rem;
+	vertical-align: top;
+}
+
+label.data > input[type = 'text'],
+div.combo > label > input[type='text'] {
+	width: 40rem;
+}
+
+div.data{
+	margin: 3rem 0 2rem 0;
+}
+
+div.data > div{
+	margin-bottom: 0.8rem;
+}
+
+
+/* misc formatting */
+
+span.hlt-first {
+	display:inline-block;
+}
+
+span.hlt-first::first-letter {
+	color: rgb(11,84,168);
+	font-weight: bold;
+}
+
+
+/* optimizations for phone screens in portrait orientation */
+@media only screen
+ and (max-device-width : 480px)
+ and (orientation : portrait){
+
+	label.data > input{
+		width: 100%;
+	}
+
+}
+
+/* faq */
+
+nav#faq{
+	margin-bottom: 3rem;
+}
+
+nav#faq ol{
+	list-style-type: none;
+	margin-left: 0;
+	padding-left: 1.5rem;
+}
+
+nav#faq > ol{
+	padding-left: 0;
+}
+
+div.faq-title{
+	font-size: 1.5rem;
+	color: rgb(0, 0, 160);
+	margin-top: 1.2rem;
+}
+
+dt{
+	font-weight: bold;
+	margin-top: 3rem;
+}
+
+/* ed notes (temp) */
+
+.todo{
+	background-color: rgb(255, 255, 230);
+}
+
+/* error pane */
+
+body.error-pane-padding {
+	margin-bottom: 13rem;
+}
+
+section#error-pane{
+	background-color: rgb(50, 50, 50);
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 1;
+	display: none;
+}
+
+section#error-pane > h2{
+	color: rgb(255, 255, 255);
+	background-color: inherit;
+	font-size: 1.4rem;
+	margin: 0;
+	padding: 0.4rem 0.2rem 0.2rem 0.2rem;
+}
+
+section#error-pane img.error-close{
+	position: relative;
+	top: 0rem;
+	right: 0rem;
+	float: right;
+}
+
+section#error-pane div.scroll{
+	width: 100%;
+	height: 10rem;
+	background-color: rgb(255, 255, 255);
+	overflow: scroll;
+}
+
+section#error-pane ul{
+	padding-left: 2rem;
+}
+
+section#error-pane a{
+	cursor: pointer;
+}
+
+/* config dialog */
+
+.ui-widget-header{
+	background-color: rgb(232, 244, 248);
+}
+
+label.block{
+	display: block;
+	margin-top: 0.3rem;
+}
+
+label.pad-left{
+	margin-left: 2.4rem;
+}
+
+
+/* status colours */
+
+.err{
+	border: 0.2rem solid rgb(255, 100, 100) !important;
+}
+
+.na, .obsolete {
+	border: 0.2rem solid rgb(200, 200, 200) !important;
+	background-color: rgb(250, 250, 250) !important;
+}
+
+.pass{
+	border: 0.2rem solid rgb(10, 255, 10) !important;
+}
+
+
+.warn{
+	border: 0.2rem solid rgb(255, 140, 0) !important;
+}
+
+.alert {
+	border-color: rgb(255,160,17) !important;
+}
+
+.na .sc-body {
+	display: none;
+}
+
+.pass .sc-body,
+.err .sc-body,
+.unverified .sc-body,
+.obsolete .sc-body {
+	display: block;
+}
+
+
+/* manage options */
+#save-eval label,
+#load-eval label {
+	display: block;
+}
+
+
+/* page tocs */
+
+nav[role = "doc-toc"]{
+	width: 35rem;
+}
+
+nav[role = "doc-toc"] > h3{
+	font-size: 1.4rem;
+	font-weight: bold;
+	color: rgb(0, 0, 0);
+	padding: 0;
+	margin: 0;
+	border-left: none;
+}
+
+nav[role = "doc-toc"] ol{
+	list-style-type: disc;
+}
+
+
+/* figures */
+
+figcaption{
+	font-size: 1.3rem;
+	font-style: italic;
+	text-align: center;
+	max-width: 55rem;
+	margin-bottom: 1rem;
+}
+
+
+/* onix metadata fields */
+
+fieldset.onix > legend {
+	margin-bottom: 2rem;
+}
+
+fieldset.onix > label {
+	display: block;
+	margin-top: 2rem;
+}
+
+div.onix {
+	margin-top: 2rem;
+	padding: 2rem;
+	font-weight: bold
+}
+
+div.onix > label {
+	padding-bottom: 1rem;
+	display: inline-block;
+	font-weight: normal;
+	font-size: 110%;
+	color: rgb(0,0,120);
+}
+
+div.onix input[type='text'],
+div.onix textarea {
+	display: block;
+	width: 65rem;
+	margin-top: 1rem;
+}
+
+
+/* pub info fieldsets */
+
+div.data > fieldset.flat > legend {
+	color: rgb(0,0,0) !important;
+	width: 20rem;
+}
+
+#save fieldset,
+#confirm fieldset {
+    background-color: inherit !important;
+    border-left: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin-top: -1rem !important;
+}
+
+/* management */
+
+h2.welcome {
+	color: rgb(0, 0, 0);
+	font-size: 1.7rem;
+	font-weight: bold;
+	margin-left: 2rem;
+	padding-left: 0.5rem;
+}
+
+section#load {
+	margin-top: 3rem;
+}
+
+section#history {
+	margin-top: 8rem;
+}
+
+p.license {
+	font-size: 1.4rem;
+	font-style: italic;
+	margin-left: 2rem;
+}
+
+input[type='image'] {
+	padding-left: 0.3rem;
+}
+
+
+/* output options */
+
+div#output-opt {
+	margin-left: 2rem;
+	margin-top: 2rem;
+	margin-bottom: -1rem;
+}
+
+/* display properties */
+
+
+.visible {
+	display: block !important;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.listitem {
+	display: list-item !important; 
+}
+
+
+/* initial hide alt statements for checks */
+
+*[data-alt] {
+	font-style: italic;
+	border: 0.1rem solid green;
+	background-color: rgb(240,255,245);
+	padding: 0.4rem;
+	border-radius: 0.4rem;
+	display: none;
+}
+
+
+
+/* mini tablet */
+
+@media only screen
+	and (max-device-width: 1024px)
+	 and (orientation : portrait) {
+
+	main.start {
+		height: 78.5vh;
+	}
+	
+	main.start + footer {
+		height: 11vh;
+	}
+	
+	aside#stats {
+		position: unset;
+		right: unset;
+		top: unset;
+		margin-top: 2rem;
+	}
+	
+	form.report {
+		height: 76vh;
+	}
+}
+
+
+@media only screen
+	and (max-device-width: 1024px)
+	 and (orientation : landscape) {
+
+	main.start {
+		height: 78.5vh;
+	}
+	
+	main.start + footer {
+		height: 11vh;
+	}
+	
+	aside#stats {
+		right: 0.5rem;
+	}
+	
+	form.report {
+		height: 86vh;
+	}
+	
+	main.start + footer {
+		height: 11vh;
+	}
+
+}
+
+@media only screen
+ and (max-device-width : 800px)
+ and (orientation : landscape) {
+	section.a,
+	section.aa,
+	section.aaa,
+	section.epub{
+		margin-left: 0.2rem;
+	}
+}
+
+
+@media only screen
+	and (max-device-width: 800px) {
+	
+	main.start,
+	form.report {
+	    height: auto;
+	    overflow-y: auto;
+	    overflow-x: auto;
+	}
+	
+	section#load {
+		margin-top: 0;
+	}
+	
+	h2 {
+		margin-top: 1rem;
+	}
+	
+	aside#stats {
+		position: unset;
+		right: unset;
+		top: unset;
+		margin-top: 2rem;
+	}
+}
+
+/* optimizations for phone screens */
+@media only screen
+ and (max-device-width : 480px) {
+
+	h1{
+		font-size: 1.2rem;
+	}
+
+	.js-tabcontent > h2{
+		border-top: 0.2rem solid black;
+		margin-top: 5rem;
+		padding-top: 1rem;
+	}
+
+	fieldset.status span{
+		display: block;
+	}
+
+	section.a,
+	section.aa,
+	section.aaa,
+	section.epub{
+		margin-left: 0.2rem;
+	}
+	
+	nav.menubar a[target='_blank'] {
+		display: none;
+	}
+	
+	a#save-button, a#close-button, a#validate-button {
+		margin-right: 1rem;
+	}
+	
+	label.data > input[type = 'text'], div.combo > label > input[type='text'] {
+		width: 30rem;
+    }
+}

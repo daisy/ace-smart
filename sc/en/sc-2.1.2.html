@@ -1,0 +1,14 @@
+<div class="sc-body">
+	<p>Verify that any interactive content (scripted components, forms, audio, video etc.) does not present a
+		keyboard trap.</p>
+	<p>A keyboard trap results when an application can be entered using the keyboard but then cannot be escaped
+		using the same method (e.g., can be tabbed into but then the tab key has a different function within the
+		application).</p>
+	<p>If any content cannot be escaped from once entered using the typical escape key, there must be
+		instructions on how to escape.</p>
+	<p class="sc-note">Note: Audio and video content that uses native HTML controls (i.e., has the
+			<code>controls</code> attribute set by default) can be assumed to be accessible. If the author has
+		scripted their own controls, the interface needs testing.</p>
+	<p class="sc-note">Note: Plugins are a common cause of keyboard traps. Although formats that require a
+		plugin are not typically found in EPUB 3, some EPUB 2 reading systems supported Flash video.</p>
+</div>

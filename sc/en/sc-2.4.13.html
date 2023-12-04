@@ -1,0 +1,35 @@
+<div class="sc-body">
+	<p>The fastest way to determine whether this success criterion applies to an EPUB publication
+		is to check any CSS files for <code>:focus</code> selectors. If none are found, then the
+		author has no overridden the reading system defaults and this success criterion can be
+		marked as not applicable.</p>
+	
+	<p>If <code>:focus</code> selectors are found, then their usage in the content needs to be
+		verified. Open the EPUB publication and use the keyboard to tab to elements that are
+		affected by the selector. If focus is indicated by a solid line that completely encloses
+		the element, and there is a 3:1 contrast ratio between the outline and both the pixels it
+		was drawn over and its adjacent pixels then success criterion passes.</p>
+
+	<p>If the focus selector does not fully enclose the element, or does not use a solid line
+		as an indicator, then it must either:</p>
+	
+	<ul>
+		<li>at least as large as the area of a 1 CSS pixel thick perimeter of the unfocused
+			component; or</li>
+		<li>at least as large as a 4 CSS pixel thick line along the shortest side of a minimum
+			bounding box of the unfocused component.</li>
+	</ul>
+	
+	<p>The first bullet requires calculating the perimeter around the element. The focus indicator
+		must then be at least this big. For example, if the element is a 200 by 50 button, a 1-pixel
+		perimeter equals 498 pixels. The area of the focus indicator must then be at least this big.
+		It can be any shape and does not have to be solid, but the total area it occupies must be
+		at least 498 pixels (e.g., the focus indicator could take the shape of a box within the
+		perimeter of the element but thicker than 1 pixel so it occupies a greater area). Calculating
+		conformance can be tricky, especially when dashes and dots are used.</p>
+	
+	<p>The second bullet requires a similar area calculation. In this case, the shortest edge of the
+		element is multiplied by 4. The area of the focus indicator then needs to occupy at least
+		the same area. Using the previous example, of a button with a 50-pixel short edge, the focus
+		indicator would have to occupy at least 200 pixels.</p>
+</div>

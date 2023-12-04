@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Adding Publication Information - Ace SMART</title>
+		<link rel="stylesheet" type="text/css" href="../css/a11y.css" />
+		<link rel="stylesheet" type="text/css" href="css/user-guide.css" />
+	</head>
+
+	<body class="page">
+		<header>
+			<h1><img src="../images/daisy_logo.png" class="logo" alt="DAISY"/> 
+				<span>Ace <span class="smart_hd">SMART</span> &#8212; User Guide</span></h1>
+			<nav class="menubar">
+				<a href="index.html">Table of Contents</a>
+			</nav>
+		</header>
+		<main>
+			<section id="pub-info">
+				<h2>Adding Publication Information</h2>
+				
+				<p>The first tab presented when you begin a new report shows the metadata that was discovered in the
+					EPUB publication.</p>
+				
+				<figure>
+					<figcaption>Figure 1 &#8212; The publication information tab is the first in the tab bar.
+						It contains various fields for reporting metadata about the publication.</figcaption>
+					<img src="images/tab_pub_info.png" width="700" alt="Pub info tab"/>
+				</figure>
+				
+				<p>If you intend to generate a final report from the SMART tool, you must complete the fields in this
+					tab that are marked by an asterisk. The other fields are optional &#8212; omitting them will reduce
+					the amount of information available in the final report, however.</p>
+				
+				<p>The first field in this section identifies the format of the EPUB publication.</p>
+				
+				<figure>
+					<figcaption>Figure 2 &#8212; EPUB format configuration selection box contains options for EPUB 2
+						and 3.</figcaption>
+					<img src="images/epub_format.png" width="400" alt="Format options"/>
+				</figure>
+				
+				<p>The selected format does not change the evaluation criteria, but it does control the output format of
+					the optional metadata that can be generated from the tool (e.g., the discovery and conformance
+					metadata for the package document).</p>
+				
+				<p>The rest of the metadata does not affect the evaluation of the publication. It is only used in the
+					output report you can generate at the end of the evaluation. It is recommended that you verify the
+					information is correct and complete, but you can skip this step if you do not intend to generate a
+					final report.</p>
+				
+				<figure>
+					<figcaption>Figure 3 &#8212; Text inputs for title, author, identifier, publisher, dates, subject
+						and description.</figcaption>
+					<img src="images/pub_meta.png" width="600" alt="Publication input fields" />
+				</figure>
+				
+				<p>In addition to the named fields, it is also possible to add any optional metadata you desire using
+					the text box at the end of the form. To add such metadata, type a human-readable label followed by
+					a colon, a space, and then the value.</p>
+				
+				<figure>
+					<figcaption>Figure 4 &#8212; Optional metadata box containing a publisher's rights
+						declaration.</figcaption>
+					<img src="images/pub_meta_optional.png" width="600" alt="" />
+				</figure>
+				
+				<p>As the optional metadata is for human consumption, it is not recommended to use property names
+					(e.g., use a label like "Created On" instead of "dcterms:created").</p>
+				
+				<p>After verifying the metadata, it is time to begin the manual evaluation process.</p>
+			</section>
+		</main>
+		
+		<nav class="user-links">
+			<div class="prev-link"><a href="ui.html">The SMART User Interface</a></div>
+			<div class="next-link"><a href="configuration.html">Configuring an Evaluation</a></div>
+		</nav>
+		
+		<footer>
+			<p>Copyright &#169; 2022 <a href="http://daisy.org">DAISY Consortium</a>. All Rights Reserved.</p>
+			<p><a href="http://www.github.com/daisy/ace-smart-src/issues">Report a problem</a> | <a
+					href="http://www.daisy.org/terms-use">Terms of Use</a></p>
+		</footer>
+	</body>
+</html>

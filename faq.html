@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>About - Ace SMART</title>
+		<link rel="stylesheet" type="text/css" href="css/a11y.css" />
+	</head>
+
+	<body class="page faq">
+		<header>
+			<h1><img src="images/daisy_logo.png" class="logo" alt="DAISY"/> <span property="dcterms:title">Ace <span class="smart_hd">SMART</span></span></h1>
+			<div class="menubar"></div>
+		</header>
+		<main>
+			<section role="doc-qna">
+				<h2>Frequently Asked Questions</h2>
+				<p>This tool is designed to help ensure that the requirements of the <a href="http://www.idpf.org/epub/a11y/"
+						>EPUB Accessibility specification</a> are correctly applied when evaluating EPUB publications. The
+					goal is to help simplify each of the tasks that have to be carried out, from validation of the content to
+					insertion of discovery and reporting metadata.</p>
+				<nav id="faq">
+					<ol>
+						<li>
+							<div class="faq-title">Content Evaluation</div>
+							<ol>
+								<li><a href="#auto">Is it necessary to do automated testing?</a></li>
+								<li><a href="#manual">Is it necessary to do manual testing?</a></li>
+								<li><a href="#spot-check">Is spot-checking sufficient?</a></li>
+								<li><a href="#conf-options">Why are there options to show AA and AAA success
+									criteria?</a></li>
+							</ol>
+						</li>
+						<li>
+							<div class="faq-title">Application</div>
+							<ol>
+								<li><a href="#report">Where can I report issues?</a></li>
+								<li><a href="#smart">Why SMART?</a></li>
+							</ol>
+						</li>
+					</ol>
+				</nav>
+				<section id="eval">
+					<h3>Content Evaluation</h3>
+					<dl>
+						<dt id="manual">Is it necessary to do manual testing?</dt>
+						<dd>
+							<p>Yes, human verification is necessary to properly evaluate the accessibilty of the content.
+								Automatic testing is an essential tool in evaluating conformance, but even the best tools
+								will miss many potential problems (e.g., they cannot judge quality). Do not assume that a
+								clean report from an automated testing tool means that a publication conforms to WCAG or EPUB
+								requirements.</p>
+						</dd>
+						<dt id="auto">Is it necessary to do automated testing?</dt>
+						<dd>
+							<p>Although not required, it is strongly recommended that you perform automated testing. Relying
+								only on manual testing introduces the potential for human error. Although automated testing
+								is not perfect, it is thorough in what it is capable of checking.</p>
+						</dd>
+						<dt id="spot-check">Is spot-checking sufficient?</dt>
+						<dd>
+							<p>Spot checking is not recommended when you first begin to evaluate publications. You need to
+								perform a thorough check to ensure all accessibility thresholds are met, and to identify
+								consistent problem areas.</p>
+							<p>If the publications you are checking are produced from a predictable workflow &#8212; one that
+								incorporates accessibility fixes back into its upstream flow to prevent reoccurrence &#8212;
+								then as you gain more experience you could choose to only spot-check for manual problems
+								(e.g., looking for only new or complex content forms you haven't encountered before).</p>
+							<p>In some rare cases, the accessibility of all publications could even be assumed based on the
+								evaluation of a single publication (e.g., where the content follows a strict template and
+								there are no multimedia elements).</p>
+							<p>In general, though, it is recommended that the automated testing tool be run on all
+								publications even when manual spot-checking of conformance is performed.</p>
+						</dd>
+						<dt id="conf-options">Why are there options to show AA and AAA success criteria?</dt>
+						<dd>
+							<p>Although you only need to meet the criteria for the level you have chosen, for reporting
+								purposes you may want to indicate that a publication has met the criteria of higher
+								levels.</p>
+							<p>Selecting these options will include the succss criteria in the form and in the generated
+								report, but will not factor them into the determination of whether you have successfully
+								reached the specified level.</p>
+						</dd>
+					</dl>
+				</section>
+				<section id="use">
+					<h3>Tool Use</h3>
+					<dl>
+						<dt id="report">Where can I report issues?</dt>
+						<dd>
+							<p>To report issues with the ACE tool, open a new issue in the <a href="https://github.com/daisy/ace-core/issues">ACE GitHub tracker</a>.</p>
+							<p>To report issues with this conformance and reporting tool, open a new issue in the <a href="https://github.com/daisy/a11y-conformance-reporting/issues">conformance and reporting GitHub tracker</a>.</p>
+						</dd>
+						<dt id="smart">Why SMART?</dt>
+						<dd>
+							<p>SMART stands for Simplified Manual Accessibility Reporting Tool. SMART is designed to do exactly what its expanded
+								name suggests: simplify the manual accessibility evaluation and reporting process for EPUB publications.</p>
+						</dd>
+					</dl>
+				</section>
+			</section>
+		</main>
+		<footer>
+			<p>Copyright &#169; <span property="dcterms:dateCopyrighted">2017</span> <a href="http://daisy.org">DAISY Consortium</a>. All Rights Reserved.</p>
+			<p><a href="http://www.github.com/DAISY/ace-smart-src/issues">Report a problem</a> | <a href="http://www.daisy.org/terms-use">Terms of Use</a></p>
+		</footer>
+	</body>
+</html>

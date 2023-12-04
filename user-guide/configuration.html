@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Configuring an Evaluation - Ace SMART</title>
+		<link rel="stylesheet" type="text/css" href="../css/a11y.css" />
+		<link rel="stylesheet" type="text/css" href="css/user-guide.css" />
+	</head>
+
+	<body class="page">
+		<header>
+			<h1><img src="../images/daisy_logo.png" class="logo" alt="DAISY"/> 
+				<span>Ace <span class="smart_hd">SMART</span> &#8212; User Guide</span></h1>
+			<nav class="menubar">
+				<a href="index.html">Table of Contents</a>
+			</nav>
+		</header>
+		<main>
+			<section id="conformance-config">
+				<h2>Configuring an Evaluation</h2>
+				
+				<p>To ensure that a publication is accessible, you need to manually go through and verify each
+					conformance requirement. The Conformance Verification tab provides a list of these requirements for
+					each WCAG success criterion and each additional EPUB requirement.</p>
+				
+				<figure>
+					<figcaption>Figure 1 &#8212; The Conformance tab is the second in the tab bar. It contains the list
+						of success criteria that must be passed to claim conformance, as well as options for customizing
+						the list.</figcaption>
+					<img src="images/tab_conformance.png" width="600" alt="Conformance tab" />
+				</figure>
+				
+				<p>The first thing you need to decide when starting an evaluation is which version of the EPUB
+					Accessibility specification you want the publication to conform to.</p>
+				
+				<figure>
+					<figcaption>Figure 2 &#8212; The EPUB version selection box allows you to choose the version of the
+						specification to conform to.</figcaption>
+					<img src="images/epub_version.png" width="250" alt="EPUB version" />
+				</figure>
+				
+				<p>It is always recommended to use the latest version unless there is a specific need to use an older
+					one (e.g., if national regulations require conformance to a version). The SMART tool will always
+					set the latest version by default.</p>
+				
+				<p>The next two options allow you to set the WCAG conformance requirement for the publication.</p>
+				
+				<figure>
+					<figcaption>Figure 2 &#8212; The WCAG selection boxes options allow you to select the version and
+						level.</figcaption>
+					<img src="images/wcag_config.png" width="350" alt="WCAG options" />
+				</figure>
+				
+				<p>The SMART tool defaults to verify that publications meet the latest WCAG version at Level AA. Note
+					that the EPUB Accessibility 1.0 specification only endorsed conformance to WCAG 2.0. If you select
+					that version, it will not be possible to change the WCAG version from 2.0 (the selection box is
+					disabled).</p>
+				
+				<div class="note">
+					<p><strong>Note</strong>: The reporting tool does not include the option to conform to level AAA as
+						this level is more aspirational than achievable.</p>
+				</div>
+				
+				<p>As you select the different possible conformance options, the SMART tool automatically updates the
+					list of applicable success criteria. These changes include adding or removing success criteria,
+					depending on which version they were introduced in, and changing the level of some criteria
+					(e.g., WCAG 2.2 changes some criteria from AA to A).</p>
+				
+				
+				<section id="view">
+					<h3>Additional Options</h3>
+					
+					<p>The SMART tool also contains a set of options for further customizing the success criteria
+						to more specific needs</p>
+					
+					<p>To view these options, you must click on the Additional Options link after the configuration
+						settings opens.</p>
+					
+					<figure>
+						<figcaption>Figure 3 &#8212; The Additional Options dialog box contains more settings to
+							control the display and status of the success criteria.</figcaption>
+						<img src="images/additional_options.png" width="550" alt="Additional options" />
+					</figure>
+					
+					<p>The following list describes each of the options provided in the dialog:</p> 
+					
+					<dl>
+						<dt id="sc-excl"><dfn>Exclude tests for</dfn></dt>
+						<dd>
+							<p>The "Exclude tests for" field allows you to hide content-specific success criteria if
+								you know that they do not apply to the publication (e.g., audio, video, and scripting
+								requirements).</p>
+							
+							<p>These options are automatically set to reflect the content when the 
+								<a href="load-ace.html">Ace JSON report is loaded</a>.</p>
+							
+							<p>Note that selecting any of these options only hides the related criteria from view.
+								The criteria are still included in the generated report with a "not applicable"
+								status.</p>
+						</dd>
+						
+						<dt id="sc-opt"><dfn>Show optional criteria</dfn></dt>
+						<dd>
+							<p>The "Show optional criteria" field allows you to also view success criteria above the
+								level you are checking the publication against. For example, if you are checking
+								against WCAG Level AA, you could check the AAA option to have those success
+								criteria displayed.</p>
+					
+							<p>Showing these optional criteria does not change the conformance level being verified,
+								and their status is not used in calculating conformance to that level. What showing
+								the criteria does is allow you to indicate that a publication meets requirements
+								beyond the base level being tested (i.e., any optional criteria you verify are included
+								in the final report).</p>
+						</dd>
+							
+						<dt id="sc-filter"><dfn>Hide success criteria with status</dfn></dt>
+						<dd>
+							<p>This option allows you to temporarily hide all success criteria whose status is set to
+								one of the specified values.</p>
+							
+							<p>You can use this option, for example to completely hide success criteria that are not
+								applicable, or to hide all but failures or unverified success criteria to review them
+								faster.</p>
+						</dd>
+						
+						<dt id="sc-global-status"><dfn>Set all success criteria to</dfn></dt>
+						<dd>
+							<p>Clicking on one of the status values in this field will set all success criteria to that
+								value, no matter their current status.</p>
+							
+							<p>It is strongly recommended not to use this option as there is no way to undo a change
+								except to not save the result and reload the report to its last saved status.</p>
+						</dd>
+						
+						<dt id="sc-show-descriptions"><dfn>Success criteria descriptions</dfn></dt>
+						<dd>
+							<p>This option allows you to hide the descriptions that explain what needs to be checked
+								for each success criteria. Only the success criteria name and status section
+								are visible when selected.</p>
+							
+							<p>This field is a convenience for advanced evaluators with strong knowledge of the
+								success criteria requirements.</p>
+						</dd>
+					</dl>
+				</section>
+			</section>
+		</main>
+		
+		<nav class="user-links">
+			<div class="prev-link"><a href="pub-info.html">Adding Publication Information</a></div>
+			<div class="next-link"><a href="conformance.html">Evaluating a Publication</a></div>
+		</nav>
+		
+		<footer>
+			<p>Copyright &#169; 2022 <a href="http://daisy.org">DAISY Consortium</a>. All Rights Reserved.</p>
+			<p><a href="http://www.github.com/DAISY/ace-smart-src/issues">Report a problem</a> | <a
+					href="http://www.daisy.org/terms-use">Terms of Use</a></p>
+		</footer>
+	</body>
+</html>

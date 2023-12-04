@@ -1,0 +1,45 @@
+<div class="sc-body">
+	<p>Open the package document and verify that all of the following required discovery metadata properties are set
+		and the value(s) they specify are correct for the publication:</p>
+	<dl>
+		<dt><code>schema:accessMode</code></dt>
+		<dd>
+			<ul>
+				<li>Check that each access mode matches the way in which information is encoded.</li>
+				<li>Check that access modes are not set when the content is presentational.</li>
+				<li>Chcek that no access modes have been missed.</li>
+			</ul>
+		</dd>
+		
+		<dt><code>schema:accessibilityFeature</code></dt>
+		<dd>
+			<ul>
+				<li>Check that features are not incorrectly listed as present.</li>
+				<li>Check that features have not been missed.</li>
+			</ul>
+		</dd>
+		
+		<dt><code>schema:accessibilityHazard</code></dt>
+		<dd>
+			<ul>
+				<li>Check that hazards are not incorrectly listed as present.</li>
+				<li>Check that hazards have not been missed.</li>
+			</ul>
+		</dd>
+		
+		<dt><code>schema:accessibilitySummary</code></dt>
+		<dd>
+			<p>Check that the summary provides an accurate description of the accessibility of the publication
+				(e.g., it identifies conformance and notes any special information the general metadata cannot
+				capture).</p>
+		</dd>
+	</dl>
+	
+	<p class="sc-note">Note: It is recommended, but not required, that the <code>schema:accessModeSufficient</code>
+		property be specified.</p>
+	
+	<p class="sc-note">Caution: Metadata listed in the <a href="#discovery">Discovery tab</a> may not reflect what is
+		actually in the package document (e.g., the SMART tool inferred metadata during the import of an Ace report,
+		or you have manually updated the metadata and not saved it back to the publication). Always check the package
+		document when verifying this success criterion.</p>
+</div>

@@ -1,0 +1,80 @@
+
+#born_accessible section#ba-scores ul.ba-score-list {
+	max-width: 80rem;
+	list-style-type: none;
+	padding-left: 2rem;
+}
+
+#born_accessible section#ba-scores ul.ba-score-list > li:nth-child(n) {
+	background-color: rgb(240,248,255);
+}
+
+#born_accessible section#ba-scores ul.ba-score-list > li:nth-child(2n) {
+	background-color: inherit;
+}
+
+#born_accessible section#ba-scores ul.ba-score-list ul {
+	list-style-type: none;
+}
+
+#born_accessible section#ba-scores ul.ba-score-list  li {
+	border-top: 0.1rem dotted rgb(200,200,200);
+}
+
+#born_accessible section#ba-scores > ul.ba-score-list > li.ba-score > span {
+	font-weight: bold;
+}
+
+#born_accessible section#ba-scores ul.ba-score-list li.ba-score > span {
+	display: inline-block;
+}
+
+#born_accessible section#ba-scores ul.ba-score-list li.ba-score > span:first-child {
+	max-width: 60rem;
+}
+
+#born_accessible section#ba-scores ul.ba-score-list li.ba-score > span:nth-child(2) {
+	text-align: center;
+	width: 10rem;
+	float: right;
+}
+
+
+#born_accessible .bad {
+	background-color: rgb(255,204,204);
+}
+
+#born_accessible .mid {
+	background-color: rgb(255, 237, 210);
+}
+
+#born_accessible .good {
+	background-color: rgb(204,255,204);
+}
+
+#born_accessible .na {
+	background-color: rgb(241,241,241);
+}
+
+#born_accessible .ba-score-note {
+	font-size: 1.4rem;
+	margin-left: 3rem;
+	padding: 0.5rem 0;
+	max-width: 58rem;
+}
+
+#born_accessible .ba-primary {
+	font-size: 1.6rem;
+	margin: 0 0 2rem 2rem;
+	font-weight: bold;
+}
+
+#born_accessible .ba-primary span:first-child {
+    width: 24rem;
+    display: inline-block;
+}
+
+#born_accessible table {
+	margin-left: 2rem;
+	max-width: 45rem;
+}

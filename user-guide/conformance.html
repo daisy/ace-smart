@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Evaluating a Publication - Ace SMART</title>
+		<link rel="stylesheet" type="text/css" href="../css/a11y.css" />
+		<link rel="stylesheet" type="text/css" href="css/user-guide.css" />
+	</head>
+
+	<body class="page">
+		<header>
+			<h1><img src="../images/daisy_logo.png" class="logo" alt="DAISY"/> 
+				<span>Ace <span class="smart_hd">SMART</span> &#8212; User Guide</span></h1>
+			<nav class="menubar">
+				<a href="index.html">Table of Contents</a>
+			</nav>
+		</header>
+		<main>
+			<section id="eval">
+				<h2>Evaluating a Publication</h2>
+				
+				<p>After <a href="configuration.html">configuring the evaluation</a>, you must step through each
+					success criterion and check that it is satisfied by the content. When checking each criterion,
+					ensure that the publication meets all the specified requirements.</p>
+				
+				<p>Whenever possible, you will be directed where to look for potential problems so that you do not have
+					to review the entire publication (e.g., via the content lists in the Ace HTML report, such as the
+					list of all images).</p>
+				
+				<p>More typically, it will not be possible to pinpoint potential error locations &#8212; you will have
+					to inspect the source markup of the publication for errors. This is especially true for WCAG success
+					criterion 1.3.1, for example, which requires that information and relationships be expressed in the
+					markup. Automatic testing tools have limited capabilities for determining when a structure has been
+					mistagged.</p>
+				
+				<p>Additional links are also provided to help you understand the various success criteria. These include
+					direct links to the WCAG documentation, as well as links to markup best practices. If you are unsure
+					about any aspect of a requirement, take the time to review these documents first.</p>
+				
+				<p>As you evaluate each criterion, set its status to track overall conformance.</p>
+				
+				<figure>
+					<figcaption>Figure 1 &#8212; The status section appears after the links to the supporting
+						documentation and includes pass, fail and not applicable options.</figcaption>
+					<img src="images/status.png" width="700" alt="Status fields" />
+				</figure>
+				
+				<p>The following list describes each of the status options.</p>
+				
+				<dl>
+					<dt id="unverified">Unverified</dt>
+					<dd>
+						<p>All success criteria are set to <i>unverified</i> by default, although this status may be
+							changed when the Ace JSON report is loaded and analyzed.</p>
+						
+						<p>All success criteria for the conformance level specified in the <a href="#config"
+								>configuration options</a> must be changed to pass, fail or not applicable prior to
+							generating the final report. Failure to do so will result in a validation error. Note that
+							optional success criteria (i.e., those above the level being tested) may be left unverified,
+							in which case they will not be included in the final report.</p>
+					</dd>
+
+					<dt id="pass">Pass</dt>
+					<dd>
+						<p>If the requirements of a success criterion are satisfied, set its status to <i>pass</i>.</p>
+						
+						<p>Do not use the pass setting for success criteria that are not applicable to the content. For
+							example, if the publication does not contain audio or video, do not pass it on success
+							criteria for audio and video content. Doing so suggests that the publication contains
+							content it does not. Use the <a href="#na">not applicable</a> status in these cases.</p>
+					</dd>
+
+					<dt id="fail">Fail</dt>
+					<dd>
+						<p>If the publication fails a success criterion, setting the status to <i>fail</i> will reveal a
+							field to describe why it failed.</p>
+						
+						<figure>
+							<figcaption>Figure 2 &#8212; A text field for recording a note appears below the status
+								line when the fail setting is selected.</figcaption>
+							<img src="images/status_fail.png" width="600" alt="Fail setting" />
+						</figure>
+						
+						<p>Failure notes are included in the final report for the publication by default but can be
+							excluded to create reports for different audiences (e.g., to provide more detail to a
+							publisher about specific errors in the markup without revealing those details to a general
+							audience).</p>
+					</dd>
+
+					<dt id="na">N/A</dt>
+					<dd>
+						<p>Set the status to "N/A" (not applicable) for any criteria that are not applicable to the
+							publication.</p>
+						
+						<figure>
+							<figcaption>Figure 3 &#8212; Status section showing the not applicable option set.</figcaption>
+							<img src="images/status_na.png" width="600" alt="Not applicable setting" />
+						</figure>
+						
+						<p>Do not state that a publication passes criteria that are not applicable to its content, as
+							this practice is misleading to anyone reading the final report.</p>
+						
+						<p>Note that when the not applicable status is selected, the text on how to review the success
+							criterion is automatically hidden to reduce the visual clutter.</p>
+					</dd>
+				</dl>
+				
+				<br/>
+				
+				<p>An optional note field is provided after the status section for recording general conformance notes.
+					These notes are included in the generated report by default but can be excluded to create reports
+					for different audiences.</p>
+				
+				<figure>
+					<figcaption>Figure 4 &#8212; Clicking the 'Add note' checkbox reveals the text field where you can write
+						the note.</figcaption>
+					<img src="images/notes.png" width="600" alt="Add note setting" />
+				</figure>
+			</section>
+		</main>
+		
+		<nav class="user-links">
+			<div class="prev-link"><a href="configuration.html">Configuring an Evaluation</a></div>
+			<div class="next-link"><a href="discovery.html">Discovery Metadata</a></div>
+		</nav>
+		
+		<footer>
+			<p>Copyright &#169; 2022 <a href="http://daisy.org">DAISY Consortium</a>. All Rights Reserved.</p>
+			<p><a href="http://www.github.com/daisy/ace-smart-src/issues">Report a problem</a> | <a
+					href="http://www.daisy.org/terms-use">Terms of Use</a></p>
+		</footer>
+	</body>
+</html>

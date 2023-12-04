@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>What's New - Ace SMART</title>
+		<link rel="stylesheet" type="text/css" href="css/a11y.css" />
+	</head>
+
+	<body class="page faq">
+		<header>
+			<h1><img src="images/daisy_logo.png" class="logo" alt="DAISY"/> <span property="dcterms:title">Ace <span class="smart_hd">SMART</span></span></h1>
+			<div class="menubar"></div>
+		</header>
+		<main>
+			<section>
+				<h2>What's New</h2>
+				
+				<dl>
+					<dt>September 21, 2023 &#8212; Updated distribution metadata</dt>
+					<dd>
+						<p>The Distribution metadata tab has been updated to match the new values available in ONIX code list
+							issue 62. Included in the new release are fields for indicating conformance to the new EPUB
+							Accessibility 1.1 specification and also for complying with the European Accessibility Act.
+							The new release also includes many new fields for accessibility features as well as more
+							descriptive titles for many of the codes.</p>
+					</dd>
+					
+					<dt>May 26, 2023 &#8212; Updated discovery metadata</dt>
+					<dd>
+						<p>The Discovery metadata tab has been updated to include values for the latest accessibility
+							features: ARIA roles, open and closed captions, page break markers, and page navigation. It
+							is also now possible to state that publications do not contain flashing, sound, or motion
+							simulation hazards.</p>
+						<p>The Discovery tab also now includes more robust validation of the metadata fields.</p>
+					</dd>
+					
+					<dt>May 18, 2023 &#8212; Adding evaluator metadata associations</dt>
+					<dd>
+						<p>The evaluator metadata generated in the Result tab now includes associations
+							between the fields. The evaluator is linked to the conformance result, and
+							the evaluator's credential and report is linked to them.</p>
+					</dd>
+					
+					<dt>May 18, 2023 &#8212; Added certifier credential field</dt>
+					<dd>
+						<p>The Result tab now includes a field for inputting a credential. This metadata
+							is currently only used to generate metadata for the EPUB package document, but
+							its use may be expanded to the final reports in the future.</p>
+					</dd>
+					
+					<dt>November 18, 2022 &#8212; Experimental support for WCAG 2.2</dt>
+					<dd>
+						<p>SMART now supports evaluating EPUB publications against the <a 
+							href="https://www.w3.org/TR/2022/CR-WCAG22-20220906/">WCAG 2.2 Candidate Recommendation</a>.
+							Evaluators are advised to only use this option for experimentation at this time, however.
+							WCAG 2.2 may change again before becoming a final recommendation.</p>
+					</dd>
+					
+					<dt>October 26, 2022 &#8212; Unlimited access</dt>
+					<dd>
+						<p>We have removed the restriction on creating reports for non-
+							<a href="https://daisy.org/about-us/membership/inclusive-publishing-partners/">Inclusive
+								Publishing Partner</a> members. SMART is now available without restriction to everyone.</p>
+						<p>Existing accounts that were restricted to two reports a month have been migrated to unlimited
+							access. It is not necessary to create a new account.
+						<p>The login page has also been updated to better introduce the tool to users.</p>
+					</dd>
+					
+					<dt>August 15, 2022 &#8212; Updated EPUB Accessibility 1.1 support</dt>
+					<dd>
+						<p>The EPUB Accessibility 1.1 specification made a couple of significant changes during the
+							Candidate Recommendation phase. The conformance statement made in the
+							<code>dcterms:conformsTo</code> property now uses a more human-readable pattern. The
+							<code>accessibilitySummary</code> property was also changed from required to recommended
+							to include.</p>
+						<p>The SMART tool now incorporates these changes in the experimental support for the
+							standard.</p>
+					</dd>
+					
+					<dt>August 15, 2022 &#8212; Ace support updated</dt>
+					<dd>
+						<p>The SMART tool now handles errors from the aXe 4.4 rule set reported by Ace.</p>
+					</dd>
+					
+					<dt>July 11, 2022 &#8212; Support for EPUB Accessibility 1.1</dt>
+					<dd>
+						<p>Ace SMART now includes support for evaluating EPUB publications against the new Accessibility 1.1
+							specification!</p>
+						<p>On the Conformance tab, you can now select the 1.1 specification from the options at the top
+							to begin an evaluation. Selecting this version will also allow you to change the WCAG
+							conformance field to 2.1. SMART has also been updated to output the new conformance
+							strings for Accessibility 1.1 specification.
+						<p>This feature is still considered experimental as the specification is not yet a W3C Recommendation
+							(i.e., it is still possible that it will change).</p>
+					</dd>
+					
+					<dt>July 11, 2022 &#8212; New statistics box</dt>
+					<dd>
+						<p>The Conformance tab now includes a statistic box that reports how many success criteria have
+							passed, failed, are not applicable, and have not yet been checked. This box remains fixed as
+							the page scrolls.</p>
+					</dd>
+					
+					<dt>July 11, 2022 &#8212; New ONIX values</dt>
+					<dd>
+						<p>The Distribution tab now includes support for ONIX Code List 196 values 25 through 29 and
+							93.</p>
+					</dd>
+				</dl>
+			</section>
+		</main>
+		<footer>
+			<p>Copyright &#169; <span property="dcterms:dateCopyrighted">2022</span> <a href="http://daisy.org">DAISY Consortium</a>. All Rights Reserved.</p>
+			<p><a href="http://www.github.com/DAISY/ace-smart-src/issues">Report a problem</a> | <a href="http://www.daisy.org/terms-use">Terms of Use</a></p>
+		</footer>
+	</body>
+</html>

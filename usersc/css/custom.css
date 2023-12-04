@@ -1,0 +1,137 @@
+
+h1.ace_login_hd {
+	font-size: 1.7rem;
+	color: rgb(0,0,0);
+	margin-top: 0.5rem;
+	margin-left: 3.5rem;
+}
+
+h1.ace_login_hd > span:first-child{
+	padding-right: 0.5rem;
+}
+
+h2.form-signin-heading {
+	font-size: 1.2rem;
+}
+
+h2.login_intro {
+	font-size: 1.5rem;
+	color: rgb(27,95,161)
+}
+
+form.form-signin {
+	max-width: 40rem;
+	margin-top: 1rem;
+}
+
+div.no-flex {
+	flex-wrap: unset !important;
+}
+
+div.fl-70 {
+	width: 70vw;
+	padding-top: 2rem;
+}
+
+div.fl-30 {
+	width: 30vw;
+	flex: unset !important;
+}
+
+.col-sm-6 {
+	max-width: 100% !important;
+}
+
+img.logo{
+	vertical-align: middle;
+	margin-top: -3px;
+}
+
+span.smart_hd {
+	color: rgb(27,95,161);
+	font-style: italic;
+}
+
+nav.navbar {
+    background-color: rgb(255,255,255) !important;
+}
+
+ul.navbar-nav a {
+	color: #007bff !important;
+}
+
+ul.navbar-nav a:hover {
+	color: #0056b3 !important;
+}
+
+div#agreement {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #fff;
+    border: 1px solid #dce4ec;
+    border-radius: 4px;
+}
+
+div.col-sm-12 {
+	margin-top: 2rem;
+}
+
+h2.form-signin-heading {
+	font-size: 1.5rem;
+}
+
+h3.terms-cond {
+	font-size: 1.2rem;
+	margin-top: 4rem
+}
+
+div.gca-pad {
+	margin-top: 2rem;
+}
+
+input.gca-radio {
+	margin-left: 1rem;
+}
+
+footer {
+	text-align: center;
+}
+
+/* menubar */
+
+div.menubar {
+	padding-top: 0.2rem;
+	border-bottom: 0.1rem solid lightgrey;
+	background-color: rgb(27,95,161);
+}
+
+div.container-fluid {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+/* config dialog */
+
+.ui-widget-header {
+	background-color: rgb(232, 244, 248) !important;
+}
+
+
+@media screen and (max-width: 600px),
+@media only screen
+	and (max-device-width: 480px) {
+
+	
+	div.row {
+		display: block !important;
+	}
+	
+	div.fl-70 {
+		width: 100vw;
+	}
+	
+	div.fl-30 {
+		width: 100vw;
+	}
+
+}

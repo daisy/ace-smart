@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Overview - Ace SMART</title>
+		<link rel="stylesheet" type="text/css" href="../css/a11y.css" />
+		<link rel="stylesheet" type="text/css" href="css/user-guide.css" />
+	</head>
+
+	<body class="page">
+		<header>
+			<h1><img src="../images/daisy_logo.png" class="logo" alt="DAISY"/> 
+				<span>Ace <span class="smart_hd">SMART</span> &#8212; User Guide</span></h1>
+			<nav class="menubar">
+				<a href="index.html">Table of Contents</a>
+			</nav>
+		</header>
+		<main>
+			<section id="overview">
+				<h2>Overview</h2>
+				
+				<p>Evaluating EPUB publications for accessibility is a two-step process:</p>
+				
+				<dl>
+					<dt>1. Automated Inspection</dt>
+					<dd>
+						<p>The first step is to ensure the publication passes automated testing, which is accomplished
+							using the following tools:</p>
+						
+						<ol>
+							<li><a href="https://github.com/IDPF/epubcheck/releases">epubcheck</a> &#8212; The first
+								step in automated verification is to use the epubcheck validator to check for errors.
+								Although this tool does not specifically perform accessibility checks, it ensures that
+								publications are valid, which is necessary to pass WCAG success criterion 4.1.1.</li>
+
+							<li><a href="https://github.com/daisy/ace-core/releases">Ace</a> &#8212; The next step is to
+								use Ace validator to verify accessibility requirements that can be programmatically
+								determined.</li>
+						</ol>
+					</dd>
+
+					<dt>2. Manual Inspection</dt>
+					<dd>
+						<p>Although automated validation tools will alert you to problems that can be programmatically
+							determined, there are many aspects of accessibility that a tool cannot verify (quality of
+							descriptions, scripting accessibility, keyboard issues, etc.). The second step in verifying
+							the accessibility of an EPUB publication is therefore to perform these additional manual
+							checks &#8212; a claim of conformance cannot be made only from automated testing.</p>
+						
+						<p>The Ace SMART tool is designed to help you perform manual assessments.</p>
+					</dd>
+				</dl>
+				
+				<p>Note that to carry out an evaluation, you will require editing software that allows you to review
+					the resources of the publication is required. This is true even if you are only reporting issues
+					and not fixing them, as you need access to the raw markup of the publication to verify many
+					accessibility requirements.</p>
+				
+				<p>The EPUB publication you are evaluating does not have to be zipped to carry out the manual
+					evaluation steps, as zipping does not directly affect the accessibility.</p>
+			</section>
+		</main>
+		
+		<nav class="user-links">
+			<div class="next-link"><a href="auto.html">Automated Inspection</a></div>
+		</nav>
+		
+		<footer>
+			<p>Copyright &#169; 2022 <a href="http://daisy.org">DAISY Consortium</a>. All Rights Reserved.</p>
+			<p><a href="http://www.github.com/daisy/ace-smart-src/issues">Report a problem</a> | <a
+					href="http://www.daisy.org/terms-use">Terms of Use</a></p>
+		</footer>
+	</body>
+</html>
