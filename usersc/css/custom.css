@@ -3,7 +3,7 @@ h1.ace_login_hd {
 	font-size: 1.7rem;
 	color: rgb(0,0,0);
 	margin-top: 0.5rem;
-	margin-left: 3.5rem;
+	margin-left: 1rem;
 }
 
 h1.ace_login_hd > span:first-child{
@@ -54,6 +54,7 @@ span.smart_hd {
 
 nav.navbar {
     background-color: rgb(255,255,255) !important;
+    padding: 0;
 }
 
 ul.navbar-nav a {
@@ -117,9 +118,28 @@ div.container-fluid {
 }
 
 
+/* login */
+
+.container {
+	margin-left: 0 !important;
+}
+
+
+/* sponsor box */
+
+aside#sponsor {
+	margin-top: 2rem;	
+}
+
+aside#sponsor h2 {
+	color: rgb(0,0,0);
+	font-size: 1.2rem;
+}
+
+
 @media screen and (max-width: 600px),
 @media only screen
-	and (max-device-width: 480px) {
+	and (max-width: 480px) {
 
 	
 	div.row {

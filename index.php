@@ -97,7 +97,7 @@
 			
 			<div class="menubar"></div>
 			
-			<!-- <?php include 'php/sponsor.php' ?> -->
+			<?php include 'php/sponsor.php' ?>
 		</header>
 		
 		<main class="start">
