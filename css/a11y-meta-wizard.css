@@ -1,0 +1,96 @@
+
+div.meta-wiz {
+	font-size: 90%;
+	margin-left: 1rem;
+	margin-bottom: -3rem;
+	margin-top: 4rem;
+}
+
+#meta-wizard fieldset {
+	margin-top: 1rem;
+}
+#meta-wizard li {
+	margin-bottom: 1rem;
+}
+#meta-wizard div.conf {
+    margin-bottom: 1rem;
+}
+#meta-wizard div.conf label {
+    display:inline-block;
+    width: 10rem;
+}
+#meta-wizard {
+	margin: 3rem auto;
+	max-width: 58rem;
+	background-color: rgb(253,253,253);
+	border-radius: 0.5rem;
+	padding: 2rem;
+}
+.btn:focus-within,
+.btn {
+	border: 0;
+	background-color: rgb(20,120,240);
+	padding: 1rem;
+	border-radius: 25px;
+	color: white;
+	cursor: pointer;
+}
+#meta-wizard a:not([href]) {
+    color: white;
+}
+.btn[disabled] {
+	opacity: .5;
+	pointer-events: none;
+}
+.btn:hover {
+	background-color: #4338ca;
+	transition: ease-in-out .3s all;
+}
+.btn-submit {
+	background-color: rgb(20,120,240);
+}
+.btn-submit:hover {
+	background-color: #0891b2;
+}
+.pagination {
+	margin-top: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.pagination .btn {
+	width: 35%;
+	text-align: center;
+	margin: 0 6px;
+}
+.tab-status {
+	display: flex;
+	align-items: center;
+}
+.tab-status span {
+	appearance: none;
+	background-color: #f8fafc;
+	border: none;
+	border-radius: 50%;
+	width: 2rem;
+	height: 2rem;
+	margin-right: .5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.tab-status span.active {
+	background-color: rgb(20,120,240);
+	color: white;
+}
+.hidden {
+	display: none;
+}
+
+#meta-wizard textarea {
+	width: 99% !important;
+}
+
+.wiz-help {
+	font-size: 90%;
+}

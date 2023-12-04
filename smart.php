@@ -62,6 +62,7 @@
 		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
 		<link rel="stylesheet" type="text/css" href="css/a11y.css<?= '?v=' . $smart_version ?>"/>
 		<link rel="stylesheet" type="text/css" href="css/tabs.css<?= '?v=' . $smart_version ?>"/>
+		<link rel="stylesheet" type="text/css" href="css/a11y-meta-wizard.css<?= '?v=' . $smart_version ?>">
 		
 		<?php $ext->print_css(); ?>
 		
@@ -109,6 +110,8 @@
 			var saveChanges = false;
 			var firstSave = {$eval->need_to_save()};
 			var noDesignElements = {$user->data()->baDesignElementsOff};
+			
+			var meta_wiz_dialog;
 		</script>
 JS;
 ?>
@@ -143,6 +146,8 @@ JS;
 				<a href="#" id="save-button"><img src="images/save.png" alt="save" title="Save"/></a>
 				<a href="#" id="close-button"><img src="images/close_app.png" alt="close" title="Close"/></a>
 			</nav>
+			
+			<!-- <?php include 'php/sponsor.php' ?> -->
 		</header>
 		
 		<main class="js-tabs">
@@ -350,6 +355,16 @@ JS;
 					
 					<p class="help"><a href="user-guide/discovery.html" target="_blank">Need help?</a></p>
 					
+					<div class="meta-wiz"><a href="#" onclick="showMetaWizard()">Run Metadata Wizard</a></div>
+					
+					<script>
+						function showMetaWizard() {
+							if (meta_wiz_dialog) {
+								meta_wiz_dialog.dialog('open');
+							}
+						}
+					</script>
+					
 					<div id="discovery-fields"></div>
 					
 					<div class="buttons">
@@ -470,6 +485,8 @@ JS;
 				</div>
 			</section>
 		</form>
+		
+		<?php include 'php/meta-wizard.php' ?>
 		
 		<?php $ext->print_scripts(); ?>
 	</body>
