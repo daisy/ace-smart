@@ -146,8 +146,6 @@ JS;
 				<a href="#" id="save-button"><img src="images/save.png" alt="save" title="Save"/></a>
 				<a href="#" id="close-button"><img src="images/close_app.png" alt="close" title="Close"/></a>
 			</nav>
-			
-			<!-- <?php include 'php/sponsor.php' ?> -->
 		</header>
 		
 		<main class="js-tabs">
