@@ -96,8 +96,6 @@
 			<h1><img src="images/daisy_logo.png" class="logo" alt="DAISY"/> <span property="dcterms:title">Ace <span class="smart_hd">SMART</span></span></h1>
 			
 			<div class="menubar"></div>
-			
-			<!-- <?php include 'php/sponsor.php' ?> -->
 		</header>
 		
 		<main class="start">
