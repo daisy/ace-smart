@@ -1,11 +1,37 @@
 
-const previousButton = document.querySelector('#prev');
-const nextButton = document.querySelector('#next');
+const previousButton = document.querySelector('#wiz-prev');
+const nextButton = document.querySelector('#wiz-next');
 const tabPanels = document.querySelectorAll('.tabpanel');
 const isEmpty = (str) => !str.trim().length;
 
 // check if inside an evaluation
 const in_smart = (typeof ACE_USER !== 'undefined') ? true : false;
+
+
+function metaWizardInit() {
+	
+	if (!in_smart) {
+		return;
+	}
+	
+	var status = document.getElementById('conformance-result-status').textContent;
+	
+	if (status.match(/^Pass:/i)) {
+	
+		var epub = document.getElementById('epub-a11y').value;
+		var wcag = document.getElementById('wcag-version').value;
+		var level = document.getElementById('wcag-level').value;
+		
+		// set the conformance field to pass
+		document.querySelector('input[name=conformance][value=yes]').click();
+		
+		// fill in the conformance level
+		document.getElementById('wiz-epub').value = epub;
+		document.getElementById('wiz-wcag').value = wcag;
+		document.getElementById('wiz-wcaglvl').value = level;
+	}
+}
+
 
 let currentStep = 1;
 
@@ -34,7 +60,7 @@ function checkAccessModes(elem) {
 }
 
 function showDetails(elem) {
-	var details_elem = elem.name + '-details';
+	var details_elem = 'wiz-' + elem.name + '-details';
 	var details = document.getElementById(details_elem);
 	
 	if (elem.value == 'yes') {
@@ -181,28 +207,6 @@ function generateMetadata() {
 	// store the generated tags for the public version
 	var meta_tags = '';
 	
-	/*  probably not keep
-	if (conforms) {
-		var epub = document.getElementById('epub').value;
-		var wcag = document.getElementById('wcag').value;
-		var level = document.getElementById('wcaglvl').value;
-		
-		var conformance_str = '';
-		
-		if (epub == '1.0') {
-			// the 1.0 specification has an idpf-specific url for an identifier
-			conformance_str = 'http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-' + level;
-			meta_tags += smartFormat.createMetaTag({type: 'link', property: 'dcterms:conformsTo', value: conformance_str, id: 'epub-conformance'});
-		}
-		
-		else {
-			conformance_str = 'EPUB Accessibility ' + epub + ' - WCAG ' + wcag + ' Level ' + level; 
-			meta_tags += smartFormat.createMetaTag({type: 'meta', property: 'dcterms:conformsTo', value: conformance_str, id: 'epub-conformance'});
-		}
-	}
-	*/
-	
-	
 	/* add the access modes */
 	var no_visual = true;
 	var am_category = ['textual', 'images', 'auditory', 'video', 'tactile'];
@@ -274,7 +278,7 @@ function generateMetadata() {
 	
 	/* add sufficient access modes */
 	if (access_modes.length > 1) {
-		var wcag_level = document.getElementById('wcaglvl').value.toLowerCase();
+		var wcag_level = document.getElementById('wiz-wcaglvl').value.toLowerCase();
 		
 		if (access_modes.includes('textual') && conforms && (wcag_level === 'aa' || wcag_level === 'aaa')) {
 			if (in_smart) {

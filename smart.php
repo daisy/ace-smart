@@ -258,10 +258,10 @@ JS;
 							
 							<fieldset id="hide-status" class="flat row">
 								<legend>Hide success criteria with status:</legend>
-								<label><input type="checkbox" class="hide_sc" value="unverified"/> Unverified</label>
-								<label><input type="checkbox" class="hide_sc" value="pass"/> Pass</label>
-								<label><input type="checkbox" class="hide_sc" value="fail"/> Fail</label>
-								<label><input type="checkbox" class="hide_sc" value="na"/> N/A</label>
+								<label><input type="checkbox" id="hide-unverified" class="hide_sc" value="unverified"/> Unverified</label>
+								<label><input type="checkbox" id="hide-pass" class="hide_sc" value="pass"/> Pass</label>
+								<label><input type="checkbox" id="hide-fail" class="hide_sc" value="fail"/> Fail</label>
+								<label><input type="checkbox" id="hide-na" class="hide_sc" value="na"/> N/A</label>
 							</fieldset>
 							
 							<fieldset class="flat row">
@@ -359,6 +359,7 @@ JS;
 						function showMetaWizard() {
 							if (meta_wiz_dialog) {
 								meta_wiz_dialog.dialog('open');
+								metaWizardInit();
 							}
 						}
 					</script>

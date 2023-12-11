@@ -1,7 +1,7 @@
 
 <div id="meta-wizard" aria-label="Accessibility Metadata Wizard" title="Accessibility Metadata Wizard">
 	<form action="#">
-		<div id="welcome" class="tabpanel">
+		<div id="wiz-welcome" class="tabpanel">
 			<h2>Getting started</h2>
 			<p>Run the DAISY Ace SMART Accessibility Metadata wizard to create a set of accessibility
 				metadata for use in an EPUB publication.</p>
@@ -10,28 +10,28 @@
 			<p>Please click the Next button to begin the wizard.</p>
 		</div>
 		
-		<div id="conformance" class="tabpanel hidden">
+		<div id="wiz-conformance" class="tabpanel hidden">
 			<fieldset>
 				<legend>Conformance</legend>
 				<p>Have evaluated your publication for conformance to the EPUB Accessibility standard?</p>
 				<div>
-					<label><input name="conforms" type="radio" value="no" onclick="showDetails(this)" checked=""> No</label>
-					<label><input name="conforms" type="radio" value="yes" onclick="showDetails(this)"> Yes</label>
+					<label><input name="conformance" type="radio" value="no" onclick="showDetails(this)" checked=""> No</label>
+					<label><input name="conformance" type="radio" value="yes" onclick="showDetails(this)"> Yes</label>
 				</div>
-				<div id="conforms-details" class="hidden">
+				<div id="wiz-conformance-details" class="hidden">
 					<p>Please indicate what version and level it passed:</p>
 					
 					<div class="conf">
-						<label for="epub">EPUB version:</label>
-						<select id="epub">
+						<label for="wiz-epub">EPUB Accessibility:</label>
+						<select id="wiz-epub">
 							<option>1.0</option>
 							<option selected="">1.1</option>
 						</select>
 					</div>
 					
 					<div class="conf">
-						<label for="wcag">WCAG version:</label>
-						<select id="wcag">
+						<label for="wiz-wcag">WCAG:</label>
+						<select id="wiz-wcag">
 							<option>2.0</option>
 							<option selected="">2.1</option>
 							<option>2.2</option>
@@ -39,18 +39,17 @@
 					</div>
 					
 					<div class="conf">
-						<label for="wcaglvl">WCAG level:</label>
-						<select id="wcaglvl">
-							<option>A</option>
-							<option selected="">AA</option>
-							<option>AAA</option>
+						<label for="wiz-wcaglvl">Conformance:</label>
+						<select id="wiz-wcaglvl">
+							<option value="a">Level A</option>
+							<option value="aa" selected="">Level AA</option>
 						</select>
 					</div>
 				</div>
 			</fieldset>
 		</div>
 		
-		<div id="textual" class="tabpanel hidden">
+		<div id="wiz-textual" class="tabpanel hidden">
 			<fieldset>
 				<legend>Text content</legend>
 				
@@ -58,7 +57,7 @@
 				<label><input name="textual" type="radio" value="no" onclick="showDetails(this)"> No</label>
 				<label><input name="textual" type="radio" value="yes" onclick="showDetails(this)" checked=""> Yes</label>
 				
-				<div id="textual-details">
+				<div id="wiz-textual-details">
 					<p>Are all headings correctly tagged?</p>
 					<div>
 						<label><input name="structuralNavigation" type="radio" value="no" checked=""> No</label>
@@ -88,7 +87,7 @@
 			</fieldset>
 		</div>
 		
-		<div id="images" class="tabpanel hidden">
+		<div id="wiz-images" class="tabpanel hidden">
 			<fieldset>
 				<legend>Image content</legend>
 				
@@ -96,7 +95,7 @@
 				<label><input name="images" type="radio" value="no" onclick="showDetails(this)" checked=""> No</label>
 				<label><input name="images" type="radio" value="yes" onclick="showDetails(this)"> Yes</label>
 				
-				<div id="images-details" class="hidden">
+				<div id="wiz-images-details" class="hidden">
 					<p>Select the types of text alternatives available for the images:</p>
 					
 					<ul>
@@ -128,14 +127,14 @@
 			</fieldset>
 		</div>
 		
-		<div id="auditory" class="tabpanel hidden">
+		<div id="wiz-auditory" class="tabpanel hidden">
 			<fieldset>
 				<legend>Audio content</legend>
 				<p>Does your publication include audio?</p>
 				<label><input name="auditory" type="radio" value="no" onclick="showDetails(this)" checked=""> No</label>
 				<label><input name="auditory" type="radio" value="yes" onclick="showDetails(this)"> Yes</label>
 				
-				<div id="auditory-details" class="hidden">
+				<div id="wiz-auditory-details" class="hidden">
 					<p>Select the types of accessible alternatives available for the audio:</p>
 					
 					<ul>
@@ -168,14 +167,14 @@
 			</fieldset>
 		</div>
 		
-		<div id="video" class="tabpanel hidden">
+		<div id="wiz-video" class="tabpanel hidden">
 			<fieldset>
 				<legend>Video content</legend>
 				<p>Does your publication include video?</p>
 				<label><input name="video" type="radio" value="no" onclick="showDetails(this)" checked=""> No</label>
 				<label><input name="video" type="radio" value="yes" onclick="showDetails(this)"> Yes</label>
 				
-				<div id="video-details" class="hidden">
+				<div id="wiz-video-details" class="hidden">
 					<p>Is all video content described?</p>
 					<div>
 						<label><input name="accessModeSufficientVideo" type="radio" value="no" checked=""> No</label>
@@ -199,14 +198,14 @@
 			</fieldset>
 		</div>
 		
-		<div id="tactile" class="tabpanel hidden">
+		<div id="wiz-tactile" class="tabpanel hidden">
 			<fieldset>
 				<legend>Tactile content</legend>
 				<p>Does your publication include tactile content?</p>
 				<label><input name="tactile" type="radio" value="no" onclick="showDetails(this)" checked=""> No</label>
 				<label><input name="tactile" type="radio" value="yes" onclick="showDetails(this)"> Yes</label>
 				
-				<div id="tactile-details" class="hidden">
+				<div id="wiz-tactile-details" class="hidden">
 					<p>What types of tactile content are included?</p>
 					<div>
 						<ul>
@@ -219,7 +218,7 @@
 			</fieldset>
 		</div>
 		
-		<div id="math" class="tabpanel hidden">
+		<div id="wiz-math" class="tabpanel hidden">
 			<fieldset>
 				<legend>Math</legend>
 				
@@ -230,7 +229,7 @@
 					<label><input name="math" type="radio" value="yes" onclick="showDetails(this)"> Yes</label>
 				</div>
 				
-				<div id="math-details" class="hidden">
+				<div id="wiz-math-details" class="hidden">
 					<p>Please select all that apply:</p>
 					<ul>
 						<li><label><input name="math-feature" type="checkbox" value="MathML"> Equations are marked up using MathML</label></li>
@@ -242,7 +241,7 @@
 			</fieldset>
 		</div>
 		
-		<div id="navigation" class="tabpanel hidden">
+		<div id="wiz-navigation" class="tabpanel hidden">
 			<fieldset>
 				<legend>Navigation</legend>
 				
@@ -257,17 +256,17 @@
 			</fieldset>
 		</div>
 		
-		<div id="markup" class="tabpanel hidden">
+		<div id="wiz-markup" class="tabpanel hidden">
 			<h2>Accessibility Metadata</h2>
 			
 			<p>Add the following metadata tags to the publication's package document:</p>
 				
-			<textarea id="a11yMetadata" rows="8" cols="80" aria-label="Accessibility metadata tags"></textarea>
+			<textarea id="wiz-a11yMetadata" rows="8" cols="80" aria-label="Accessibility metadata tags"></textarea>
 		</div>
 		
 		<div class="pagination">
-			<a class="btn hidden" id="prev">Previous</a>
-			<a class="btn" id="next">Next</a>
+			<a class="btn hidden" id="wiz-prev">Previous</a>
+			<a class="btn" id="wiz-next">Next</a>
 		</div>
 	</form>
 	<script src="js/a11y-meta-wizard.js<?= '?v=' . $smart_version ?>"></script>
