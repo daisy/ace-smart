@@ -882,7 +882,7 @@ HTML;
 				$body = file_get_contents('sc/en/' . $id . '.html');
 				$reporting = str_replace('%%id%%', $id, $this->reporting);
 				
-				if ($info['obsolete']) {
+				if (array_key_exists('obsolete', $info)) {
 					$obs_value = '<label><input id="' . $id . '-obsolete" type="radio" name="' . $id . '" value="obsolete" class="sc_status" aria-labelledby="' . $id . '-legend"> Obsolete</label>';
 					$reporting = str_replace('%%obsolete%%', $obs_value, $reporting);
 				}
