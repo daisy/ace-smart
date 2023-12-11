@@ -42,7 +42,7 @@
 			
 			$result = $db->get_result();
 			
-			if ($result['evaluation']) {
+			if ($result) {
 				http_response_code(200);
 				echo $result['evaluation'];
 			}
