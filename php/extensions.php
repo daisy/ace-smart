@@ -15,7 +15,7 @@
 		public function print_css() {
 			if ($this->ext_module_access) {
 				foreach ($this->ext_module_access as $module) {
-					if ($this->extension[$module]) {
+					if (array_key_exists($module, $this->extension)) {
 						echo '<link rel="stylesheet" type="text/css" href="extensions/' . $module . '/css/smart.css"/>';
 					}
 				}
@@ -27,7 +27,7 @@
 			
 			if ($this->ext_module_access) {
 				foreach ($this->ext_module_access as $module) {
-					if ($this->extension[$module]['tab']) {
+					if (array_key_exists($module, $this->extension) && array_key_exists('tab', $this->extension[$module])) {
 						foreach ($this->extension[$module]['tab'] as $key => $value) {
 							echo '<li class="js-tablist__item"><a href="#' . $key . '" id="label_' . $key . '" class="js-tablist__link">' . $value . '</a></li>';
 							$ext_js_object = "{id: '" . $key . "', label: '" . str_replace("'", "\\'", $value) . "'}";
@@ -41,7 +41,7 @@
 		public function add_tab_includes() {
 			if ($this->ext_module_access) {
 				foreach ($this->ext_module_access as $module) {
-					if ($this->extension[$module]['tab']) {
+					if (array_key_exists($module, $this->extension) && array_key_exists('tab', $this->extension[$module])) {
 						foreach ($this->extension[$module]['tab'] as $key => $value) {
 							include 'extensions/' . $module . '/tab/' . $key . '.html';
 						}
@@ -53,7 +53,7 @@
 		public function add_output_options() {
 			if ($this->ext_module_access) {
 				foreach ($this->ext_module_access as $module) {
-					if ($this->extension[$module]['output_options']) {
+					if (array_key_exists($module, $this->extension) && array_key_exists('output_options', $this->extension[$module])) {
 						include 'extensions/' . $module . '/includes/output_options.html';
 					}
 				}
@@ -63,7 +63,7 @@
 		public function print_scripts() {
 			if ($this->ext_module_access) {
 				foreach ($this->ext_module_access as $module) {
-					if ($this->extension[$module]) {
+					if (array_key_exists($module, $this->extension)) {
 						echo '<script src="extensions/' . $module . '/js/smart.js" defer></script>';
 					}
 				}
