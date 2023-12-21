@@ -736,6 +736,15 @@
 			],
 			
 			"sc-3.3.7" => [
+				"ref" => "redundant-entry",
+				"version" => "2.2",
+				"level" => "a",
+		        "name" => [
+					"en" => "Redundant Entry"
+				]
+			],
+			
+			"sc-3.3.8" => [
 				"ref" => "accessible-authentication",
 				"version" => "2.2",
 				"level" => "aa",
@@ -744,21 +753,12 @@
 				]
 			],
 			
-			"sc-3.3.8" => [
+			"sc-3.3.9" => [
 				"ref" => "accessible-authentication-no-exception",
 				"version" => "2.2",
 				"level" => "aaa",
 		        "name" => [
 					"en" => "Accessible Authentication (No Exception)"
-				]
-			],
-			
-			"sc-3.3.9" => [
-				"ref" => "redundant-entry",
-				"version" => "2.2",
-				"level" => "a",
-		        "name" => [
-					"en" => "Redundant Entry"
 				]
 			],
 		
