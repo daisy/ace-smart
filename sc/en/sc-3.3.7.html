@@ -1,16 +1,13 @@
 <div class="sc-body">
-	<p>Check if the publication - not the reading system - requires the user to log in to perform any actions
-		(e.g., completing an embedded quiz).</p>
-	<p>If yes, the login process cannot require the user to perform a <a
-			href="https://www.w3.org/TR/WCAG22/#dfn-cognitive-function-test">cognitive function test</a> (e.g.,
-		remember a password or repeat a gesture pattern) unless one of the following is true:</p>
-	<ul>
-		<li>there is an alternative means of logging in that does not require such a test;</li>
-		<li>there is a mechanism to help the user perform the test (e.g., if a reading system allows users to
-			store and fill in login information);</li>
-		<li>the cognitive function test only requires the user to recognize an object (e.g., to select an image
-			of a car or motorcycle);</li>
-		<li>the cognitive function test only requires the user to recognize non-textual content that the user
-			provided (e.g., an image or audio clip they uploaded as part of creating their account).</li>
-	</ul>
+	<p>Check if the publication contains any multi-step processes &#8212; typically this will
+		require a scripted form that the user completes over a series of steps.</p>
+	<p>If the publication contains such a process, and it requires the user to re-input information
+		from an earlier step (e.g., their username or address), the repeated information either needs
+		to be autopopulated for the user or a means of selecting the previously entered information
+		needs to be provided for this success criterion to pass.</p>
+	<p class="sc-note">Note: Multi-step processes that require users to re-input information are 
+		rarely found in EPUB publications. This success criterion primarily targets ecommerce and
+		similar web sites that collect user information over a series of steps, typically broken
+		over multiple form submissions to a server (e.g., first the shipping address is collected
+		and then the billing address, which could be the same).</p>
 </div>
