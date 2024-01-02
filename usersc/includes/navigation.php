@@ -61,7 +61,7 @@ $email_act=$results->email_act;
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<h1 class="ace_login_hd"><span><img class="logo" src="/images/daisy_logo.png" alt="DAISY Consortium"/></span> <span>Ace <span class="smart_hd">SMART</span></span></h1>
+			<h1 class="ace_login_hd"><span><img class="logo" src="/images/daisy_high.jpg" alt="DAISY Consortium"/></span> <span>Ace <span class="smart_hd">SMART</span></span></h1>
 			
 		</div>
 		<div class="collapse navbar-collapse navbar-top-menu-collapse navbar-right">

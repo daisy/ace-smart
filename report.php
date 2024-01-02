@@ -37,7 +37,7 @@ HTML;
 		
 		<footer>
 			<p id="timestamp">Generated <span id="date-created">{$_POST['timestamp']}</span> using <a href="https://smart.daisy.org">Ace SMART</a></p>
-			<p><a href="https://daisy.org"><img src="https://smart.daisy.org/images/daisy_logo.gif" alt="DAISY"/></a></p>
+			<p><a href="https://daisy.org"><img src="https://smart.daisy.org/images/daisy_high.jpg" alt="DAISY"/></a></p>
 		</footer>
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

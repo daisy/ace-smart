@@ -18,7 +18,7 @@
 </head>
 <body>
 	<header>
-		<h1><span property="dcterms:publisher"><img class="logo" src="images/daisy_logo.png" alt="DAISY Consortium"/></span> <span property="dcterms:title">Ace <span class="smart_hd">SMART</span></span></h1>
+		<h1><span property="dcterms:publisher"><img class="logo" src="images/daisy_high.jpg" alt="DAISY Consortium"/></span> <span property="dcterms:title">Ace <span class="smart_hd">SMART</span></span></h1>
 	</header>
 	
 	<main>
