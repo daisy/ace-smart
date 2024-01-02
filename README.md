@@ -15,3 +15,7 @@ You will need to create a GitHub account in order to add issues.
 ## User Guide
 
 For information on how to use the Ace SMART tool, refer to the [Ace SMART user guide](http://smart.daisy.org/user-guide/).
+
+## License
+
+Please refer to the [license file](LICENSE.md) for licensing information.

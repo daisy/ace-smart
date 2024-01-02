@@ -384,7 +384,7 @@ HTML;
 					// user can be prompted to confirm they actually intended to start a new evaluation
 					// - shared account do no go through this check to avoid users seeing any info about other evaluations
 					
-					$prompt_pub = ($result['uid'] && !$this->shared) ? true : false;
+					$prompt_pub = ($result && !$this->shared) ? true : false;
 					
 					$add_eval = $prompt_pub ? $evaluation : ''; 
 					

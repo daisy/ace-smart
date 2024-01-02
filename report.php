@@ -13,7 +13,7 @@
 		<link rel="stylesheet" type="text/css" href="https://{$_SERVER["HTTP_HOST"]}/css/report.css?v={$smart_version}"/>
 HTML;
 
-	if ($_POST['modules']) {
+	if (isset($_POST['modules']) && !empty($_POST['modules'])) {
 		foreach (explode(',', $_POST['modules']) as $module) {
 			$html .= '<link rel="stylesheet" type="text/css" href="https://' . $_SERVER["HTTP_HOST"] . '/extensions/' . $module . '/css/report.css?v=' . $smart_version . '"/>';
 		}

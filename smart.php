@@ -139,7 +139,7 @@ JS;
 	
 	<body class="tabs">
 		<header>
-			<h1><img src="images/daisy_logo.png" class="logo" alt="DAISY"/> <span property="dcterms:title">Ace <span class="smart_hd">SMART</span> &#8212; Evaluation</span></h1>
+			<h1><img src="images/daisy_high.jpg" class="logo" alt="DAISY"/> <span property="dcterms:title">Ace <span class="smart_hd">SMART</span> &#8212; Evaluation</span></h1>
 			
 			<nav class="appmenu" aria-label="application menu">
 				<a href="#" id="validate-button"><img src="images/validate.png" alt="validate" title="Validate"/></a>
