@@ -353,13 +353,13 @@ JS;
 					
 					<p class="help"><a href="user-guide/discovery.html" target="_blank">Need help?</a></p>
 					
-					<div class="meta-wiz"><a href="#" onclick="showMetaWizard()">Run Metadata Wizard</a></div>
+					<div class="meta-wiz"><input tyoe="button" id="wiz-button" value="Run Metadata Wizard" onclick="showMetaWizard()"></div>
 					
 					<script>
 						function showMetaWizard() {
 							if (meta_wiz_dialog) {
-								meta_wiz_dialog.dialog('open');
 								metaWizardInit();
+								meta_wiz_dialog.dialog('open');
 							}
 						}
 					</script>

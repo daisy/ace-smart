@@ -7,8 +7,9 @@ const isEmpty = (str) => !str.trim().length;
 // check if inside an evaluation
 const in_smart = (typeof ACE_USER !== 'undefined') ? true : false;
 
-
 function metaWizardInit() {
+	
+	clearWizard();
 	
 	if (!in_smart) {
 		return;
@@ -66,7 +67,7 @@ function showDetails(elem) {
 	if (elem.value == 'yes') {
 		details.classList.remove('hidden');
 		
-		if (elem.name == 'conforms') {
+		if (elem.name == 'conformance') {
 			conforms = true;
 		}
 		
@@ -235,15 +236,18 @@ function generateMetadata() {
 			
 			else {
 				if (no_visual) {
+				
 					if (in_smart) {
 						document.querySelector('#discovery fieldset#accessMode input[value=visual]').click();
 					}
+					
 					else {
 						meta_tags += smartFormat.createMetaTag({type: 'meta', property: 'accessMode', value: 'visual'});
 						// make sure the other visual modes don't trigger repeat values
 						no_visual = false;
-						access_modes.push('visual');
 					}
+					
+					access_modes.push('visual');
 				}
 			}
 			
@@ -276,14 +280,46 @@ function generateMetadata() {
 		}
 	});
 	
+	// clear any excess ams sets
+	if (in_smart) {
+		for (var a = 2; a < 5; a++) {
+			var ams_set = document.querySelector('#discovery fieldset#accessModeSufficient fieldset#set' + a);
+			if (ams_set) {
+				ams_set.remove(ams_set);
+			}
+		}
+	}
+	
 	/* add sufficient access modes */
 	if (access_modes.length > 1) {
 		var wcag_level = document.getElementById('wiz-wcaglvl').value.toLowerCase();
 		
-		if (access_modes.includes('textual') && conforms && (wcag_level === 'aa' || wcag_level === 'aaa')) {
+		var is_textual = false;
+		
+		if (conforms) {
+			is_textual = access_modes.includes('textual') && conforms && (wcag_level === 'aa' || wcag_level === 'aaa') ? true : false;
+		}
+		
+		else {
+			is_textual = true;
+			
+			// revert to false if any non-textual modes fail to provide text equivalents
+			if (access_modes.contains('images') && (document.querySelector('input[name=accessModeSufficientImage][value=no]'))) {
+				is_textual = false;
+			}
+			else if (access_modes.contains('auditory') && (document.querySelector('input[name=accessModeSufficientAuditory][value=no]'))) {
+				is_textual = false;
+			}
+			else if (access_modes.contains('video') && (document.querySelector('input[name=accessModeSufficientVideo][value=no]'))) {
+				is_textual = false;
+			}
+		}
+		
+		if (is_textual) {
 			if (in_smart) {
 				document.querySelector('#discovery fieldset#accessModeSufficient fieldset#set1 input[value=textual]').click();
 			}
+			
 			else {
 				meta_tags += smartFormat.createMetaTag({type: 'meta', property: 'accessModeSufficient', value: 'textual'});
 			}
@@ -416,4 +452,35 @@ function generateMetadata() {
 	}
 	
 	return false;
+}
+
+
+function clearWizard() {
+	document.getElementById('meta-wiz').reset();
+	tabPanels.forEach(function(panel) {
+		panel.classList.add('hidden');
+	});
+	tabPanels[0].classList.remove('hidden');
+	
+	// collapse/expand the view of the questions - resetting form doesn't activate
+	var names = ['conformance', 'images', 'auditory', 'video', 'tactile', 'math'];
+	names.forEach(function(name) {
+		document.querySelector('input[name=' + name + '][value=no]').click();
+	});
+	document.querySelector('input[name=textual][value=yes]').click();
+	
+	nextButton.classList.remove('hidden');
+	previousButton.classList.add('hidden');
+	currentStep = 1;
+	steps = [];
+	conforms = false;
+}
+
+
+function showHelp(help_id) {
+	var help_elem = document.getElementById(help_id);
+	
+	if (help_elem) {
+		window.alert(help_elem.textContent);
+	}
 }

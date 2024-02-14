@@ -43,8 +43,8 @@ div.meta-wiz {
 	pointer-events: none;
 }
 .btn:hover {
-	background-color: #4338ca;
-	transition: ease-in-out .3s all;
+	background-color: #ca3838;
+	transition: ease-in-out .1s all;
 }
 .btn-submit {
 	background-color: rgb(20,120,240);
@@ -91,6 +91,27 @@ div.meta-wiz {
 	width: 99% !important;
 }
 
-.wiz-help {
-	font-size: 90%;
+input#wiz-button {
+	border-radius: 1rem;
+	border: 0.2rem solid rgb(0,0,200);
+	padding: 0.5rem 2rem;
+	background-color: aliceblue;
+	margin-bottom: 2rem;
+	text-align: center;
+}
+
+input#wiz-button:hover {
+	background-color: rgb(255,200,200);
+	border-color: rgb(200,0,0);
+}
+
+input.wiz-help {
+	border-radius: 1rem;
+	border-width: 0;
+	background-color: rgb(20,120,255);
+	color: rgb(255,255,255);
+}
+
+input.wiz-help:hover {
+	background-color: rgb(180,0,0);
 }

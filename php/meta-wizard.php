@@ -1,6 +1,6 @@
 
 <div id="meta-wizard" aria-label="Accessibility Metadata Wizard" title="Accessibility Metadata Wizard">
-	<form action="#">
+	<form action="#" id="meta-wiz">
 		<div id="wiz-welcome" class="tabpanel">
 			<h2>Getting started</h2>
 			<p>Run the DAISY Ace SMART Accessibility Metadata wizard to create a set of accessibility
@@ -13,7 +13,7 @@
 		<div id="wiz-conformance" class="tabpanel hidden">
 			<fieldset>
 				<legend>Conformance</legend>
-				<p>Have evaluated your publication for conformance to the EPUB Accessibility standard?</p>
+				<p>Does the publication conform to the EPUB Accessibility standard?</p>
 				<div>
 					<label><input name="conformance" type="radio" value="no" onclick="showDetails(this)" checked=""> No</label>
 					<label><input name="conformance" type="radio" value="yes" onclick="showDetails(this)"> Yes</label>
@@ -77,8 +77,8 @@
 						<label><input name="displayTransformability" type="radio" value="unsure"> Unsure</label>
 					</div>
 					
-					<p>Is there synchronized audio for the text?</p>
-					<p class="wiz-help">Publications with text and audio synchronization are often referred as "read aloud books".</p>
+					<p>Is there synchronized audio for the text? <input type="button" class="wiz-help" value="?" aria-label="help" onclick="showHelp('sync-audio-help')"></p>
+					<p id="sync-audio-help" hidden="hidden">Publications with text and audio synchronization are often referred as "read aloud books".</p>
 					<div>
 						<label><input name="synchronizedAudioText" type="radio" value="no" checked=""> No</label>
 						<label><input name="synchronizedAudioText" type="radio" value="yes"> Yes</label>
@@ -129,7 +129,7 @@
 		
 		<div id="wiz-auditory" class="tabpanel hidden">
 			<fieldset>
-				<legend>Audio content</legend>
+				<legend>Auditory content</legend>
 				<p>Does your publication include audio?</p>
 				<label><input name="auditory" type="radio" value="no" onclick="showDetails(this)" checked=""> No</label>
 				<label><input name="auditory" type="radio" value="yes" onclick="showDetails(this)"> Yes</label>
@@ -147,8 +147,8 @@
 					
 					<p>Do the text alternatives cover all the audio content?</p>
 					<div>
-						<label><input name="accessModeSufficientAudio" type="radio" value="no" checked=""> No</label>
-						<label><input name="accessModeSufficientAudio" type="radio" value="yes"> Yes</label>
+						<label><input name="accessModeSufficientAuditory" type="radio" value="no" checked=""> No</label>
+						<label><input name="accessModeSufficientAuditory" type="radio" value="yes"> Yes</label>
 					</div>
 					
 					<p>Does the audio have high contrast?</p>
