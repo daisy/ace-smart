@@ -304,6 +304,9 @@ var smart_ui = {
 			"overview": {
 				"en": "Overview"
 			},
+			"eval": {
+				"en": "Evaluated Against"
+			},
 			"conformance": {
 				"en": "Conformance"
 			},

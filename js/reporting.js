@@ -420,11 +420,20 @@ var smartReport = (function() {
 		
 		var conf = document.getElementById('conformance-result').value;
 		
+		var result = document.getElementById('conformance-result-status').textContent.match(/^(?<status>Pass|Failed|Incomplete): (?<spec>.*?)$/).groups;
+		
+		summaryTable.appendChild(formatPubInfoEntry({
+			id: 'conformance-spec',
+			label: smart_ui.reporting.tabs.eval[smart_lang],
+			value: result.spec,
+			property: (result.status == 'Pass' ? 'dcterms:conformsTo' : '')
+		}));
+		
 		summaryTable.appendChild(formatPubInfoEntry({
 			id: 'conformance-result',
 			label: smart_ui.reporting.tabs.conformance[smart_lang],
-			value: document.getElementById('conformance-result-status').textContent, property: 'dcterms:conformsTo',
-			value_bg_class: conf
+			value: result.status,
+			value_bg_class: ((conf == 'a' || conf == 'aa') ? 'pass' : conf)
 		}));
 		
 		// add user extension properties
