@@ -169,10 +169,6 @@ div.summaryTable > div > div.pass {
 	background-color: rgb(230,240,230);
 }
 
-div.summaryTable > div > div.fail {
-	background-color: rgb(240,230,230);
-}
-
 div.summaryTable > div > div.incomplete {
 	background-color: rgb(255,255,190);
 }
