@@ -72,7 +72,7 @@ var smartAce = (function() {
 			tactileobject: 'tactileObject',
 			timingcontrol: 'timingControl',
 			transcript: 'transcript',
-			ttsMarkup: 'ttsmarkup',
+			ttsmarkup: 'ttsMarkup',
 			unknown: 'unknown'
 		}
 	};

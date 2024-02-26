@@ -447,12 +447,6 @@ var smartConformance = (function() {
 		
 		var incomplete = document.querySelectorAll(a_unverified_selector);
 		
-		if (incomplete.length > 0) {
-			status_label.textContent = smart_ui.conformance.status.incomplete[smart_lang];
-			status_input.value = 'incomplete';
-			return;
-		}
-		
 		var onix_a = document.getElementById('onix02');
 		var onix_aa = document.getElementById('onix03');
 		
@@ -468,12 +462,18 @@ var smartConformance = (function() {
 		var wcag_ver = 'wcag' + wcag_version.replace('.','');
 		var epub_ver = 'epub' + epub_a11y.replace('.','');
 		
-		// prep pass message
-		var conformance_status = smart_ui.conformance.status.pass[smart_lang] + ': ';
-			conformance_status += smart_ui.conformance.status[epub_ver][smart_lang];
-			conformance_status += ' - ';
-			conformance_status += smart_ui.conformance.status[wcag_ver][smart_lang];
-			conformance_status += ' ';
+		// prep spec version being tested
+		var spec_version = smart_ui.conformance.status[epub_ver][smart_lang];
+			spec_version += ' - ';
+			spec_version += smart_ui.conformance.status[wcag_ver][smart_lang];
+			spec_version += ' ';
+		
+		// bail out if not all criteria have been evaluated
+		if (incomplete.length > 0) {
+			status_label.textContent = smart_ui.conformance.status.incomplete[smart_lang] + ': ' + spec_version + smart_ui.conformance.status[smartWCAG.WCAGLevel()][smart_lang];
+			status_input.value = 'incomplete';
+			return;
+		}
 		
 		// checks that there aren't any failures if AA is specified
 		// or if showing optional AA success criteria and all have been checked
@@ -481,7 +481,7 @@ var smartConformance = (function() {
 			
 			if (level_a_pass && document.querySelectorAll(aa_fail_selector).length == 0) {
 				
-				status_label.textContent = conformance_status + smart_ui.conformance.status.aa[smart_lang];
+				status_label.textContent = smart_ui.conformance.status.pass[smart_lang] + ': ' + spec_version + smart_ui.conformance.status.aa[smart_lang];
 				
 				status_input.value = 'aa';
 				
@@ -494,7 +494,7 @@ var smartConformance = (function() {
 		// otherwise not having an else if here allows verification to fall through to A, even if testing AA
 		if (level_a_pass) {
 			
-			status_label.textContent = conformance_status + smart_ui.conformance.status.a[smart_lang];
+			status_label.textContent = smart_ui.conformance.status.pass[smart_lang] + ': ' + spec_version + smart_ui.conformance.status.a[smart_lang];
 			
 			status_input.value = 'a';
 			
@@ -503,7 +503,7 @@ var smartConformance = (function() {
 		}
 		
 		else {
-			status_label.textContent = smart_ui.conformance.status.fail[smart_lang];
+			status_label.textContent = smart_ui.conformance.status.fail[smart_lang] + ': ' + spec_version + smart_ui.conformance.status[smartWCAG.WCAGLevel()][smart_lang];
 			status_input.value = 'fail';
 			if (onix_aa.checked) { onix_aa.click(); }
 			if (onix_a.checked) { onix_a.click(); }

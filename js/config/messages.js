@@ -112,16 +112,16 @@ var smart_ui = {
 				"en": "Checks related to these types have been turned off. To re-enable these checks, see the Conformance Verification tab."
 			},
 			"a11yMetadata": {
-				"en": "The following accessibiity metadata was set based on the Ace report:"
+				"en": "The following accessibility metadata was set based on the Ace report:"
 			},
 			"verifyMetadata": {
 				"en": "Verify the accuracy of these assumptions in the Discovery Metadata tab."
 			},
 			"unknownFeatures": {
-				"en": "The following accessibiity features were found in the metadata but do not match known values:"
+				"en": "The following accessibility features were found in the metadata but do not match known values:"
 			},
 			"obsoleteFeatures": {
-				"en": "The following accessibiity features are no longer recommended (the values in parentheses have been used instead):"
+				"en": "The following accessibility features are no longer recommended (the values in parentheses have been used instead):"
 			},
 			"verifyFeatures": {
 				"en": "Verify these features are not typos or invalid."
@@ -303,6 +303,9 @@ var smart_ui = {
 		"tabs": {
 			"overview": {
 				"en": "Overview"
+			},
+			"eval": {
+				"en": "Evaluated Against"
 			},
 			"conformance": {
 				"en": "Conformance"
