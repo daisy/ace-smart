@@ -17,6 +17,11 @@ function metaWizardInit() {
 	
 	var status = document.getElementById('conformance-result-status').textContent;
 	
+	if (document.getElementById('sc-1.1.1-pass').checked || document.getElementById('sc-1.1.1-fail').checked) {
+		// show the image questions
+		document.querySelector('input[name=images][value=yes]').click();
+	}
+	
 	if (status.match(/^Pass:/i)) {
 	
 		var epub = document.getElementById('epub-a11y').value;
@@ -30,6 +35,11 @@ function metaWizardInit() {
 		document.getElementById('wiz-epub').value = epub;
 		document.getElementById('wiz-wcag').value = wcag;
 		document.getElementById('wiz-wcaglvl').value = level;
+		
+		// set text fields to pass
+		document.querySelector('input[type=radio][name=structuralNavigation][value=yes]').click();
+		document.querySelector('input[type=radio][name=readingOrder][value=yes]').click();
+		
 	}
 }
 
@@ -102,36 +112,16 @@ nextButton.addEventListener('click', (event) => {
 	var lastStep = steps[steps.length - 1] - 1;
 	tabPanels[lastStep].classList.add('hidden')
 	
-	/* 
-	if (currentStep == 2) {
-		setActiveButtons({canContinue: false});
+	if (currentStep !== tabs-1) {
 		currentStep += 1;
-	}
-	
-	else if (currentStep == 3) {
-		if (conforms) {
-			// bypass steps 4-6 if conforms to a11y standard
-			currentStep = 7;
-		}
-		else {
-			currentStep += 1;
-		}
 		setActiveButtons({canContinue: true});
 	}
-	*/
 	
-	// else {
-		if (currentStep !== tabs-1) {
-			currentStep += 1;
-			setActiveButtons({canContinue: true});
-		}
-		
-		else {
-			// end of the wizard
-			generateMetadata();
-			currentStep += 1;
-		}
-	// }
+	else {
+		// end of the wizard
+		generateMetadata();
+		currentStep += 1;
+	}
 
 	tabPanels[currentStep-1].classList.remove('hidden');
 	

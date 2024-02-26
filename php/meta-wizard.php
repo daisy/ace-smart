@@ -7,6 +7,7 @@
 				metadata for use in an EPUB publication.</p>
 			<p>The tool will ask you a series of simple questions about your publication and generate
 				a set of accessibility metadata you can use in the package document.</p>
+			<p>Do not use this wizard if your accessibility metadata is already up to date.</p>			
 			<p>Please click the Next button to begin the wizard.</p>
 		</div>
 		
