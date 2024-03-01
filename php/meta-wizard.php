@@ -264,11 +264,6 @@
 				
 			<textarea id="wiz-a11yMetadata" rows="8" cols="80" aria-label="Accessibility metadata tags"></textarea>
 		</div>
-		
-		<div class="pagination">
-			<a class="btn hidden" id="wiz-prev">Previous</a>
-			<a class="btn" id="wiz-next">Next</a>
-		</div>
 	</form>
 	<script src="js/a11y-meta-wizard.js<?= '?v=' . $smart_version ?>"></script>
 </section>

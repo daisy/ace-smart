@@ -1,13 +1,16 @@
 
-const previousButton = document.querySelector('#wiz-prev');
-const nextButton = document.querySelector('#wiz-next');
 const tabPanels = document.querySelectorAll('.tabpanel');
 const isEmpty = (str) => !str.trim().length;
+
+var nextButton, previousButton;
 
 // check if inside an evaluation
 const in_smart = (typeof ACE_USER !== 'undefined') ? true : false;
 
 function metaWizardInit() {
+	
+	previousButton = document.getElementById('wiz-prev');
+	nextButton = document.getElementById('wiz-next');
 	
 	clearWizard();
 	
@@ -17,9 +20,21 @@ function metaWizardInit() {
 	
 	var status = document.getElementById('conformance-result-status').textContent;
 	
-	if (document.getElementById('sc-1.1.1-pass').checked || document.getElementById('sc-1.1.1-fail').checked) {
-		// show the image questions
+	var hasImages = document.getElementById('excl-img').checked;
+	var hasAudio = document.getElementById('excl-audio').checked;
+	var hasVideo = document.getElementById('excl-video').checked;
+	
+	// show questions if content isn't excluded
+	if (!hasImages) {
 		document.querySelector('input[name=images][value=yes]').click();
+	}
+	
+	if (!hasAudio) {
+		document.querySelector('input[name=auditory][value=yes]').click();
+	}
+	
+	if (!hasVideo) {
+		document.querySelector('input[name=video][value=yes]').click();
 	}
 	
 	if (status.match(/^Pass:/i)) {
@@ -40,6 +55,19 @@ function metaWizardInit() {
 		document.querySelector('input[type=radio][name=structuralNavigation][value=yes]').click();
 		document.querySelector('input[type=radio][name=readingOrder][value=yes]').click();
 		
+	}
+	
+	else {
+		// check for flashing hazards
+		if (document.getElementById('sc-2.3.1-fail').checked) {
+			// can't be completely sure which it falls under, but ultimately doesn't affect the metadata
+			if (hasImages) {
+				document.querySelector('input[type=radio][name=images-flashing-hazard][value=yes]').click();
+			}
+			if (hasVideo) {
+				document.querySelector('input[type=radio][name=video-flashing-hazard][value=yes]').click();
+			}
+		}
 	}
 }
 
@@ -102,36 +130,31 @@ function showDetails(elem) {
 }
 
 // next button clicks
-nextButton.addEventListener('click', (event) => {
+function nextButtonPush() {
 
-	event.preventDefault();
-	
-	steps.push(currentStep);
-	
-	// hide last tab
-	var lastStep = steps[steps.length - 1] - 1;
-	tabPanels[lastStep].classList.add('hidden')
-	
-	if (currentStep !== tabs-1) {
-		currentStep += 1;
-		setActiveButtons({canContinue: true});
+	if (currentStep == tabs-1) {
+		// end of the wizard
+		generateMetadata();
 	}
 	
 	else {
-		// end of the wizard
-		generateMetadata();
+		steps.push(currentStep);
+		
+		// hide last tab
+		var lastStep = steps[steps.length - 1] - 1;
+		tabPanels[lastStep].classList.add('hidden')
+		
 		currentStep += 1;
+		setActiveButtons({canContinue: true});
+		
+		tabPanels[currentStep-1].classList.remove('hidden');
+		
+		showButtons();
 	}
-
-	tabPanels[currentStep-1].classList.remove('hidden');
-	
-	showButtons();
-})
+}
 
 
-previousButton.addEventListener('click', (event) => {
-	
-	event.preventDefault();
+function previousButtonPush() {
 	
 	// hide the current tab
 	tabPanels[currentStep-1].classList.add('hidden');
@@ -144,7 +167,7 @@ previousButton.addEventListener('click', (event) => {
 	nextButton.removeAttribute('disabled');
 	
 	showButtons();
-});
+}
 
 
 function showButtons() {
@@ -190,7 +213,6 @@ function generateMetadata() {
 		}
 		
 		else {
-			// TODO: close dialog
 			return;
 		}
 	}
@@ -294,13 +316,13 @@ function generateMetadata() {
 			is_textual = true;
 			
 			// revert to false if any non-textual modes fail to provide text equivalents
-			if (access_modes.contains('images') && (document.querySelector('input[name=accessModeSufficientImage][value=no]'))) {
+			if (access_modes.includes('images') && (document.querySelector('input[name=accessModeSufficientImage][value=no]'))) {
 				is_textual = false;
 			}
-			else if (access_modes.contains('auditory') && (document.querySelector('input[name=accessModeSufficientAuditory][value=no]'))) {
+			else if (access_modes.includes('auditory') && (document.querySelector('input[name=accessModeSufficientAuditory][value=no]'))) {
 				is_textual = false;
 			}
-			else if (access_modes.contains('video') && (document.querySelector('input[name=accessModeSufficientVideo][value=no]'))) {
+			else if (access_modes.includes('video') && (document.querySelector('input[name=accessModeSufficientVideo][value=no]'))) {
 				is_textual = false;
 			}
 		}
@@ -440,8 +462,6 @@ function generateMetadata() {
 	else {
 		document.getElementById('a11yMetadata').value = meta_tags;
 	}
-	
-	return false;
 }
 
 

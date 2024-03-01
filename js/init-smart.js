@@ -204,7 +204,23 @@
 	meta_wiz_dialog = $("#meta-wizard").dialog({
 		autoOpen: false,
 		height: 450,
-		modal: true
+		modal: true,
+		buttons: {
+			Previous: {
+				text: 'Previous',
+				id: 'wiz-prev',
+				click: function() {
+					previousButtonPush();
+				}
+			},
+			Next: {
+				text: 'Next',
+				id: 'wiz-next',
+				click: function() {
+					nextButtonPush();
+				}
+			}
+		}
 	});
 	
 	function adjustDialogWidth() {

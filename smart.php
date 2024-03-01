@@ -358,8 +358,8 @@ JS;
 					<script>
 						function showMetaWizard() {
 							if (meta_wiz_dialog) {
-								metaWizardInit();
 								meta_wiz_dialog.dialog('open');
+								metaWizardInit();
 							}
 						}
 					</script>
