@@ -75,7 +75,7 @@ function metaWizardInit() {
 let currentStep = 1;
 
 // total number of tabs in the wizard 
-const tabs = 10;
+const tabs = 28;
 
 // array of the step numbers the user has visited so they can go back to the right tab when using the previous button
 var steps = [];

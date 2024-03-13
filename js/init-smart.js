@@ -203,7 +203,7 @@
 	/* meta_wiz_dialog is used to show the discovery metadata wizard */
 	meta_wiz_dialog = $("#meta-wizard").dialog({
 		autoOpen: false,
-		height: 450,
+		height: 350,
 		modal: true,
 		buttons: {
 			Previous: {
