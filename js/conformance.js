@@ -154,7 +154,7 @@ var smartConformance = (function() {
 		else if (version == '1.0') {
 			wcag_ver.value = '2.0';
 			wcag_ver.disabled = true;
-			setWCAGVersion('2.0',false);
+			setWCAGVersion('2.0');
 		}
 		
 		else {
@@ -168,7 +168,7 @@ var smartConformance = (function() {
 	
 	/* changes the visible success criteria based on the user setting */
 	
-	function setWCAGVersion(version, displayAlert) {
+	function setWCAGVersion(version) {
 		smartWCAG.setWCAGVersion(version);
 		adjustWCAGSC(version);
 		setWCAGConformanceLevel(smartWCAG.WCAGLevel());
@@ -632,8 +632,8 @@ var smartConformance = (function() {
 			setEPUBA11yVersion(version);
 		},
 		
-		setWCAGVersion: function(version,alert) {
-			setWCAGVersion(version,alert);
+		setWCAGVersion: function(version) {
+			setWCAGVersion(version);
 		},
 		
 		setWCAGConformanceLevel: function(level) {
