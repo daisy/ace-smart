@@ -98,6 +98,13 @@
 			else if (data.category == 'newEvaluation') {
 				// only the title to set if a new blank evaluation
 				document.getElementById('title').value = data.title;
+				
+				// temporary patch until site default becomes 2.2
+				if (smart_extensions.hasOwnProperty('born_accessible')) {
+					document.getElementById('wcag-version').value = '2.2';
+					smartConformance.setWCAGVersion('2.2');
+				}
+				
 			}
 		}
 		

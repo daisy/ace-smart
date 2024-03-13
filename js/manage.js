@@ -522,7 +522,7 @@ var smartManage = (function() {
 			
 			document.getElementById('wcag-version').value = wcag_version;
 			
-			smartConformance.setWCAGVersion(wcag_version, false);
+			smartConformance.setWCAGVersion(wcag_version);
 			
 			if ((evaluationJSON.configuration.wcag.show_aa && evaluationJSON.configuration.wcag.show_aa == 'true') && evaluationJSON.configuration.wcag.level != 'aa') {
 				document.getElementById('show-aa').click();
