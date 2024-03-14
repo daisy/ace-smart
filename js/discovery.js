@@ -704,8 +704,10 @@ var smartDiscovery = (function() {
 		}
 		
 		else {
-			summary_text = smart_ui.discovery.generateSummary.pass[smart_lang].replace('%VER%', epub_version);
-			summary_text += ' ' + smart_ui.discovery.generateSummary.wcagLevel[smart_lang].replace('%VER%', smartWCAG.WCAGVersion()) + ' ' + smartWCAG.WCAGLevel().toUpperCase() + '.';
+			/*
+				summary_text = smart_ui.discovery.generateSummary.pass[smart_lang].replace('%VER%', epub_version);
+				summary_text += ' ' + smart_ui.discovery.generateSummary.wcagLevel[smart_lang].replace('%VER%', smartWCAG.WCAGVersion()) + ' ' + smartWCAG.WCAGLevel().toUpperCase() + '.';
+			*/
 		}
 		
 		// indicate if the publication is screen reader friendly (AMS=textual) or has pre-recorded narration (AMS=auditory)
@@ -796,7 +798,12 @@ var smartDiscovery = (function() {
 			}
 		}
 		
-		summary_field.value = summary_text;
+		if (summary_text === '') {
+			alert('Sorry, it was not possible to create a summary for this publication from the available information.\n\nPlease refer to the help link in the summary field for more information.');
+		}
+		else {
+			summary_field.value = summary_text;
+		}
 	}
 	
 	
