@@ -217,14 +217,14 @@
 				text: 'Previous',
 				id: 'wiz-prev',
 				click: function() {
-					previousButtonPush();
+					smartMetaWizard.previousButtonPush();
 				}
 			},
 			Next: {
 				text: 'Next',
 				id: 'wiz-next',
 				click: function() {
-					nextButtonPush();
+					smartMetaWizard.nextButtonPush();
 				}
 			}
 		}

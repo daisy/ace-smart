@@ -3,23 +3,21 @@
 	<form action="#" id="meta-wiz">
 		<div id="wiz-welcome" class="tabpanel">
 			<h2>Getting started</h2>
-			<p>Run the DAISY Ace SMART Accessibility Metadata wizard to create a set of accessibility
-				metadata for use in an EPUB publication.</p>
-			<p>The tool will ask you a series of simple questions about your publication and generate
-				a set of accessibility metadata you can use in the package document.</p>
-			<p>Do not use this wizard if your accessibility metadata is already up to date.</p>			
-			<p>Please click the Next button to begin the wizard.</p>
+			<p>This accessibility metadata wizard populates the discovery tab based on the
+				answers you provide to a series of questions about the publication.</p>
+			<p>Do not use this wizard if the accessibility metadata is already up to date.</p>
+			<p><strong>CAUTION</strong>: The wizard is still in beta testing. Please <a 
+				href="https://github.com/daisy/ace-smart/issues" target="_blank">log an issue</a>
+				 if you encounter any difficulties.</p>			
+			<p>Click the Next button to begin the wizard.</p>
 		</div>
 		
 		<div id="wiz-conformance" class="tabpanel hidden">
-			<fieldset>
-				<legend>Conformance</legend>
-				<p>Does the publication conform to the EPUB Accessibility standard?</p>
-				<div>
-					<label><input name="conformance" type="radio" value="no" checked=""> No</label>
-					<label><input name="conformance" type="radio" value="yes"> Yes</label>
-				</div>
-			</fieldset>
+			<p>Does the publication conform to the EPUB Accessibility standard?</p>
+			<div>
+				<label><input name="conformance" type="radio" value="no" checked=""> No</label>
+				<label><input name="conformance" type="radio" value="yes"> Yes</label>
+			</div>
 		</div>
 			
 		<div id="wiz-conformance-details" class="tabpanel hidden">
@@ -52,17 +50,13 @@
 		</div>
 		
 		<div id="wiz-textual" class="tabpanel hidden">
-			<fieldset>
-				<legend>Text content</legend>
-				
-				<p>Does your publication include text content?</p>
-				<label><input name="textual" type="radio" value="no"> No</label>
-				<label><input name="textual" type="radio" value="yes" checked=""> Yes</label>
-			</fieldset>
+			<p>Does the publication include text content?</p>
+			<label><input name="textual" type="radio" value="no"> No</label>
+			<label><input name="textual" type="radio" value="yes" checked=""> Yes</label>
 		</div>
 		
 		<div id="wiz-textual-details" class="tabpanel hidden">
-			<p>Are all headings correctly tagged?</p>
+			<p>Are all headings tagged using h1-h6 elements?</p>
 			<div>
 				<label><input name="structuralNavigation" type="radio" value="no" checked=""> No</label>
 				<label><input name="structuralNavigation" type="radio" value="yes"> Yes</label>
@@ -70,7 +64,7 @@
 		</div>
 					
 		<div id="wiz-textual-order" class="tabpanel hidden">
-			<p>Is the text ordered so that it presents a logical reading order to users?</p>
+			<p>Is the text ordered so that it presents a logical reading order to users and all secondary content marked up as asides, figures, etc.?</p>
 			<div>
 				<label><input name="readingOrder" type="radio" value="no" checked=""> No</label>
 				<label><input name="readingOrder" type="radio" value="yes"> Yes</label>
@@ -78,7 +72,8 @@
 		</div>
 					
 		<div id="wiz-textual-transform" class="tabpanel hidden">
-			<p>Can users adjust the text display properties to their needs?</p>
+			<p>Will users be able to adjust the text display properties?</p>
+			<p id="text-xform-help" class="wiz-help">Note: Set the answer to yes if the publication does not include HTML <code>style</code> attributes or CSS <code>!important</code> flags.</p>
 			<div>
 				<label><input name="displayTransformability" type="radio" value="no" checked=""> No</label>
 				<label><input name="displayTransformability" type="radio" value="yes"> Yes</label>
@@ -87,8 +82,8 @@
 		</div>
 		
 		<div id="wiz-textual-overlays" class="tabpanel hidden">
-			<p>Is there synchronized audio for the text? <input type="button" class="wiz-help" value="?" aria-label="help" onclick="showHelp('sync-audio-help')"></p>
-			<p id="sync-audio-help" hidden="hidden">Publications with text and audio synchronization are often referred as "read aloud books".</p>
+			<p>Is there synchronized audio for the text?</p>
+			<p id="sync-audio-help" class="wiz-help">Note: Text and audio synchronization is done using media overlays in EPUB 3.</p>
 			<div>
 				<label><input name="synchronizedAudioText" type="radio" value="no" checked=""> No</label>
 				<label><input name="synchronizedAudioText" type="radio" value="yes"> Yes</label>
@@ -96,13 +91,9 @@
 		</div>
 		
 		<div id="wiz-images" class="tabpanel hidden">
-			<fieldset>
-				<legend>Image content</legend>
-				
-				<p>Does your publication include images?</p>
-				<label><input name="images" type="radio" value="no" checked=""> No</label>
-				<label><input name="images" type="radio" value="yes"> Yes</label>
-			</fieldset>
+			<p>Does the publication include images?</p>
+			<label><input name="images" type="radio" value="no" checked=""> No</label>
+			<label><input name="images" type="radio" value="yes"> Yes</label>
 		</div>
 		
 		<div id="wiz-images-alt" class="tabpanel hidden">
@@ -142,28 +133,22 @@
 		</div>
 		
 		<div id="wiz-auditory" class="tabpanel hidden">
-			<fieldset>
-				<legend>Auditory content</legend>
-				<p>Does your publication include audio?</p>
-				<label><input name="auditory" type="radio" value="no" checked=""> No</label>
-				<label><input name="auditory" type="radio" value="yes"> Yes</label>
-			</fieldset>
+			<p>Does the publication include standalone audio clips?</p>
+			<label><input name="auditory" type="radio" value="no" checked=""> No</label>
+			<label><input name="auditory" type="radio" value="yes"> Yes</label>
 		</div>
 		
 		<div id="wiz-auditory-details" class="tabpanel hidden">
 			<p>Select the types of accessible alternatives available for the audio:</p>
 			
 			<ul>
-				<li><label><input name="auditory-feature" type="checkbox" value="audioDescription"> Audio descriptions</label></li>
-				<li><label><input name="auditory-feature" type="checkbox" value="closedCaptions"> Closed captions</label></li>
-				<li><label><input name="auditory-feature" type="checkbox" value="closedCaptions"> Open captions</label></li>
-				<li><label><input name="auditory-feature" type="checkbox" value="signLanguage"> Sign language interpretation</label></li>
 				<li><label><input name="auditory-feature" type="checkbox" value="transcript"> Transcripts</label></li>
+				<li><label><input name="auditory-feature" type="checkbox" value="signLanguage"> Sign language interpretation</label></li>
 			</ul>
 		</div>
 		
 		<div id="wiz-auditory-alt" class="tabpanel hidden">
-			<p>Do the text alternatives cover all the audio content?</p>
+			<p>Do the text alternatives provide access to the same information as the audio content?</p>
 			<div>
 				<label><input name="accessModeSufficientAuditory" type="radio" value="no" checked=""> No</label>
 				<label><input name="accessModeSufficientAuditory" type="radio" value="yes"> Yes</label>
@@ -171,7 +156,8 @@
 		</div>
 		
 		<div id="wiz-auditory-contrast" class="tabpanel hidden">
-			<p>Does the audio have high contrast?</p>
+			<p>Does the publication have high contrast audio?</p>
+			<p id="audio-contrast-help" class="wiz-help">Note: High contrast audio is audio in which foreground speech is at least 20dB higher than any background noise. Refer to WCAG <a href="https://www.w3.org/TR/WCAG/#low-or-no-background-audio" target="_blank">success criterion 1.4.7</a> for more information.</p>
 			<div>
 				<label><input name="highContrastAudio" type="radio" value="no" checked=""> No</label>
 				<label><input name="highContrastAudio" type="radio" value="yes"> Yes</label>
@@ -188,12 +174,21 @@
 		</div>
 		
 		<div id="wiz-video" class="tabpanel hidden">
-			<fieldset>
-				<legend>Video content</legend>
-				<p>Does your publication include video?</p>
-				<label><input name="video" type="radio" value="no" checked=""> No</label>
-				<label><input name="video" type="radio" value="yes"> Yes</label>
-			</fieldset>
+			<p>Does the publication include video?</p>
+			<label><input name="video" type="radio" value="no" checked=""> No</label>
+			<label><input name="video" type="radio" value="yes"> Yes</label>
+		</div>
+		
+		<div id="wiz-video-alt" class="tabpanel hidden">
+			<p>Select the types of accessible alternatives available for the audio:</p>
+			
+			<ul>
+				<li><label><input name="video-feature" type="checkbox" value="audioDescription"> Audio descriptions</label></li>
+				<li><label><input name="video-feature" type="checkbox" value="closedCaptions"> Closed captions</label></li>
+				<li><label><input name="video-feature" type="checkbox" value="closedCaptions"> Open captions</label></li>
+				<li><label><input name="video-feature" type="checkbox" value="signLanguage"> Sign language interpretation</label></li>
+				<li><label><input name="video-feature" type="checkbox" value="transcript"> Transcripts</label></li>
+			</ul>
 		</div>
 		
 		<div id="wiz-video-details" class="tabpanel hidden">
@@ -223,12 +218,9 @@
 		</div>
 		
 		<div id="wiz-tactile" class="tabpanel hidden">
-			<fieldset>
-				<legend>Tactile content</legend>
-				<p>Does your publication include tactile content?</p>
-				<label><input name="tactile" type="radio" value="no" onclick="showDetails(this)" checked=""> No</label>
-				<label><input name="tactile" type="radio" value="yes" onclick="showDetails(this)"> Yes</label>
-			</fieldset>
+			<p>Does the publication include tactile content?</p>
+			<label><input name="tactile" type="radio" value="no" checked=""> No</label>
+			<label><input name="tactile" type="radio" value="yes"> Yes</label>
 		</div>
 		
 		<div id="wiz-tactile-details" class="tabpanel hidden">
@@ -243,16 +235,12 @@
 		</div>
 		
 		<div id="wiz-math" class="tabpanel hidden">
-			<fieldset>
-				<legend>Math</legend>
-				
-				<p>Does your publication include math equations?</p>
-				
-				<div>
-					<label><input name="math" type="radio" value="no" checked=""> No</label>
-					<label><input name="math" type="radio" value="yes"> Yes</label>
-				</div>
-			</fieldset>
+			<p>Does the publication include math equations?</p>
+			
+			<div>
+				<label><input name="math" type="radio" value="no" checked=""> No</label>
+				<label><input name="math" type="radio" value="yes"> Yes</label>
+			</div>
 		</div>
 				
 		<div id="wiz-math-details" class="tabpanel hidden">
@@ -266,18 +254,14 @@
 		</div>
 		
 		<div id="wiz-navigation" class="tabpanel hidden">
-			<fieldset>
-				<legend>Navigation</legend>
-				
-				<p>Please select all the navigation aids available in your publication:</p>
-				
-				<ul>
-					<li><label><input name="nav-feature" type="checkbox" value="tableOfContents" checked=""> Table of contents</label></li>
-					<li><label><input name="nav-feature" type="checkbox" value="index"> Index(es)</label></li>
-					<li><label><input name="nav-feature" type="checkbox" value="pageNavigation"> Page list</label></li>
-					<li><label><input name="nav-feature" type="checkbox" value="pageBreakMarkers"> Page break markers</label></li>
-				</ul>
-			</fieldset>
+			<p>Please select all the navigation aids available in the publication:</p>
+			
+			<ul>
+				<li><label><input name="nav-feature" type="checkbox" value="tableOfContents" checked=""> Table of contents</label></li>
+				<li><label><input name="nav-feature" type="checkbox" value="index"> Index(es)</label></li>
+				<li><label><input name="nav-feature" type="checkbox" value="pageNavigation"> Page list</label></li>
+				<li><label><input name="nav-feature" type="checkbox" value="pageBreakMarkers"> Page break markers</label></li>
+			</ul>
 		</div>
 		
 		<div id="wiz-markup" class="tabpanel hidden">

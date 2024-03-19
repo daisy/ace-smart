@@ -17,10 +17,11 @@ div.meta-wiz {
 }
 #meta-wizard div.conf label {
     display:inline-block;
-    width: 10rem;
+    min-width: 15rem;
 }
 #meta-wizard {
-	margin: 3rem auto;
+	font-size: 115%;
+	margin: 0 auto -6rem auto;
 	max-width: 58rem;
 	background-color: rgb(253,253,253);
 	border-radius: 0.5rem;
@@ -105,13 +106,25 @@ input#wiz-button:hover {
 	border-color: rgb(200,0,0);
 }
 
-input.wiz-help {
-	border-radius: 1rem;
-	border-width: 0;
-	background-color: rgb(20,120,255);
-	color: rgb(255,255,255);
+p.wiz-help {
+	width: 80%;
+	font-size: 87%;
+	padding-left: 4rem;
+	text-indent: -4rem;
 }
 
-input.wiz-help:hover {
-	background-color: rgb(180,0,0);
+#meta-wizard select {
+    min-width: 10rem;
+}
+
+button#wiz-next, button#wiz-prev {
+	min-width: 10rem;
+}
+
+#meta-wizard a {
+	color: rgb(0, 0, 220) !important;
+}
+
+#meta-wizard a:hover {
+	color: rgb(238, 0, 0) !important;
 }

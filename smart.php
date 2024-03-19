@@ -359,7 +359,7 @@ JS;
 						function showMetaWizard() {
 							if (meta_wiz_dialog) {
 								meta_wiz_dialog.dialog('open');
-								metaWizardInit();
+								smartMetaWizard.metaWizardInit();
 							}
 						}
 					</script>
