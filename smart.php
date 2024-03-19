@@ -62,6 +62,7 @@
 		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
 		<link rel="stylesheet" type="text/css" href="css/a11y.css<?= '?v=' . $smart_version ?>"/>
 		<link rel="stylesheet" type="text/css" href="css/tabs.css<?= '?v=' . $smart_version ?>"/>
+		<link rel="stylesheet" type="text/css" href="css/a11y-meta-wizard.css<?= '?v=' . $smart_version ?>">
 		
 		<?php $ext->print_css(); ?>
 		
@@ -109,6 +110,8 @@
 			var saveChanges = false;
 			var firstSave = {$eval->need_to_save()};
 			var noDesignElements = {$user->data()->baDesignElementsOff};
+			
+			var meta_wiz_dialog;
 		</script>
 JS;
 ?>
@@ -255,10 +258,10 @@ JS;
 							
 							<fieldset id="hide-status" class="flat row">
 								<legend>Hide success criteria with status:</legend>
-								<label><input type="checkbox" class="hide_sc" value="unverified"/> Unverified</label>
-								<label><input type="checkbox" class="hide_sc" value="pass"/> Pass</label>
-								<label><input type="checkbox" class="hide_sc" value="fail"/> Fail</label>
-								<label><input type="checkbox" class="hide_sc" value="na"/> N/A</label>
+								<label><input type="checkbox" id="hide-unverified" class="hide_sc" value="unverified"/> Unverified</label>
+								<label><input type="checkbox" id="hide-pass" class="hide_sc" value="pass"/> Pass</label>
+								<label><input type="checkbox" id="hide-fail" class="hide_sc" value="fail"/> Fail</label>
+								<label><input type="checkbox" id="hide-na" class="hide_sc" value="na"/> N/A</label>
 							</fieldset>
 							
 							<fieldset class="flat row">
@@ -349,6 +352,17 @@ JS;
 					<h2>Discovery Metadata</h2>
 					
 					<p class="help"><a href="user-guide/discovery.html" target="_blank">Need help?</a></p>
+					
+					<div class="meta-wiz"><input tyoe="button" id="wiz-button" value="Run Metadata Wizard" onclick="showMetaWizard()"></div>
+					
+					<script>
+						function showMetaWizard() {
+							if (meta_wiz_dialog) {
+								meta_wiz_dialog.dialog('open');
+								smartMetaWizard.metaWizardInit();
+							}
+						}
+					</script>
 					
 					<div id="discovery-fields"></div>
 					
@@ -470,6 +484,8 @@ JS;
 				</div>
 			</section>
 		</form>
+		
+		<?php include 'php/meta-wizard.php' ?>
 		
 		<?php $ext->print_scripts(); ?>
 	</body>

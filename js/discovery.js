@@ -684,8 +684,10 @@ var smartDiscovery = (function() {
 	
 	/* generates a summary from the result of the evaluation and any filled-in metadata fields */
 	
-	function generateAccessibilitySummary() {
+	function generateAccessibilitySummary(opt) {
 		
+		opt ||= {};
+		var wizard = opt.hasOwnProperty('wizard') && opt.wizard ? true : false;
 		var summary_field = document.getElementById('accessibilitySummary');
 		var summary_text = '';
 		
@@ -798,11 +800,17 @@ var smartDiscovery = (function() {
 			}
 		}
 		
-		if (summary_text === '') {
-			alert('Sorry, it was not possible to create a summary for this publication from the available information.\n\nPlease refer to the help link in the summary field for more information.');
+		if (wizard) {
+			return summary_text;
 		}
+		
 		else {
-			summary_field.value = summary_text;
+			if (summary_text === '') {
+				alert(smart_errors.summaryGenerator.failed[smart_lang]);
+			}
+			else {
+				summary_field.value = summary_text;
+			}
 		}
 	}
 	
@@ -848,8 +856,8 @@ var smartDiscovery = (function() {
 			generateDiscoveryMetadata();
 		},
 		
-		generateAccessibilitySummary: function() {
-			generateAccessibilitySummary();
+		generateAccessibilitySummary: function(opt) {
+			return generateAccessibilitySummary(opt);
 		}
 	}
 

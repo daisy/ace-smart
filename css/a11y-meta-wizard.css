@@ -1,0 +1,130 @@
+
+div.meta-wiz {
+	font-size: 90%;
+	margin-left: 1rem;
+	margin-bottom: -3rem;
+	margin-top: 4rem;
+}
+
+#meta-wizard fieldset {
+	margin-top: 1rem;
+}
+#meta-wizard li {
+	margin-bottom: 1rem;
+}
+#meta-wizard div.conf {
+    margin-bottom: 1rem;
+}
+#meta-wizard div.conf label {
+    display:inline-block;
+    min-width: 15rem;
+}
+#meta-wizard {
+	font-size: 115%;
+	margin: 0 auto -6rem auto;
+	max-width: 58rem;
+	background-color: rgb(253,253,253);
+	border-radius: 0.5rem;
+	padding: 2rem;
+}
+.btn:focus-within,
+.btn {
+	border: 0;
+	background-color: rgb(20,120,240);
+	padding: 1rem;
+	border-radius: 25px;
+	color: white;
+	cursor: pointer;
+}
+#meta-wizard a:not([href]) {
+    color: white;
+}
+.btn[disabled] {
+	opacity: .5;
+	pointer-events: none;
+}
+.btn:hover {
+	background-color: #ca3838;
+	transition: ease-in-out .1s all;
+}
+.btn-submit {
+	background-color: rgb(20,120,240);
+}
+.btn-submit:hover {
+	background-color: #0891b2;
+}
+.pagination {
+	margin-top: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.pagination .btn {
+	width: 35%;
+	text-align: center;
+	margin: 0 6px;
+}
+.tab-status {
+	display: flex;
+	align-items: center;
+}
+.tab-status span {
+	appearance: none;
+	background-color: #f8fafc;
+	border: none;
+	border-radius: 50%;
+	width: 2rem;
+	height: 2rem;
+	margin-right: .5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.tab-status span.active {
+	background-color: rgb(20,120,240);
+	color: white;
+}
+.hidden {
+	display: none;
+}
+
+#meta-wizard textarea {
+	width: 99% !important;
+}
+
+input#wiz-button {
+	border-radius: 1rem;
+	border: 0.2rem solid rgb(0,0,200);
+	padding: 0.5rem 2rem;
+	background-color: aliceblue;
+	margin-bottom: 2rem;
+	text-align: center;
+}
+
+input#wiz-button:hover {
+	background-color: rgb(255,200,200);
+	border-color: rgb(200,0,0);
+}
+
+p.wiz-help {
+	width: 80%;
+	font-size: 87%;
+	padding-left: 4rem;
+	text-indent: -4rem;
+}
+
+#meta-wizard select {
+    min-width: 10rem;
+}
+
+button#wiz-next, button#wiz-prev {
+	min-width: 10rem;
+}
+
+#meta-wizard a {
+	color: rgb(0, 0, 220) !important;
+}
+
+#meta-wizard a:hover {
+	color: rgb(238, 0, 0) !important;
+}

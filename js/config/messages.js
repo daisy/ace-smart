@@ -375,8 +375,36 @@ var smart_ui = {
 		"unspecified": {
 			"en": "not specified"
 		}
+	},
+	"metaWizard": {
+		"done": {
+			"en": "The accessibility metadata fields have been successfully updated."
+		}
 	}
 }
+
+
+
+
+
+
+/* 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 						ERROR MESSAGES
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+
+
+
 
 var smart_errors = {
 	"uploadLimit": {
@@ -597,6 +625,11 @@ var smart_errors = {
 			"nonURL": {
 				"en": "%%val%% should begin with http:// or https://"
 			}
+		}
+	},
+	"summaryGenerator": {
+		"failed": {
+			"en": "Sorry, it was not possible to create a summary for this publication from the available information.\n\nPlease refer to the help link in the summary field for more information."
 		}
 	}
 }
