@@ -16,7 +16,7 @@ if ($navstyle == 'Default') {
   ?>
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <h1 class="ace_login_hd">
-    	<span><img src="<?= $us_url_root ?>images/daisy_logo.png" alt="DAISY"></span>
+    	<span><img src="<?= $us_url_root ?>images/daisy_high.jpg" alt="DAISY"></span>
     	<span>Ace <span class="smart_hd">SMART</span></span>
     </h1>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">

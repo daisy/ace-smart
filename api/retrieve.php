@@ -1,3 +1,5 @@
+<?php header('Access-Control-Allow-Origin: *'); ?>
+
 <?php
 
 	require_once 'modules/headers.php';

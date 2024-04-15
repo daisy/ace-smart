@@ -98,6 +98,13 @@
 			else if (data.category == 'newEvaluation') {
 				// only the title to set if a new blank evaluation
 				document.getElementById('title').value = data.title;
+				
+				// temporary patch until site default becomes 2.2
+				if (smart_extensions.hasOwnProperty('born_accessible')) {
+					document.getElementById('wcag-version').value = '2.2';
+					smartConformance.setWCAGVersion('2.2');
+				}
+				
 			}
 		}
 		
@@ -200,11 +207,35 @@
 		buttons: close_button
 	});
 	
+	/* meta_wiz_dialog is used to show the discovery metadata wizard */
+	meta_wiz_dialog = $("#meta-wizard").dialog({
+		autoOpen: false,
+		height: 350,
+		modal: true,
+		buttons: {
+			Previous: {
+				text: 'Previous',
+				id: 'wiz-prev',
+				click: function() {
+					smartMetaWizard.previousButtonPush();
+				}
+			},
+			Next: {
+				text: 'Next',
+				id: 'wiz-next',
+				click: function() {
+					smartMetaWizard.nextButtonPush();
+				}
+			}
+		}
+	});
+	
 	function adjustDialogWidth() {
 		if (document.body.clientWidth < 550) {
 			import_dialog.dialog("option", "width", 300);
 			discovery_dialog.dialog("option", "width", 400);
 			evaluation_dialog.dialog("option", "width", 400);
+			meta_wiz_dialog.dialog("option", "width", 400);
 			onix_dialog.dialog("option", "width", 400);
 			save_dialog.dialog("option", "width", 400);
 		}
@@ -212,6 +243,7 @@
 			import_dialog.dialog("option", "width", 550);
 			discovery_dialog.dialog("option", "width", 750);
 			evaluation_dialog.dialog("option", "width", 750);
+			meta_wiz_dialog.dialog("option", "width", 750);
 			onix_dialog.dialog("option", "width", 750);
 			save_dialog.dialog("option", "width", 400);
 		}

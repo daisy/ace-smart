@@ -93,7 +93,7 @@
 		<header>
 			<div class="id"><span class="super">You are logged in as <code><a target="_blank" href="users/account.php"><?php echo $user->data()->username; ?></a></code></span> <a class="logout" href="users/logout.php"><img src="images/logout.png" alt="log out" title="Log out" onmouseover="this.src='images/logout_hover.png'" onmouseout="this.src='images/logout.png'"></a></div>
 			
-			<h1><img src="images/daisy_logo.png" class="logo" alt="DAISY"/> <span property="dcterms:title">Ace <span class="smart_hd">SMART</span></span></h1>
+			<h1><img src="images/daisy_high.jpg" class="logo" alt="DAISY"/> <span property="dcterms:title">Ace <span class="smart_hd">SMART</span></span></h1>
 			
 			<div class="menubar"></div>
 			

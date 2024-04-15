@@ -72,7 +72,7 @@ var smartAce = (function() {
 			tactileobject: 'tactileObject',
 			timingcontrol: 'timingControl',
 			transcript: 'transcript',
-			ttsMarkup: 'ttsmarkup',
+			ttsmarkup: 'ttsMarkup',
 			unknown: 'unknown'
 		}
 	};
@@ -134,7 +134,8 @@ var smartAce = (function() {
 		
 		
 		var epub_version = _EPUB_DEFAULT_VERSION;
-		var wcag_version = _WCAG_DEFAULT_VERSION;
+		// temporary patch so GCA reports default to 2.2 - remove when this becomes site standard
+		var wcag_version = smart_extensions.hasOwnProperty('born_accessible') ? '2.2' : _WCAG_DEFAULT_VERSION;
 		var wcag_level = _WCAG_DEFAULT_LEVEL;
 		
 		if (conformance_url) {
@@ -177,7 +178,7 @@ var smartAce = (function() {
 		smartConformance.setEPUBA11yVersion(epub_version);
 		
 		document.getElementById('wcag-version').value = wcag_version;
-		smartConformance.setWCAGVersion(wcag_version,false);
+		smartConformance.setWCAGVersion(wcag_version);
 		
 		document.getElementById('wcag-level').value = wcag_level;
 		smartConformance.setWCAGConformanceLevel(wcag_level);

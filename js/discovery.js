@@ -684,8 +684,10 @@ var smartDiscovery = (function() {
 	
 	/* generates a summary from the result of the evaluation and any filled-in metadata fields */
 	
-	function generateAccessibilitySummary() {
+	function generateAccessibilitySummary(opt) {
 		
+		opt ||= {};
+		var wizard = opt.hasOwnProperty('wizard') && opt.wizard ? true : false;
 		var summary_field = document.getElementById('accessibilitySummary');
 		var summary_text = '';
 		
@@ -704,8 +706,10 @@ var smartDiscovery = (function() {
 		}
 		
 		else {
-			summary_text = smart_ui.discovery.generateSummary.pass[smart_lang].replace('%VER%', epub_version);
-			summary_text += ' ' + smart_ui.discovery.generateSummary.wcagLevel[smart_lang].replace('%VER%', smartWCAG.WCAGVersion()) + ' ' + smartWCAG.WCAGLevel().toUpperCase() + '.';
+			/*
+				summary_text = smart_ui.discovery.generateSummary.pass[smart_lang].replace('%VER%', epub_version);
+				summary_text += ' ' + smart_ui.discovery.generateSummary.wcagLevel[smart_lang].replace('%VER%', smartWCAG.WCAGVersion()) + ' ' + smartWCAG.WCAGLevel().toUpperCase() + '.';
+			*/
 		}
 		
 		// indicate if the publication is screen reader friendly (AMS=textual) or has pre-recorded narration (AMS=auditory)
@@ -796,7 +800,18 @@ var smartDiscovery = (function() {
 			}
 		}
 		
-		summary_field.value = summary_text;
+		if (wizard) {
+			return summary_text;
+		}
+		
+		else {
+			if (summary_text === '') {
+				alert(smart_errors.summaryGenerator.failed[smart_lang]);
+			}
+			else {
+				summary_field.value = summary_text;
+			}
+		}
 	}
 	
 	
@@ -841,8 +856,8 @@ var smartDiscovery = (function() {
 			generateDiscoveryMetadata();
 		},
 		
-		generateAccessibilitySummary: function() {
-			generateAccessibilitySummary();
+		generateAccessibilitySummary: function(opt) {
+			return generateAccessibilitySummary(opt);
 		}
 	}
 

@@ -736,6 +736,15 @@
 			],
 			
 			"sc-3.3.7" => [
+				"ref" => "redundant-entry",
+				"version" => "2.2",
+				"level" => "a",
+		        "name" => [
+					"en" => "Redundant Entry"
+				]
+			],
+			
+			"sc-3.3.8" => [
 				"ref" => "accessible-authentication",
 				"version" => "2.2",
 				"level" => "aa",
@@ -744,21 +753,12 @@
 				]
 			],
 			
-			"sc-3.3.8" => [
+			"sc-3.3.9" => [
 				"ref" => "accessible-authentication-no-exception",
 				"version" => "2.2",
 				"level" => "aaa",
 		        "name" => [
 					"en" => "Accessible Authentication (No Exception)"
-				]
-			],
-			
-			"sc-3.3.9" => [
-				"ref" => "redundant-entry",
-				"version" => "2.2",
-				"level" => "a",
-		        "name" => [
-					"en" => "Redundant Entry"
 				]
 			],
 		
@@ -882,7 +882,7 @@ HTML;
 				$body = file_get_contents('sc/en/' . $id . '.html');
 				$reporting = str_replace('%%id%%', $id, $this->reporting);
 				
-				if ($info['obsolete']) {
+				if (array_key_exists('obsolete', $info)) {
 					$obs_value = '<label><input id="' . $id . '-obsolete" type="radio" name="' . $id . '" value="obsolete" class="sc_status" aria-labelledby="' . $id . '-legend"> Obsolete</label>';
 					$reporting = str_replace('%%obsolete%%', $obs_value, $reporting);
 				}

@@ -101,7 +101,7 @@
 	<body>
 		<header>
 			<h1 class="ace_login_hd">
-				<span><img src="/images/daisy_logo.png" alt="DAISY"></span>
+				<span><img src="/images/daisy_high.jpg" alt="DAISY"></span>
 				<span>Ace <span class="smart_hd">SMART</span></span>
 			</h1>
 			<h2>Access to Born Accessible Tab</h2>
