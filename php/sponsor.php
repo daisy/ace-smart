@@ -1,5 +1,5 @@
 
-<aside id="sponsor"></aside>
+<aside id="sponsor" aria-label="Sponsor"></aside>
 
 <script src="/js/sponsor.js<?= '?v=' . $smart_version ?>"></script>
 
