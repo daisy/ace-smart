@@ -125,17 +125,9 @@ div.container-fluid {
 }
 
 
-/* sponsor box */
-
 aside#sponsor {
-	margin-top: 2rem;	
+	width: unset !important;
 }
-
-aside#sponsor h2 {
-	color: rgb(0,0,0);
-	font-size: 1.2rem;
-}
-
 
 @media screen and (max-width: 600px),
 @media only screen

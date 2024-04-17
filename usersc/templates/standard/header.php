@@ -10,6 +10,7 @@
 
 <link href="<?=$us_url_root?>users/css/datatables.css" rel="stylesheet">
 
+<link href="<?=$us_url_root?>css/sponsor.css" rel="stylesheet">
 
 <link rel="stylesheet" href="<?=$us_url_root?>users/fonts/css/font-awesome.min.css">
 

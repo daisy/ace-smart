@@ -166,9 +166,9 @@ if (!$res['success']) {
     <?php } else { ?> 
 
     <div id="page-wrapper">
+	  <?php include '../php/sponsor.php' ?>
       <div class="container">
         <?=resultBlock($errors,$successes);?>
-        
         <div class="row no-flex">
           <div class="col-sm-12 fl-30">
 	          <form name="login" id="login-form" class="form-signin" action="login.php" method="post">
@@ -202,7 +202,6 @@ if (!$res['success']) {
 		      <div class="col-sm-6">
 		      	<a href="<?=$us_url_root?>users/join.php" class=""><i class="fa fa-plus-square"></i> Create new account</a>
 		      </div>
-	          <?php include '../php/sponsor.php' ?>
           </div>
           <div class="fl-70">
           	<h2 class="form-signin-heading login_intro">Welcome to Ace SMART!</h2>
