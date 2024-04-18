@@ -87,6 +87,7 @@ var daisySponsor = (function() {
 			sponsor_close.setAttribute('value', 'X');
 			sponsor_close.setAttribute('onclick', 'daisySponsor.closeSponsorBox()');
 			sponsor_close.setAttribute('aria-label', 'Close');
+			sponsor_close.setAttribute('title', 'Close');
 		
 		sponsor.appendChild(sponsor_close);
 		
