@@ -166,7 +166,11 @@ if (!$res['success']) {
     <?php } else { ?> 
 
     <div id="page-wrapper">
-	  <?php include '../php/sponsor.php' ?>
+    	<!-- add daisy sponsor box -->
+		<script src="/js/sponsor.js<?= '?v=' . $smart_version ?>"></script>
+		<script>
+			daisySponsor.loadSponsorInfo('smart');
+		</script>
       <div class="container">
         <?=resultBlock($errors,$successes);?>
         <div class="row no-flex">
