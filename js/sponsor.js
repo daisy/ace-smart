@@ -71,7 +71,7 @@ var daisySponsor = (function() {
 		var sponsor = document.createElement('aside');
 			sponsor.setAttribute('id', 'sponsor');
 			sponsor.setAttribute('class', 'kb');
-			sponsor.setAttribute('aria-label', 'Sponsor');
+			sponsor.setAttribute('aria-label', 'Support');
 
 		var msg = document.createElement('span');
 			msg.appendChild(document.createTextNode(sponsorInfo[lang].messageText));

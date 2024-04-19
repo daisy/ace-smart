@@ -27,7 +27,7 @@ $hamburger.on("click", function(e) {
 	<a href="/faq.html" target="_blank">FAQ</a> | 
 	<a href="/new.html" target="_blank">What's New</a> | 
 	<a href="https://github.com/daisy/ace-smart/issues" target="_blank">Report a Problem</a> |
-	<a href="https://daisy.org/KBSponsor" target="_blank">Sponsor</a>
+	<a href="https://daisy.org/KBSponsor" target="_blank">Support</a>
 </p>
 <p>&copy; <?php echo date('Y'); ?> <?=$settings->copyright; ?></p>
 </footer>

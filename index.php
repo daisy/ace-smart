@@ -142,7 +142,7 @@
 				<a href="user-guide/" target="_blank">User Guide</a> | 
 				<a href="faq.html" target="_blank">FAQ</a> | 
 				<a href="new.html" target="_blank">What's New</a> |
-				<a href="https://daisy.org/KBSponsor" target="_blank">Sponsor</a></p>
+				<a href="https://daisy.org/KBSponsor" target="_blank">Support</a></p>
 			<p>Copyright &#169; <span property="dcterms:dateCopyrighted">2022</span> <a target="_blank" href="http://daisy.org"><span property="dcterms:publisher">DAISY</span> Consortium</a>. All Rights Reserved.</p>
 		</footer>
 	</body>
