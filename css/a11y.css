@@ -383,7 +383,7 @@ hr {
 aside#stats {
 	position: fixed;
 	right: 14rem;
-	top: 16rem;
+	top: 20rem;
 	font-size: 90%;
 	padding: 1rem 1rem 0 3rem;
 	border-radius: 1rem;
@@ -911,7 +911,7 @@ span.hlt-first::first-letter {
 
 /* optimizations for phone screens in portrait orientation */
 @media only screen
- and (max-device-width : 480px)
+ and (max-width : 480px)
  and (orientation : portrait){
 
 	label.data > input{
@@ -1203,11 +1203,10 @@ div#output-opt {
 }
 
 
-
 /* mini tablet */
 
 @media only screen
-	and (max-device-width: 1024px)
+	and (max-width: 1024px)
 	 and (orientation : portrait) {
 
 	main.start {
@@ -1232,7 +1231,7 @@ div#output-opt {
 
 
 @media only screen
-	and (max-device-width: 1024px)
+	and (max-width: 1024px)
 	 and (orientation : landscape) {
 
 	main.start {
@@ -1258,7 +1257,7 @@ div#output-opt {
 }
 
 @media only screen
- and (max-device-width : 800px)
+ and (max-width : 800px)
  and (orientation : landscape) {
 	section.a,
 	section.aa,
@@ -1270,7 +1269,7 @@ div#output-opt {
 
 
 @media only screen
-	and (max-device-width: 800px) {
+	and (max-width: 800px) {
 	
 	main.start,
 	form.report {
@@ -1297,7 +1296,7 @@ div#output-opt {
 
 /* optimizations for phone screens */
 @media only screen
- and (max-device-width : 480px) {
+ and (max-width : 480px) {
 
 	h1{
 		font-size: 1.2rem;

@@ -7,6 +7,7 @@
  * Functions that control the discovery tab's accessibility metadata wizard
 */
 
+var meta_wiz_dialog;
 
 var smartMetaWizard = (function() { 
 
