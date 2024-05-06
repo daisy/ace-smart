@@ -177,15 +177,19 @@ var smartDistribution = (function() {
 			
 				for (var j = 0; j < property.values.length; j++) {
 		    		
+		    		var dt = document.createElement('dt');
+		    		
 		    		var input = document.createElement('input');
 		    			input.setAttribute('type','checkbox');
 		    			input.setAttribute('id','onix'+property.values[j].id);
 		    		
-		    		var input_label = document.createElement('dt');
+		    		var input_label = document.createElement('label');
 			    		input_label.appendChild(input);
 			    		input_label.appendChild(document.createTextNode(' ' + property.values[j].id + ' - ' + property.values[j][smart_lang].name));
 		    		
-		    		dl.appendChild(input_label);
+		    		dt.appendChild(input_label);
+		    		
+		    		dl.appendChild(dt);
 		    		
 		    		var dd2 = document.createElement('dd');
 			    		dd2.appendChild(document.createTextNode(property.values[j][smart_lang].desc));
