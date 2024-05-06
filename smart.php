@@ -136,7 +136,7 @@ JS;
 	
 	<body class="tabs">
 		<header>
-			<h1><img src="images/daisy_logo.png" class="logo" alt="DAISY"/> <span property="dcterms:title">Ace <span class="smart_hd">SMART</span> &#8212; Evaluation</span></h1>
+			<h1><img src="images/daisy_high.jpg" class="logo" alt="DAISY"/> <span property="dcterms:title">Ace <span class="smart_hd">SMART</span> &#8212; Evaluation</span></h1>
 			
 			<nav class="appmenu" aria-label="application menu">
 				<a href="#" id="validate-button"><img src="images/validate.png" alt="validate" title="Validate"/></a>
@@ -394,8 +394,8 @@ JS;
 					
 					<div id="extension-results"></div>
 					
-					<fieldset id="eval-info">
-						<legend>Evaluation Info:</legend>
+					<fieldset id="eval-info" aria-labelledby="ei-legend">
+						<legend id="ei-legend" hidden="hidden">Evaluation Info</legend>
 						<label class="data"><span>Evaluator:<img src="/images/asterisk.png" alt="required"/></span> <input type="text" id="certifiedBy" aria-required="true"/></label>
 						<label class="data"><span>Credential:</span> <input type="text" id="certifierCredential"/></label>
 						<label class="data"><span>Link to report:</span> <input type="text" id="certifierReport"/></label>

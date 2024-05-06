@@ -178,8 +178,7 @@ h2{
 	font-family: Raleway;
 	font-size: 2.4rem;
 	font-weight: normal;
-	color: rgb(0, 0, 180);
-	margin-top: 1rem;
+	margin-top: 2rem;
 }
 
 h3{
@@ -271,6 +270,7 @@ a#ace-review {
 section#start label,
 section#start fieldset legend {
 	font-size: 100%;
+	color: rgb(0,0,120) !important;
 }
 
 /* conformance guidelines */
@@ -427,21 +427,24 @@ p.help a {
 /* conformance results */
 
 div.conformance-result {
-	padding: 1rem 0 1rem 1.5rem;
-	margin-bottom: 1rem;
+	padding: 1rem 0 0 1.3rem;
 }
 
 span.hd {
-	font-size: 110%;
 	color: rgb(0,0,120);
 }
 
 span#conformance-result-status {
-	padding-left: 4rem;
+	padding-left: 5rem;
+	color: rgb(0,0,0);
 }
 
 fieldset#eval-info legend {
 	margin-bottom: 2rem;
+}
+
+#eval-info label.data {
+	margin-top: 1.5rem;
 }
 
 
@@ -524,19 +527,22 @@ fieldset,
 div.conformance-result,
 div.onix {
 	border: none;
-	background-color: rgb(251,251,251);
-	border-radius: 0.5rem;
-	box-shadow: 0 0 0.2rem 0 grey;
-	padding: 2rem;
 }
 
-div.onix,
-div.conformance-result {
+div.onix {
 	margin-left: 0.2rem;
 }
 
 fieldset {
-	margin-top: 4rem;
+	margin-top: 0;
+}
+
+#discovery-fields fieldset {
+	margin-top: 3rem;
+}
+
+#discovery-fields fieldset legend {
+	border-bottom: 0.1rem solid rgb(0,0,120);
 }
 
 fieldset#accessModeSufficient fieldset {
@@ -607,7 +613,7 @@ fieldset.status > label {
 section#verification > div.form-data > fieldset,
 div.form-data > fieldset,
 div.form-data > label {
-	margin: 1rem;
+	margin: 1rem 0 1.25rem 1rem;
 }
 
 section#verification > div.form-data > fieldset > legend {
@@ -624,10 +630,7 @@ fieldset select {
 }
 
 div.form-data {
-	background-color: rgb(251,251,251);
 	padding: 0.3rem 0 0.3rem 1rem;
-	border-radius: 0.5rem;
-	box-shadow: 0 0 0.2rem 0 grey;
 	margin-left: 0.2rem !important;
 }
 
@@ -845,11 +848,15 @@ section#config small{
 	font-style: italic;
 }
 
-textarea{
+textarea {
 	width: 90%;
 }
 
-label.data > textarea{
+textarea#accessibilitySummary {
+	margin-top: 2rem;
+}
+
+label.data > textarea {
 	width: 39.8rem;
 	display: inline-block;
 }
@@ -881,6 +888,7 @@ div.combo > label:first-child span {
 	display: inline-block;
 	width: 20rem;
 	vertical-align: top;
+	color: rgb(0,0,120);
 }
 
 label.data > input[type = 'text'],
@@ -889,7 +897,7 @@ div.combo > label > input[type='text'] {
 }
 
 div.data{
-	margin: 3rem 0 2rem 0;
+	margin: 0 0 2rem 0;
 }
 
 div.data > div{
@@ -1121,11 +1129,24 @@ div.onix textarea {
 	margin-top: 1rem;
 }
 
+.onix-optional {
+	margin-top: 2rem;
+	color: rgb(0,0,120);
+}
+
+#distribution-fields input[type=text] {
+	min-width: 40rem;
+}
+
+#distribution-fields dt {
+	font-weight: normal;
+	color: rgb(0,0,120);
+	margin-bottom: 1rem;
+}
 
 /* pub info fieldsets */
 
 div.data > fieldset.flat > legend {
-	color: rgb(0,0,0) !important;
 	width: 20rem;
 }
 

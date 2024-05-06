@@ -136,58 +136,93 @@ var smartDistribution = (function() {
 		
 		var meta_fields = document.getElementById('distribution-fields');
 		
+		var dl = document.createElement('dl');
+			dl.setAttribute('class', 'onix');
+		
 		for (var i = 0; i < onix_meta.properties.length; i++) {
 			
 			var property = onix_meta.properties[i];
 			
-			var container = document.createElement(property.type == 'checkbox' ? 'fieldset' : 'div');
-				container.setAttribute('class', 'onix');
-			
-			var label = document.createElement(property.type == 'checkbox' ? 'legend' : 'label');
-			
 			if (property.type != 'checkbox') {
-				label.setAttribute('for', 'onix'+property.id);
-				label.appendChild(document.createTextNode(property.id + ' - '));
-			}
+				var dt = document.createElement('dt');
+				
+					dt.setAttribute('for', 'onix'+property.id);
+					dt.appendChild(document.createTextNode(property.id + ' - '));
 			
-			label.appendChild(document.createTextNode(property.name[smart_lang]));
-			container.appendChild(label);
+				dt.appendChild(document.createTextNode(property.name[smart_lang]));
+				dl.appendChild(dt);
+			}
 			
 			if (property.type == 'textarea') {
 				var textarea = document.createElement('textarea');
 					textarea.setAttribute('id', 'onix'+property.id);
 					textarea.setAttribute('rows', 5);
-				container.appendChild(textarea);
+				
+				var dd = document.createElement('dd');
+					dd.appendChild(textarea);
+				dl.appendChild(dd);
 			}
 			
 			else if (property.type == 'text') {
 	    		var input = document.createElement('input');
 	    			input.setAttribute('type','text');
 	    			input.setAttribute('id','onix'+property.id);
-	    		container.appendChild(input);
+
+				var dd = document.createElement('dd');
+	    			dd.appendChild(input);
+				dl.appendChild(dd);
 			}
 			
 			else if (property.type == 'checkbox') {
 			
 				for (var j = 0; j < property.values.length; j++) {
-		    		var input_label = document.createElement('label');
+		    		
+		    		var dt = document.createElement('dt');
 		    		
 		    		var input = document.createElement('input');
 		    			input.setAttribute('type','checkbox');
 		    			input.setAttribute('id','onix'+property.values[j].id);
 		    		
-		    		input_label.appendChild(input);
-		    		input_label.appendChild(document.createTextNode(' ' + property.values[j].id + ' - ' + property.values[j].name[smart_lang]));
-		    		container.appendChild(input_label);
+		    		var input_label = document.createElement('label');
+			    		input_label.appendChild(input);
+			    		input_label.appendChild(document.createTextNode(' ' + property.values[j].id + ' - ' + property.values[j][smart_lang].name));
+		    		
+		    		dt.appendChild(input_label);
+		    		
+		    		dl.appendChild(dt);
+		    		
+		    		var dd2 = document.createElement('dd');
+			    		dd2.appendChild(document.createTextNode(property.values[j][smart_lang].desc));
+		    		
+		    		if (property.values[j].hasOwnProperty('optionalFields')) {
+		    			if (property.values[j].optionalFields.includes('ProductFormFeatureDescription')) {
+		    				var div = document.createElement('div');
+		    					div.setAttribute('class', 'onix-optional');
+		    				
+		    				var label = document.createElement('label');
+		    					label.appendChild(document.createTextNode('ProductFormFeatureDescription: '));
+		    				
+		    				var input = document.createElement('input');
+		    					input.setAttribute('type', 'text');
+		    					input.setAttribute('id', property.values[j].id + '-ProductFormFeatureDescription');
+		    				label.appendChild(input);
+		    				
+		    				div.appendChild(label);
+		    				
+		    				dd2.appendChild(div);
+		    			}
+		    		}
+		    		
+					dl.appendChild(dd2);
 				}
 			}
 			
 			else {
 				console.log('Unknown property type ' + property.type);
 			}
-			
-			meta_fields.appendChild(container);
 		}
+		
+		meta_fields.appendChild(dl);
 		
 		/* sync summary changes */
 		$('#onix00').change( function(){
@@ -223,11 +258,18 @@ var smartDistribution = (function() {
 		
 		/* add any checked fields */
 		for (var i = 1; i < 93; i++) {
-			var onix_id = (i < 10 ? '0'+String(i) : i);
+			var onix_id = String(i).padStart(2,'0');
 			var checkbox = document.getElementById('onix'+onix_id);
 			
 			if (checkbox && checkbox.checked) {
-				onix_metadata += formatONIXEntry( {value: onix_id } );
+				var opt = { value: onix_id };
+				
+				var desc = document.getElementById(onix_id + '-ProductFormFeatureDescription');
+				if (desc) {
+					opt.description = desc.value;
+				}
+				
+				onix_metadata += formatONIXEntry(opt);
 			}
 		}
 		
@@ -257,7 +299,7 @@ var smartDistribution = (function() {
 			feature += '\t\t<productFormFeatureType>09</producFormFeatureType>\n';
 			feature += '\t\t<productFormFeatureValue>' + options.value + '</productFormFeatureValue>\n';
 			
-			if (options.hasOwnProperty('description')) {
+			if (options.hasOwnProperty('description') && options.description !== '') {
 				feature += '\t\t<productFormFeatureDescription>' + options.description + '<productFormFeatureDescription>\n';
 			}
 			
