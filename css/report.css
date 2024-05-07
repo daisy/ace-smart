@@ -37,10 +37,6 @@ main.js-tabs {
 	margin-top: 1rem !important;
 }
 
-ul.js-tablist {
-	top: -1.6rem !important;
-}
-
 li.js-tablist__item{
 	width: 13.5rem !important;
 	margin-left: 0 !important;
@@ -49,6 +45,27 @@ li.js-tablist__item{
 section.js-tabcontent {
 	margin-top: 0rem !important;
 }
+
+/* scrolling */
+
+header.sticky,
+div#report-header {
+	position: -webkit-sticky;
+	position: sticky;
+	z-index: 1;
+	background-color: rgb(255,255,255);
+}
+
+header.sticky {
+	top: 0;
+}
+
+div#report-header {
+	top: 4.47rem;
+	margin-top: -2rem;
+	padding-top: 0.5rem;
+}
+
 
 /* links */
 
@@ -80,6 +97,7 @@ h1 {
 	font-weight: normal;
 	color: rgb(255,255,255);
 	background-color: rgb(27,95,161);
+	line-height: 3rem;
 	margin: 0;
 	padding: 0.6rem 0 0.2rem 4.5rem !important;
 	border-bottom: 0.1rem solid rgb(0,191,255);
@@ -92,6 +110,10 @@ h2#title {
 	color: rgb(0,0,0);
 	border-left: none;
 	margin: 2rem 0 0 0;
+}
+
+div#report-header h2#title {
+	margin-top: 1rem;
 }
 
 h3 {
