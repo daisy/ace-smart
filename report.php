@@ -28,7 +28,7 @@ HTML;
 		</script>
 	</head>
 	<body typeof="Book" vocab="https://schema.org">
-		<header>
+		<header class="sticky">
 			<h1>EPUB Accessibility Conformance Report</h1>
 			<div id="add-logo">{$_POST['logo']}</div>
 		</header>

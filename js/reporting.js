@@ -272,11 +272,20 @@ var smartReport = (function() {
 		var reportBody = document.createElement('body');
 		
 		// add the header
-		reportBody.appendChild(createReportHeader());
+		var header = document.createElement('div');
+			header.id = 'report-header';
+			header.appendChild(createReportHeader());
 		
-		// add the publication info below the header
+		// add the publication info below the title
 		var publicationInfo = createReportPublicationInfo();
-			reportBody.appendChild(publicationInfo.content);
+		
+		header.appendChild(publicationInfo.content);
+		
+		reportBody.appendChild(header);
+		
+		// use wrapper element to group body content for scrolling
+		var wrapper = document.createElement('div');
+			wrapper.id = 'report-body';
 		
 		// add the tab list
 		var tab_list = document.createElement('ul');
@@ -309,19 +318,19 @@ var smartReport = (function() {
 			tab_list.appendChild(tab_list_item);
 		});
 		
-		reportBody.appendChild(tab_list);
+		header.appendChild(tab_list);
 		
 		// create test result details
 		var testResults = createReportTestDetails();
 		
 		// create extension tabs
-		var tabs = [];
+		var etabs = [];
 		
 		if (_smartExtensionTabs.length > 0) {
-			_smartExtensionTabs.forEach(function(tab) {
-				if (smart_extensions.hasOwnProperty(tab.id)) {
-					if (_generateExtension.hasOwnProperty(tab.id) && _generateExtension[tab.id]) {
-						tabs.push(smart_extensions[tab.id].generateReport());
+			_smartExtensionTabs.forEach(function(etab) {
+				if (smart_extensions.hasOwnProperty(etab.id)) {
+					if (_generateExtension.hasOwnProperty(etab.id) && _generateExtension[etab.id]) {
+						etabs.push(smart_extensions[etab.id].generateReport());
 					}
 				}
 			});
@@ -341,10 +350,12 @@ var smartReport = (function() {
 		}));
 		
 		// build the body
-		reportBody.appendChild(reportSummary);
-		reportBody.appendChild(testResults.content);
-		tabs.forEach(function(tab) { reportBody.appendChild(tab)});
-		reportBody.appendChild(additionalInfo);
+		wrapper.appendChild(reportSummary);
+		wrapper.appendChild(testResults.content);
+		etabs.forEach(function(etab) { wrapper.appendChild(etab)});
+		wrapper.appendChild(additionalInfo);
+		
+		reportBody.appendChild(wrapper);
 		
 		return reportBody.innerHTML;
 	}
