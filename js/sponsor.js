@@ -63,6 +63,10 @@ var daisySponsor = (function() {
 			return;
 		}
 		
+		if (!sponsorInfo.hasOwnProperty(lang)) {
+			return;
+		}
+		
 		if (!sponsorInfo[lang].active) {
 			return;
 		}
