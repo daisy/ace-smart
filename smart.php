@@ -62,7 +62,8 @@
 		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
 		<link rel="stylesheet" type="text/css" href="css/a11y.css<?= '?v=' . $smart_version ?>"/>
 		<link rel="stylesheet" type="text/css" href="css/tabs.css<?= '?v=' . $smart_version ?>"/>
-		
+		<link rel="stylesheet" type="text/css" href="css/a11y-meta-wizard.css<?= '?v=' . $smart_version ?>">
+				
 		<?php $ext->print_css(); ?>
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -109,6 +110,8 @@
 			var saveChanges = false;
 			var firstSave = {$eval->need_to_save()};
 			var noDesignElements = {$user->data()->baDesignElementsOff};
+						
+			var meta_wiz_dialog;
 		</script>
 JS;
 ?>
@@ -349,6 +352,17 @@ JS;
 					<h2>Discovery Metadata</h2>
 					
 					<p class="help"><a href="user-guide/discovery.html" target="_blank">Need help?</a></p>
+					
+					<div class="meta-wiz"><input tyoe="button" id="wiz-button" value="Run Metadata Wizard" onclick="showMetaWizard()"></div>
+					
+					<script>
+						function showMetaWizard() {
+							if (meta_wiz_dialog) {
+								meta_wiz_dialog.dialog('open');
+								smartMetaWizard.metaWizardInit();
+							}
+						}
+					</script>
 					
 					<div id="discovery-fields"></div>
 					
