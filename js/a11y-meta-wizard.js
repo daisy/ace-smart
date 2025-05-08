@@ -102,7 +102,7 @@ var smartMetaWizard = (function() {
 	}
 	
 	
-	function previousButtonPush() {
+	function prevButtonPush() {
 		
 		// hide the current tab
 		tabPanels[currentStep-1].classList.add('hidden');

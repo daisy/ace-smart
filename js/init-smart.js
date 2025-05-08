@@ -217,7 +217,7 @@
 				text: 'Previous',
 				id: 'wiz-prev',
 				click: function() {
-					smartMetaWizard.previousButtonPush();
+					smartMetaWizard.prevButtonPush();
 				}
 			},
 			Next: {
