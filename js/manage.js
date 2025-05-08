@@ -159,32 +159,6 @@ var smartManage = (function() {
 			evaluationJSON.discovery.accessibilitySummary = document.getElementById('accessibilitySummary').value.trim();
 			evaluationJSON.discovery.accessModeSufficient = saveSufficientSets();
 		
-		/* add onix metadata */
-		
-		evaluationJSON.distribution = {};
-		
-			evaluationJSON.distribution.onix = {};
-			evaluationJSON.distribution.ProductFormFeatureDescription = {};
-			
-			evaluationJSON.distribution.onix['00'] = document.getElementById('onix00').value.trim();
-			
-			for (var o = 1; o < 93; o++) {
-				var onix_id = String(o).padStart(2,'0');
-				var onix_chkbox = document.getElementById('onix' + onix_id);
-				if (onix_chkbox) {
-					evaluationJSON.distribution.onix[onix_id] = onix_chkbox.checked;
-				}
-				
-				var onix_opt = document.getElementById(onix_id + '-ProductFormFeatureDescription');
-				if (onix_opt) {
-					evaluationJSON.distribution.ProductFormFeatureDescription[onix_id] = onix_opt.value;
-				}
-			}
-			
-			for (var p = 93; p < 100; p++) {
-				evaluationJSON.distribution.onix[p] = document.getElementById('onix'+p).value.trim();
-			}
-		
 		/* add conformance metadata */
 		
 		evaluationJSON.evaluation = {};
@@ -464,27 +438,45 @@ var smartManage = (function() {
 			}
 		}
 		
-		/* load onix metadata */
+		/* 
+		 * load onix metadata
+		 * 
+		 * NOTE: This code is only retained for old evaluations created when there
+		 * 		was a separate tab for distribution metadata. 
+		*/
 		
 		if (evaluationJSON.hasOwnProperty('distribution')) {
+		
+			var feature_map = {
+				"14": "alternativeText",
+				"18": "ChemML",
+				"12": "index",
+				"15": "longDescription",
+				"17": "MathML",
+				"19": "pageBreakMarkers",
+				"13": "readingOrder",
+				"20": "synchronizedAudioText",
+				"11": "tableOfContents",
+				"21": "ttsMarkup"
+			}
+			
 			if (evaluationJSON.distribution.hasOwnProperty('onix')) {
+			
 				for (var onix_id in evaluationJSON.distribution.onix) {
+					
 					var padded_id = onix_id.padStart(2,'0');
+					
 					if (onix_id == 0 || onix_id > 90) {
-						document.getElementById('onix' + padded_id).value = evaluationJSON.distribution.onix.hasOwnProperty(padded_id) ? evaluationJSON.distribution.onix[padded_id] : '';
+						// document.getElementById('onix' + padded_id).value = evaluationJSON.distribution.onix.hasOwnProperty(padded_id) ? evaluationJSON.distribution.onix[padded_id] : '';
 					}
+					
 					else {
 						if (evaluationJSON.distribution.onix[padded_id]) {
-							var id = 'onix' + padded_id;
-							var input = document.getElementById(id);
-							if (!input.checked) {
+							var id = feature_map[padded_id];
+							var input = document.querySelector('#accessibilityFeature input[value="' + id + '"]');
+							if (input && !input.checked) {
 								input.checked = true;
-								smartDiscovery.syncFeature('distribution', id, true);
 							}
-						}
-						
-						if (evaluationJSON.distribution.hasOwnProperty('ProductFormFeatureDescription') && evaluationJSON.distribution.ProductFormFeatureDescription.hasOwnProperty(padded_id)) {
-							document.getElementById(padded_id + '-ProductFormFeatureDescription').value = evaluationJSON.distribution.ProductFormFeatureDescription[padded_id];
 						}
 					}
 				}
@@ -621,7 +613,6 @@ var smartManage = (function() {
 			}
 			else {
 				checkbox.checked = true;
-				smartDiscovery.syncFeature('discovery', obj[id], true);
 			}
 		}
 	}

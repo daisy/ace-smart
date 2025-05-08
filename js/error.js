@@ -74,7 +74,6 @@ var smartError = (function() {
 		/* iterates over the elements whose background colors are changed based on their status and removes the classes */
 		clearErrorBGs: function(scope) {
 			var errorFields = { "discovery": ['accessibilityFeature', 'accessibilitySummary-field', 'accessibilityHazard', 'accessMode', 'accessModeSufficient'],
-							"distribution": ['onix00', 'onix01', 'onix02', 'onix03', 'onix04', 'onix08', 'onix09', 'onix10', 'onix11', 'onix12', 'onix13', 'onix14', 'onix15', 'onix16', 'onix17', 'onix18', 'onix19', 'onix20', 'onix21', 'onix22', 'onix24', 'onix25', 'onix26', 'onix27', 'onix28', 'onix29', 'onix30', 'onix31', 'onix32', 'onix34', 'onix35', 'onix36', 'onix37', 'onix38', 'onix39', 'onix40', 'onix52', 'onix75', 'onix76', 'onix77', 'onix80', 'onix81', 'onix82', 'onix84', 'onix85', 'onix86', 'onix93', 'onix94', 'onix95', 'onix96', 'onix97', 'onix98', 'onix99'],
 						   "evaluation": ['certifiedBy']};
 			
 			if (scope != null && scope != '') {

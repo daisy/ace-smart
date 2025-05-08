@@ -129,7 +129,6 @@ JS;
 		<script src="js/config/discovery.js<?= '?v=' . $smart_version ?>" defer></script>
 		<script src="js/discovery.js<?= '?v=' . $smart_version ?>" defer></script>
 		<script src="js/config/distribution.js<?= '?v=' . $smart_version ?>" defer></script>
-		<script src="js/distribution.js<?= '?v=' . $smart_version ?>" defer></script>
 		<script src="js/evaluation.js<?= '?v=' . $smart_version ?>" defer></script>
 		<script src="js/init-smart.js<?= '?v=' . $smart_version ?>" defer></script>
 		<style>
@@ -142,6 +141,7 @@ JS;
 			<h1><img src="images/daisy_high.jpg" class="logo" alt="DAISY"/> <span property="dcterms:title">Ace <span class="smart_hd">SMART</span> &#8212; Evaluation</span></h1>
 			
 			<nav class="appmenu" aria-label="application menu">
+				<a href="#" id="create-button"><img src="images/create.png" alt="create outputs" title="Create Outputs"/></a>
 				<a href="#" id="validate-button"><img src="images/validate.png" alt="validate" title="Validate"/></a>
 				<a href="#" id="save-button"><img src="images/save.png" alt="save" title="Save"/></a>
 				<a href="#" id="close-button"><img src="images/close_app.png" alt="close" title="Close"/></a>
@@ -158,16 +158,10 @@ JS;
 				</li>
 				<?php $ace_extension_tabs = $ext->print_tabs(); ?>
 				<li class="js-tablist__item">
-					<a href="#discovery" id="label_discovery" class="js-tablist__link">Discovery</a>
-				</li>
-				<li class="js-tablist__item">
-					<a href="#distribution" id="label_distribution" class="js-tablist__link">Distribution</a>
+					<a href="#discovery" id="label_discovery" class="js-tablist__link">Metadata</a>
 				</li>
 				<li class="js-tablist__item">
 					<a href="#evaluation" id="label_evaluation" class="js-tablist__link">Result</a>
-				</li>
-				<li class="js-tablist__item">
-					<a href="#generate" id="label_generate" class="js-tablist__link">Reporting</a>
 				</li>
 			</ul>
 	
@@ -349,7 +343,7 @@ JS;
 				<?php $ext->add_tab_includes() ?>
 				
 				<section id="discovery" class="js-tabcontent">
-					<h2>Discovery Metadata</h2>
+					<h2>Accessibility Metadata</h2>
 					
 					<p class="help"><a href="user-guide/discovery.html" target="_blank">Need help?</a></p>
 					
@@ -364,35 +358,124 @@ JS;
 						}
 					</script>
 					
-					<div id="discovery-fields"></div>
-					
-					<div class="buttons">
-						<input type="button" class="button_hlt" id="discovery_button" value="Generate"/>
+					<div id="discovery-fields">
+						<fieldset id="accessibilityFeature">
+							<legend>Accessibility Features <img src="/images/asterisk.png" alt="required"><a href="https://www.w3.org/TR/epub-a11y-tech-11/#meta-003" target="_blank" class="usage"><img src="/images/info.png" height="20px" alt="How to specify accessibility features" title="How to specify accessibility features" onmouseover="this.src='/images/info_hover.png'" onmouseout="this.src='/images/info.png'"></a></legend>
+							
+							<div class="cols">
+								<label><input type="checkbox" data-onix-map="196-14" value="alternativeText"> alternative text</label>
+								<label><input type="checkbox" value="annotations"> annotations</label>
+								<label><input type="checkbox" data-onix-map="196-30" value="ARIA"> ARIA roles</label>
+								<label><input type="checkbox" data-onix-map="196-28" value="audioDescription"> audio descriptions</label>
+								<label><input type="checkbox" data-onix-map="21-BRL" value="braille"> braille</label>
+								<label><input type="checkbox" data-onix-map="196-18" value="ChemML"> ChemML</label>
+								<label><input type="checkbox" value="closedCaptions"> closed captions</label>
+								<label><input type="checkbox" data-onix-map="196-14, 81-48" value="describedMath"> described math</label>
+								<label><input type="checkbox" data-onix-map="196-36" value="displayTransformability"> display transformability</label>
+								<label><input type="checkbox" data-onix-map="196-27" value="highContrastAudio"> high contrast audio</label>
+								<label><input type="checkbox" data-onix-map="196-26" value="highContrastDisplay"> high contrast display</label>
+								<label><input type="checkbox" data-onix-map="196-12" value="index"> index</label>
+								<label><input type="checkbox" data-onix-map="21-LTE, 21-ULP" value="largePrint"> large print</label>
+								<label><input type="checkbox" data-onix-map="196-35, 81-48" value="latex"> latex</label>
+								<label><input type="checkbox" data-onix-map="196-15, 196-16" value="longDescription"> long descriptions</label>
+								<label><input type="checkbox" data-onix-map="196-17" value="MathML"> MathML</label>
+								<label><input type="checkbox" data-onix-map="196-09" value="none"> none</label>
+								<label><input type="checkbox" data-onix-map="175-V211, 175-V214" value="openCaptions"> open captions</label>
+								<label><input type="checkbox" data-onix-map="196-19" value="pageBreakMarkers"> page break markers</label>
+								<label><input type="checkbox" data-onix-map="196-41" value="pageNavigation"> page navigation</label>
+								<label><input type="checkbox" data-onix-map="196-13" value="readingOrder"> reading order</label>
+								<label><input type="checkbox" data-onix-map="175-V213" value="signLanguage"> sign language</label>
+								<label><input type="checkbox" data-onix-map="196-29" value="structuralNavigation"> structural navigation</label>
+								<label><input type="checkbox" data-onix-map="196-20" value="synchronizedAudioText"> synchronized audio text</label>
+								<label><input type="checkbox" data-onix-map="196-11" value="tableOfContents"> table of contents</label>
+								<label><input type="checkbox" value="tactileGraphic"> tactile graphic</label>
+								<label><input type="checkbox" value="tactileObject"> tactile object</label>
+								<label><input type="checkbox" value="timingControl"> timing control</label>
+								<label><input type="checkbox" data-onix-map="175-V212" value="transcript"> transcript</label>
+								<label><input type="checkbox" data-onix-map="196-21, 196-22" value="ttsMarkup"> text-to-speech markup</label>
+								<label><input type="checkbox" data-onix-only="true" data-onix-map="196-37" value="ultraHighContrastDisplay"> ultra high contrast display</label>
+								<label><input type="checkbox" data-onix-map="196-08" value="unknown"> unknown</label>
+								<label><input type="checkbox" data-onix-map="144-00" value="unlocked"> unlocked</label>
+								<label><input type="checkbox" value="fullRubyAnnotations"> full ruby annotations</label>
+								<label><input type="checkbox" value="rubyAnnotations"> ruby annotations</label>
+								<label><input type="checkbox" value="horizontalWriting"> horizontal writing</label>
+								<label><input type="checkbox" value="verticalWriting"> vertical writing</label>
+							</div>
+							
+							<div id="add-accessibilityFeature" class="link">
+								<a href="#add-accessibilityFeature" id="add-a11y-feature">Add custom field</a>
+							</div>
+						</fieldset>
+						
+						<fieldset id="accessibilityHazard">
+							<legend>Accessibility Hazards <img src="/images/asterisk.png" alt="required"><a href="https://www.w3.org/TR/epub-a11y-tech-11/#meta-004" target="_blank" class="usage"><img src="/images/info.png" height="20px" alt="How to specify accessibility hazards" title="How to specify accessibility hazards" onmouseover="this.src='/images/info_hover.png'" onmouseout="this.src='/images/info.png'"></a></legend>
+							
+							<div class="cols">
+								<label><input type="checkbox" value="flashing"> flashing</label>
+								<label><input type="checkbox" value="noFlashingHazard"> no flashing risk</label>
+								<label><input type="checkbox" value="unknownFlashingHazard"> flashing risk unknown</label>
+								<label><input type="checkbox" value="none"> no hazards</label>
+								<label><input type="checkbox" value="motionSimulation"> motion simulation</label>
+								<label><input type="checkbox" value="noMotionSimulationHazard"> no motion risk</label>
+								<label><input type="checkbox" value="unknownMotionSimulationHazard"> motion risk unknown</label>
+								<label><input type="checkbox" value="unknown"> hazards not known</label>
+								<label><input type="checkbox" value="sound"> sound</label>
+								<label><input type="checkbox" value="noSoundHazard"> no sound risk</label>
+								<label><input type="checkbox" value="unknownSoundHazard"> sound risk unknown</label>
+							</div>
+						</fieldset>
+						
+						<fieldset id="accessMode">
+							<legend>Access Modes <img src="/images/asterisk.png" alt="required"><a href="https://www.w3.org/TR/epub-a11y-tech-11/#meta-001" target="_blank" class="usage"><img src="/images/info.png" height="20px" alt="How to specify access modes" title="How to specify access modes" onmouseover="this.src='/images/info_hover.png'" onmouseout="this.src='/images/info.png'"></a></legend>
+							
+							<div class="cols">
+								<label><input type="checkbox" value="auditory"> auditory</label>
+								<label><input type="checkbox" value="tactile"> tactile</label>
+								<label><input type="checkbox" value="textual"> textual</label>
+								<label><input type="checkbox" value="visual"> visual</label>
+							</div>
+						</fieldset>
+						
+						<fieldset id="accessModeSufficient">
+							<legend>Sufficient Access Modes<a href="https://www.w3.org/TR/epub-a11y-tech-11/#meta-002" target="_blank" class="usage"><img src="/images/info.png" height="20px" alt="How to specify sufficient access modes" title="How to specify sufficient access modes" onmouseover="this.src='/images/info_hover.png'" onmouseout="this.src='/images/info.png'"></a></legend>
+							
+							<fieldset id="set1">
+								<legend>Set 1</legend>
+								
+								<div class="cols">
+									<label><input type="checkbox" data-onix-map="81-01" value="auditory"> auditory</label>
+									<label><input type="checkbox" value="tactile"> tactile</label>
+									<label><input type="checkbox" data-onix-map="81-10, 196-10" value="textual"> textual</label>
+									<label><input type="checkbox" value="visual"> visual</label>
+								</div>
+							</fieldset>
+							
+							<fieldset id="set2">
+								<legend>Set 2</legend>
+								
+								<div class="cols">
+									<label><input type="checkbox" data-onix-map="81-01" value="auditory"> auditory</label>
+									<label><input type="checkbox" value="tactile"> tactile</label>
+									<label><input type="checkbox" data-onix-map="81-10, 196-10" value="textual"> textual</label>
+									<label><input type="checkbox" value="visual"> visual</label>
+								</div>
+							</fieldset>
+							
+							<div id="add-accessModeSufficient" class="link">
+								<a href="#add-accessModeSufficient" id="add-sufficient">Add another set</a>
+							</div>
+						</fieldset>
+						
+						<fieldset id="accessibilitySummary-field">
+							<legend><label for="accessibilitySummary">Accessibility Summary</label><a href="https://www.w3.org/TR/epub-a11y-tech-11/#meta-005" target="_blank" class="usage"><img src="/images/info.png" height="20px" alt="How to specify accessibility summary" title="How to specify accessibility summary" onmouseover="this.src='/images/info_hover.png'" onmouseout="this.src='/images/info.png'"></a></legend>
+							
+							<div id="add-summary" class="autogen">
+								<a href="#add-summary">Suggest a summary</a>
+							</div>
+							
+							<textarea id="accessibilitySummary" rows="5"></textarea>
+						</fieldset>
 					</div>
-					
-					<section id="discovery-meta" aria-label="Discovery Metadata" title="Discovery Metadata">
-						<p>Copy and paste the following metadata to the EPUB package document.</p>
-						<textarea id="discovery-metadata" rows="15" aria-label="discovery metadata"></textarea>
-						<button id="discovery-copy">Copy</button>
-					</section>
-				</section>
-
-				<section id="distribution" class="js-tabcontent">
-					<h2>Distribution Metadata</h2>
-					
-					<p class="help"><a href="user-guide/distribution.html" target="_blank">Need help?</a></p>
-					
-					<div id="distribution-fields"></div>
-					
-					<div class="buttons">
-						<input type="button" class="button_hlt" id="distribution_button" value="Generate"/>
-					</div>
-					
-					<section id="distribution-meta" aria-label="ONIX Metadata" title="ONIX Metadata">
-						<p>Copy and paste the following metadata to the ONIX record.</p>
-						<textarea id="distribution-metadata" rows="15" aria-label="distribution metadata"></textarea>
-						<button id="distribution-copy">Copy</button>
-					</section>
 				</section>
 				
 				<section id="evaluation" class="js-tabcontent">
@@ -414,54 +497,71 @@ JS;
 						<label class="data"><span>Credential:</span> <input type="text" id="certifierCredential"/></label>
 						<label class="data"><span>Link to report:</span> <input type="text" id="certifierReport"/></label>
 					</fieldset>
-					
-					<div class="buttons">
-						<input type="button" class="button_hlt" value="Generate" id="generate-evaluation-metadata"/>
-					</div>
-					
-					<section id="evaluation-meta" aria-label="Evaluation Metadata" title="Evaluation Metadata">
-						<p>Copy and paste the following metadata to the EPUB package document.</p>
-						<textarea id="evaluation-metadata" rows="6" aria-label="evaluation metadata"></textarea>
-						<button id="evaluation-copy">Copy</button>
-					</section>
-				</section>
-				
-				<section id="generate" class="js-tabcontent">
-					<h2>Generate Report</h2>
-					
-					<p class="help"><a href="user-guide/generate.html" target="_blank">Need help?</a></p>
-					
-					<div id="output-opt">
-							<a href="#output-opt" onclick="smartReport.showOptions(); return false;">Output Options</a>
-						</div>
-					</div>
-					
-					<section id="output-options" aria-label="Output Options" title="Output Options">
-						<div class="form-data conf-control">
-							<fieldset>
-								<legend>Conformance Notes</legend>
-								<label class="data"><input type="radio" name="show-notes" value="all" checked="checked"/> Include all</label>
-								<label class="data"><input type="radio" name="show-notes" value="failures"/> Only failure descriptions</label>
-								<label class="data"><input type="radio" name="show-notes" value="notes"/> Only notes</label>
-								<label class="data"><input type="radio" name="show-notes" value="none"/> None</label>
-							</fieldset>
-							
-							<?php $ext->add_output_options() ?>
-						</div>
-					</section>
-					
-					<div class="buttons">
-						<input type="button" value="Preview" id="preview-report" class="button_hlt preview" aria-describedby="popup-instructions"/>
-						<input type="button" class="button_hlt" value="Create" id="generate-report" aria-describedby="gen"/>
-					</div>
-					
-					<div id="popup-instructions">
-						<p class="instr">Ensure that you do not have a pop-up blocker enabled when previewing content.</p>
-						<p class="instr">Do not bookmark the preview page as the report is lost once your browser is closed.</p>
-					</div>
 				</section>
 			</form>
 		</main>
+		
+		
+		<section id="outputs" aria-label="Outputs" title="Outputs">
+			<section id="eval-report-gen">
+				<h3>Evaluation Report</h3>
+				
+				<p class="help"><a href="user-guide/generate.html" target="_blank">Need help?</a></p>
+				
+				<div id="output-opt">
+					<a href="#output-opt" onclick="smartReport.showOptions(); return false;">Output Options</a>
+				</div>
+				
+				<div class="buttons">
+					<input type="button" value="Preview" id="preview-report" class="button_hlt preview" aria-describedby="popup-instructions"/>
+					<input type="button" class="button_hlt" value="Create" id="generate-report" aria-describedby="gen"/>
+				</div>
+				
+				<div id="popup-instructions">
+					<p class="instr">Ensure that you do not have a pop-up blocker enabled when previewing content.</p>
+					<p class="instr">Do not bookmark the preview page as the report is lost once your browser is closed.</p>
+				</div>
+			</section>
+			
+			<section id="eval-meta-gen">
+				<h3>Evaluation Metadata</h3>
+				
+				<fieldset>
+					<legend>Format:</legend>
+					<label><input type="radio" name="meta-format" value="epub" checked="checked"/> EPUB</label>
+					<label><input type="radio" name="meta-format" value="onix"/> ONIX</label>
+				</fieldset>
+				
+				<div class="buttons">
+					<input type="button" class="button_hlt" id="meta_button" value="Generate"/>
+				</div>
+			</section>
+		</section>
+		
+		<div id="output-options" aria-label="Output Options" title="Output Options">
+			<div class="form-data conf-control">
+				<fieldset>
+					<legend>Conformance Notes</legend>
+					<label class="data"><input type="radio" name="show-notes" value="all" checked="checked"/> Include all</label>
+					<label class="data"><input type="radio" name="show-notes" value="failures"/> Only failure descriptions</label>
+					<label class="data"><input type="radio" name="show-notes" value="notes"/> Only notes</label>
+					<label class="data"><input type="radio" name="show-notes" value="none"/> None</label>
+				</fieldset>
+				
+				<?php $ext->add_output_options() ?>
+			</div>
+		</div>
+		
+		<div id="meta-output" aria-label="Accessibility Metadata" title="Accessibility Metadata">
+			<p id="meta-copy-desc"></p>
+			<form id="meta-viewer" action="https://daisy.github.io/a11y-meta-viewer/" target="_blank" method="get">
+				<textarea id="meta-tags" name="record" rows="15"></textarea>
+				<div><button id="meta-copy">Copy</button></div>
+				<p>To test the display statements generated from this output, go to the 
+					<a id="meta-link" href="#meta-link" onclick="document.getElementById('meta-viewer').submit(); return false;">
+					Accessibility Metadata Viewer</a>.</p>
+			</form>
+		</div>
 		
 		<div id="save" aria-label="Save report" title="Save report">
 			<p>Select where to save the report:<p>

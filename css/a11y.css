@@ -187,6 +187,12 @@ h3{
 	font-size: 1.6rem;
 }
 
+#generate h3 {
+	font-size: 2rem;
+	border-top: 0.1rem solid rgb(128,128,128);
+	padding-top: 2rem;
+}
+
 body.page h2{
 	margin-top: 0;
 	padding-top: 2rem;
@@ -241,11 +247,13 @@ nav.appmenu {
 }
 
 a#save-button,
+a#create-button,
 a#validate-button {
 	margin-right: 2rem;
 }
 
 a#save-button:hover,
+a#create-button:hover,
 a#close-button:hover,
 a#validate-button:hover {
 	border-bottom: 0.3rem solid rgb(220,0,0);
@@ -450,6 +458,26 @@ fieldset#eval-info legend {
 
 /* report generation */
 
+#outputs > section > *:nth-child(n+2) {
+	margin-left: 3rem;
+}
+
+#outputs div.buttons {
+	padding: 0;
+}
+
+#eval-meta-gen > h3 {
+	margin-top: 3rem;
+}
+
+#eval-meta-gen > fieldset > legend {
+	width: auto;
+}
+
+#eval-meta-gen > fieldset > legend +label {
+	clear: unset;
+}
+
 #generate details {
 	margin-top: 2rem;
 	margin-left: 1rem;
@@ -467,6 +495,11 @@ fieldset#eval-info legend {
 
 #generate fieldset:first-of-type {
 	margin-top: 2rem;
+}
+
+.ui-widget-content a {
+	color: rgb(0,0,220);
+	border-bottom: 0.1rem dashed rgb(0,0,220);
 }
 
 /* lists */
@@ -1191,9 +1224,7 @@ input[type='image'] {
 /* output options */
 
 div#output-opt {
-	margin-left: 2rem;
-	margin-top: 2rem;
-	margin-bottom: -1rem;
+	margin-bottom: 1rem;
 }
 
 /* display properties */
@@ -1344,7 +1375,7 @@ div#output-opt {
 		display: none;
 	}
 	
-	a#save-button, a#close-button, a#validate-button {
+	a#save-button, a#create-button, a#close-button, a#validate-button {
 		margin-right: 1rem;
 	}
 	

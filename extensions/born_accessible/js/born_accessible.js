@@ -458,11 +458,11 @@ var bornAccessible = (function() {
     			epub_cert.value = gca_credential;
     		}
     		
-    		var onix_cert = document.getElementById('onix93');
+    		// var onix_cert = document.getElementById('onix93');
     		
-    		if (!onix_cert.value) {
-    			onix_cert.value = gca_credential;
-    		}
+    		// if (!onix_cert.value) {
+    		//	onix_cert.value = gca_credential;
+    		// }
 		}
 	}
 

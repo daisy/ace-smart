@@ -67,17 +67,38 @@ var smartFormat = (function() {
 			if (options.value.trim() != '') {
 				if (_epubVersion == 3) {
 					if (options.type == 'meta') {
-						return '<meta property="' + options.property + '"' + (options.id ? ' id="' + options.id + '"' : '') + (options.refines ? ' refines="#' + options.refines + '"' : '') + '>' + this.elementValueEscape(options.value) + '</meta>\n';
+						return '\t\t<meta property="' + options.property + '"' + (options.id ? ' id="' + options.id + '"' : '') + (options.refines ? ' refines="#' + options.refines + '"' : '') + '>' + this.elementValueEscape(options.value) + '</meta>\n';
 					}
 					else {
-						return '<link rel="' + options.property + '" href="' + this.attributeValueEscape(options.value) + '"' + (options.id ? ' id="' + options.id + '"' : '') + (options.refines ? ' refines="#' + options.refines + '"' : '') + '/>\n';
+						return '\t\t<link rel="' + options.property + '" href="' + this.attributeValueEscape(options.value) + '"' + (options.id ? ' id="' + options.id + '"' : '') + (options.refines ? ' refines="#' + options.refines + '"' : '') + '/>\n';
 					}
 				}
 				else {
-					return '<meta name="' + options.property + '" content="' + this.attributeValueEscape(options.value) + '"/>\n';
+					return '\t\t<meta name="' + options.property + '" content="' + this.attributeValueEscape(options.value) + '"/>\n';
 				}
 			}
 			return '';
+		},
+		
+	
+		/* adds the general tagging wrapper for the accessibility metadata fields */
+		formatONIXEntry: function(options) {
+			
+			var feature = '';
+			
+			if (options.list == 196) {
+				feature = '\t\t\t<ProductFormFeature>\n'
+							+ '\t\t\t\t<ProductFormFeatureType>09</ProductFormFeatureType>\n'
+							+ '\t\t\t\t<ProductFormFeatureValue>' + options.code + '</ProductFormFeatureValue>\n';
+				
+				if (options.hasOwnProperty('description') && options.description !== '') {
+					feature += '\t\t\t\t<ProductFormFeatureDescription>' + options.description + '</ProductFormFeatureDescription>\n';
+				}
+				
+				feature += '\t\t\t</ProductFormFeature>\n';
+			}
+			
+			return feature;
 		},
 		
 		
