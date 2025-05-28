@@ -435,7 +435,7 @@ p.help a {
 /* conformance results */
 
 div.conformance-result {
-	padding: 1rem 0 0 1.3rem;
+	padding: 1rem 0 0 0;
 }
 
 span.hd {
@@ -443,7 +443,7 @@ span.hd {
 }
 
 span#conformance-result-status {
-	padding-left: 5rem;
+	padding-left: 15rem;
 	color: rgb(0,0,0);
 }
 
@@ -455,6 +455,11 @@ fieldset#eval-info legend {
 	margin-top: 1.5rem;
 }
 
+legend.eval-legend {
+	color: black;
+	margin-top: 3rem;
+	margin-bottom: 1rem;
+}
 
 /* report generation */
 
@@ -557,13 +562,8 @@ li.epub-trigger {
 /* fieldsets */
 
 fieldset,
-div.conformance-result,
-div.onix {
+div.conformance-result {
 	border: none;
-}
-
-div.onix {
-	margin-left: 0.2rem;
 }
 
 fieldset {
@@ -898,6 +898,10 @@ div.combo {
 	margin: 1rem;
 }
 
+div.combo-eval {
+	margin: 1rem 1rem 1rem 0;
+}
+
 /* n/a notes */
 
 p.img,
@@ -917,6 +921,7 @@ label.data{
 
 label.data > span,
 div.data > span,
+div.combo-eval > label:first-child span,
 div.combo > label:first-child span {
 	display: inline-block;
 	width: 20rem;
@@ -925,7 +930,8 @@ div.combo > label:first-child span {
 }
 
 label.data > input[type = 'text'],
-div.combo > label > input[type='text'] {
+div.combo > label > input[type='text'],
+div.combo-eval > label > input[type='text'] {
 	width: 40rem;
 }
 
@@ -1130,53 +1136,6 @@ figcaption{
 }
 
 
-/* onix metadata fields */
-
-fieldset.onix > legend {
-	margin-bottom: 2rem;
-}
-
-fieldset.onix > label {
-	display: block;
-	margin-top: 2rem;
-}
-
-div.onix {
-	margin-top: 2rem;
-	padding: 2rem;
-	font-weight: bold
-}
-
-div.onix > label {
-	padding-bottom: 1rem;
-	display: inline-block;
-	font-weight: normal;
-	font-size: 110%;
-	color: rgb(0,0,120);
-}
-
-div.onix input[type='text'],
-div.onix textarea {
-	display: block;
-	width: 65rem;
-	margin-top: 1rem;
-}
-
-.onix-optional {
-	margin-top: 2rem;
-	color: rgb(0,0,120);
-}
-
-#distribution-fields input[type=text] {
-	min-width: 40rem;
-}
-
-#distribution-fields dt {
-	font-weight: normal;
-	color: rgb(0,0,120);
-	margin-bottom: 1rem;
-}
-
 /* pub info fieldsets */
 
 div.data > fieldset.flat > legend {
@@ -1379,7 +1338,7 @@ div#output-opt {
 		margin-right: 1rem;
 	}
 	
-	label.data > input[type = 'text'], div.combo > label > input[type='text'] {
+	label.data > input[type = 'text'], div.combo > label > input[type='text'], div.combo-eval > label > input[type='text'] {
 		width: 30rem;
     }
 }

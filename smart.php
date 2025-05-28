@@ -123,14 +123,18 @@ JS;
 		<script src="js/wcag.js<?= '?v=' . $smart_version ?>"></script>
 		<script src="js/reporting.js<?= '?v=' . $smart_version ?>"></script>
 		<script src="js/extensions.js<?= '?v=' . $smart_version ?>"></script>
+		<script src="js/validation.js<?= '?v=' . $smart_version ?>"></script>
 		
 		<script src="js/a11ytabs.js<?= '?v=' . $smart_version ?>" defer></script>
 		<script src="js/conformance.js<?= '?v=' . $smart_version ?>" defer></script>
-		<script src="js/config/discovery.js<?= '?v=' . $smart_version ?>" defer></script>
-		<script src="js/discovery.js<?= '?v=' . $smart_version ?>" defer></script>
-		<script src="js/config/distribution.js<?= '?v=' . $smart_version ?>" defer></script>
-		<script src="js/evaluation.js<?= '?v=' . $smart_version ?>" defer></script>
+		<script src="js/metadata.js<?= '?v=' . $smart_version ?>" defer></script>
 		<script src="js/init-smart.js<?= '?v=' . $smart_version ?>" defer></script>
+		
+		<!-- accessibility viewer -->
+		<script src="https://daisy.github.io/a11y-meta-viewer/js/xpaths.js<?= '?v=' . $smart_version ?>" defer></script>
+		<script src="https://daisy.github.io/a11y-meta-viewer/js/lang/en-us/vocabulary.js<?= '?v=' . $smart_version ?>" defer></script>
+		<script src="https://daisy.github.io/a11y-meta-viewer/js/metaDisplayProcessor.js<?= '?v=' . $smart_version ?>" defer></script>
+		
 		<style>
 			h1 { font-size: 2rem; }
 		</style>
@@ -161,7 +165,7 @@ JS;
 					<a href="#discovery" id="label_discovery" class="js-tablist__link">Metadata</a>
 				</li>
 				<li class="js-tablist__item">
-					<a href="#evaluation" id="label_evaluation" class="js-tablist__link">Result</a>
+					<a href="#evaluation" id="label_evaluation" class="js-tablist__link">Reporting</a>
 				</li>
 			</ul>
 	
@@ -364,7 +368,6 @@ JS;
 							
 							<div class="cols">
 								<label><input type="checkbox" data-onix-map="196-14" value="alternativeText"> alternative text</label>
-								<label><input type="checkbox" value="annotations"> annotations</label>
 								<label><input type="checkbox" data-onix-map="196-30" value="ARIA"> ARIA roles</label>
 								<label><input type="checkbox" data-onix-map="196-28" value="audioDescription"> audio descriptions</label>
 								<label><input type="checkbox" data-onix-map="21-BRL" value="braille"> braille</label>
@@ -401,27 +404,23 @@ JS;
 								<label><input type="checkbox" value="horizontalWriting"> horizontal writing</label>
 								<label><input type="checkbox" value="verticalWriting"> vertical writing</label>
 							</div>
-							
-							<div id="add-accessibilityFeature" class="link">
-								<a href="#add-accessibilityFeature" id="add-a11y-feature">Add custom field</a>
-							</div>
 						</fieldset>
 						
 						<fieldset id="accessibilityHazard">
 							<legend>Accessibility Hazards <img src="/images/asterisk.png" alt="required"><a href="https://www.w3.org/TR/epub-a11y-tech-11/#meta-004" target="_blank" class="usage"><img src="/images/info.png" height="20px" alt="How to specify accessibility hazards" title="How to specify accessibility hazards" onmouseover="this.src='/images/info_hover.png'" onmouseout="this.src='/images/info.png'"></a></legend>
 							
 							<div class="cols">
-								<label><input type="checkbox" value="flashing"> flashing</label>
-								<label><input type="checkbox" value="noFlashingHazard"> no flashing risk</label>
-								<label><input type="checkbox" value="unknownFlashingHazard"> flashing risk unknown</label>
-								<label><input type="checkbox" value="none"> no hazards</label>
-								<label><input type="checkbox" value="motionSimulation"> motion simulation</label>
-								<label><input type="checkbox" value="noMotionSimulationHazard"> no motion risk</label>
-								<label><input type="checkbox" value="unknownMotionSimulationHazard"> motion risk unknown</label>
-								<label><input type="checkbox" value="unknown"> hazards not known</label>
-								<label><input type="checkbox" value="sound"> sound</label>
-								<label><input type="checkbox" value="noSoundHazard"> no sound risk</label>
-								<label><input type="checkbox" value="unknownSoundHazard"> sound risk unknown</label>
+								<label><input type="checkbox" data-onix-map="143-13" value="flashing"> flashing</label>
+								<label><input type="checkbox" data-onix-map="143-14" value="noFlashingHazard"> no flashing risk</label>
+								<label><input type="checkbox" data-onix-map="143-24" value="unknownFlashingHazard"> flashing risk unknown</label>
+								<label><input type="checkbox" data-onix-map="143-00" value="none"> no hazards</label>
+								<label><input type="checkbox" data-onix-map="143-17" value="motionSimulation"> motion simulation</label>
+								<label><input type="checkbox" data-onix-map="143-18" value="noMotionSimulationHazard"> no motion risk</label>
+								<label><input type="checkbox" data-onix-map="143-26" value="unknownMotionSimulationHazard"> motion risk unknown</label>
+								<label><input type="checkbox" data-onix-map="196-08" value="unknown"> hazards not known</label>
+								<label><input type="checkbox" data-onix-map="143-15" value="sound"> sound</label>
+								<label><input type="checkbox" data-onix-map="143-16" value="noSoundHazard"> no sound risk</label>
+								<label><input type="checkbox" data-onix-map="143-25" value="unknownSoundHazard"> sound risk unknown</label>
 							</div>
 						</fieldset>
 						
@@ -429,10 +428,10 @@ JS;
 							<legend>Access Modes <img src="/images/asterisk.png" alt="required"><a href="https://www.w3.org/TR/epub-a11y-tech-11/#meta-001" target="_blank" class="usage"><img src="/images/info.png" height="20px" alt="How to specify access modes" title="How to specify access modes" onmouseover="this.src='/images/info_hover.png'" onmouseout="this.src='/images/info.png'"></a></legend>
 							
 							<div class="cols">
-								<label><input type="checkbox" value="auditory"> auditory</label>
+								<label><input type="checkbox" data-onix-map="81-01" value="auditory"> auditory</label>
 								<label><input type="checkbox" value="tactile"> tactile</label>
-								<label><input type="checkbox" value="textual"> textual</label>
-								<label><input type="checkbox" value="visual"> visual</label>
+								<label><input type="checkbox" data-onix-map="81-10" value="textual"> textual</label>
+								<label><input type="checkbox" data-onix-map="81-07" value="visual"> visual</label>
 							</div>
 						</fieldset>
 						
@@ -443,9 +442,9 @@ JS;
 								<legend>Set 1</legend>
 								
 								<div class="cols">
-									<label><input type="checkbox" data-onix-map="81-01" value="auditory"> auditory</label>
+									<label><input type="checkbox" data-onix-map="196-51" value="auditory"> auditory</label>
 									<label><input type="checkbox" value="tactile"> tactile</label>
-									<label><input type="checkbox" data-onix-map="81-10, 196-10" value="textual"> textual</label>
+									<label><input type="checkbox" data-onix-map="196-52" value="textual"> textual</label>
 									<label><input type="checkbox" value="visual"> visual</label>
 								</div>
 							</fieldset>
@@ -454,48 +453,71 @@ JS;
 								<legend>Set 2</legend>
 								
 								<div class="cols">
-									<label><input type="checkbox" data-onix-map="81-01" value="auditory"> auditory</label>
+									<label><input type="checkbox" data-onix-map="196-51" value="auditory"> auditory</label>
 									<label><input type="checkbox" value="tactile"> tactile</label>
-									<label><input type="checkbox" data-onix-map="81-10, 196-10" value="textual"> textual</label>
+									<label><input type="checkbox" data-onix-map="196-52" value="textual"> textual</label>
 									<label><input type="checkbox" value="visual"> visual</label>
 								</div>
 							</fieldset>
 							
-							<div id="add-accessModeSufficient" class="link">
-								<a href="#add-accessModeSufficient" id="add-sufficient">Add another set</a>
-							</div>
+							<fieldset id="set3">
+								<legend>Set 3</legend>
+								
+								<div class="cols">
+									<label><input type="checkbox" data-onix-map="196-51" value="auditory"> auditory</label>
+									<label><input type="checkbox" value="tactile"> tactile</label>
+									<label><input type="checkbox" data-onix-map="196-52" value="textual"> textual</label>
+									<label><input type="checkbox" value="visual"> visual</label>
+								</div>
+							</fieldset>
 						</fieldset>
 						
 						<fieldset id="accessibilitySummary-field">
 							<legend><label for="accessibilitySummary">Accessibility Summary</label><a href="https://www.w3.org/TR/epub-a11y-tech-11/#meta-005" target="_blank" class="usage"><img src="/images/info.png" height="20px" alt="How to specify accessibility summary" title="How to specify accessibility summary" onmouseover="this.src='/images/info_hover.png'" onmouseout="this.src='/images/info.png'"></a></legend>
-							
-							<div id="add-summary" class="autogen">
-								<a href="#add-summary">Suggest a summary</a>
-							</div>
-							
 							<textarea id="accessibilitySummary" rows="5"></textarea>
 						</fieldset>
 					</div>
 				</section>
 				
 				<section id="evaluation" class="js-tabcontent">
-					<h2>Evaluation Result</h2>
+					<h2>Reporting</h2>
 					
 					<p class="help"><a href="user-guide/evaluation.html" target="_blank">Need help?</a></p>
 					
-					<div class="conformance-result">
-						<span class="hd">Conformance Result:</strong>
-						<span id="conformance-result-status">Incomplete</span>
-						<input type="hidden" name="conformance-result" id="conformance-result" value="incomplete"/>
-					</div>
+					<fieldset id="eval-report" aria-labelledby="er-legend">
+						<legend id="" class="eval-legend">Evaluation Info</legend>
+						
+						<div class="conformance-result">
+							<span class="hd">Result:</strong>
+							<span id="conformance-result-status">Incomplete</span>
+							<input type="hidden" name="conformance-result" id="conformance-result" value="incomplete"/>
+						</div>
+						
+						<label class="data"><span>Link to report:</span> <input type="text" id="certifierReport"/></label>
+						<div class="combo-eval">
+							<label><span>Evaluation date:</span> <input type="text" id="certificationDate"/></label>
+							<label><input type="button" id="add-eval-timestamp" value="Set to now"></label>
+						</div>
+					</fieldset>
 					
 					<div id="extension-results"></div>
 					
 					<fieldset id="eval-info" aria-labelledby="ei-legend">
-						<legend id="ei-legend" hidden="hidden">Evaluation Info</legend>
-						<label class="data"><span>Evaluator:<img src="/images/asterisk.png" alt="required"/></span> <input type="text" id="certifiedBy" aria-required="true"/></label>
+						<legend id="ei-legend" class="eval-legend">Evaluator Info</legend>
+						<label class="data"><span>Name:<img src="/images/asterisk.png" alt="required"/></span> <input type="text" id="certifiedBy" aria-required="true"/></label>
+						<label class="data"><span>Role:<img src="/images/asterisk.png" alt="required"/></span> 
+							<select id="certifierRole">
+								<option>Self-evaluator</option>
+								<option>Third-party evaluator</option>
+							</select>
+						</label>
 						<label class="data"><span>Credential:</span> <input type="text" id="certifierCredential"/></label>
-						<label class="data"><span>Link to report:</span> <input type="text" id="certifierReport"/></label>
+					</fieldset>
+					
+					<fieldset id="contact-info" aria-labelledby="ec-legend">
+						<legend id="ec-legend" class="eval-legend">Contact Info</legend>
+						<label class="data"><span>Publisher email:</span> <input type="text" id="publisherContact"/></label>
+						<label class="data"><span>Trusted intermediary email:</span> <input type="text" id="trustedIntermediaryContact"/></label>
 					</fieldset>
 				</section>
 			</form>
@@ -554,13 +576,10 @@ JS;
 		
 		<div id="meta-output" aria-label="Accessibility Metadata" title="Accessibility Metadata">
 			<p id="meta-copy-desc"></p>
-			<form id="meta-viewer" action="https://daisy.github.io/a11y-meta-viewer/" target="_blank" method="get">
-				<textarea id="meta-tags" name="record" rows="15"></textarea>
-				<div><button id="meta-copy">Copy</button></div>
-				<p>To test the display statements generated from this output, go to the 
-					<a id="meta-link" href="#meta-link" onclick="document.getElementById('meta-viewer').submit(); return false;">
-					Accessibility Metadata Viewer</a>.</p>
-			</form>
+			<textarea id="meta-tags" name="record" rows="15"></textarea>
+			<div><button id="meta-copy">Copy</button></div>
+			<p>To test the display statements generated from this output, go to the 
+				<a href="#viewer-link" id="viewer-link" onclick="window.open('https://daisy.github.io/a11y-meta-viewer/#record-' + encodeURI(document.getElementById('meta-tags').value)); return false;">Accessibility Metadata Viewer</a>.</p>
 		</div>
 		
 		<div id="save" aria-label="Save report" title="Save report">

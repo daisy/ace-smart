@@ -39,9 +39,6 @@ var smartManage = (function() {
 	 *     "discovery": {
 	 *        ...
 	 *     },
-	 *     "distribution": {
-	 *        ...
-	 *     },
 	 *     "evaluation": {
 	 *        ...
 	 *     }
@@ -55,7 +52,7 @@ var smartManage = (function() {
 	
 		var evaluationJSON = {};
 		
-		evaluationJSON.version = '1.1';
+		evaluationJSON.version = '1.2';
 		evaluationJSON.category = 'savedEvaluation';
 		evaluationJSON.id = ACE_ID;
 		
@@ -167,9 +164,18 @@ var smartManage = (function() {
 			
 			evaluationJSON.evaluation.certifiedBy = document.getElementById('certifiedBy').value;
 			
+			evaluationJSON.evaluation.role = document.getElementById('certifierRole').value;
+			
 			evaluationJSON.evaluation.certifierCredential = document.getElementById('certifierCredential').value;
 			
 			evaluationJSON.evaluation.certifierReport = document.getElementById('certifierReport').value;
+			
+			evaluationJSON.evaluation.certificationDate = document.getElementById('certificationDate').value;
+			
+			evaluationJSON.evaluation.publisherContact = document.getElementById('publisherContact').value;
+			
+			evaluationJSON.evaluation.trustedIntermediaryContact = document.getElementById('trustedIntermediaryContact').value;
+			
 		
 		/* add extension data */
 		
@@ -442,32 +448,65 @@ var smartManage = (function() {
 		 * load onix metadata
 		 * 
 		 * NOTE: This code is only retained for old evaluations created when there
-		 * 		was a separate tab for distribution metadata. 
+		 * 		was a separate tab for distribution metadata. It only handles
+		 * 		metadata that wasn't auto-synced between the tabs.
 		*/
 		
 		if (evaluationJSON.hasOwnProperty('distribution')) {
 		
 			var feature_map = {
-				"14": "alternativeText",
-				"18": "ChemML",
-				"12": "index",
-				"15": "longDescription",
-				"17": "MathML",
-				"19": "pageBreakMarkers",
-				"13": "readingOrder",
-				"20": "synchronizedAudioText",
-				"11": "tableOfContents",
-				"21": "ttsMarkup"
+			
+				'8': 'unknown',
+				'10': 'unlocked',
+				'16': 'longDescription',
+				'22': 'ttsMarkup',
+				'26': 'ultraHighContrastDisplay',
+				'27': 'highContrastAudio',
+				'28': 'highContrastDisplay',
+				'29': 'structuralNavigation',
+				'30': 'ARIA',
+				'34': 'MathML-chemistry',
+				'35': 'latex',
+				'36': 'displayTransformability',
+				'37': 'ultraHighContrastDisplay'
 			}
 			
 			if (evaluationJSON.distribution.hasOwnProperty('onix')) {
 			
 				for (var onix_id in evaluationJSON.distribution.onix) {
 					
-					var padded_id = onix_id.padStart(2,'0');
+					if (onix_id == 0) {
+						document.getElementById('accessibilitySummary').value = evaluationJSON.distribution.onix[onix_id];
+					}
 					
-					if (onix_id == 0 || onix_id > 90) {
-						// document.getElementById('onix' + padded_id).value = evaluationJSON.distribution.onix.hasOwnProperty(padded_id) ? evaluationJSON.distribution.onix[padded_id] : '';
+					else if (onix_id == 51) {
+						var input = document.querySelector('#accessMode input[value="auditory"]');
+						if (input && !input.checked) {
+							input.checked = true;
+						}
+					}
+					
+					else if (onix_id == 52) {
+						var input = document.querySelector('#accessMode input[value="textual"]');
+						if (input && !input.checked) {
+							input.checked = true;
+						}
+					}
+					
+					else if (onix_id == 93) {
+						document.getElementById('certifierCredential').value = evaluationJSON.distribution.onix[onix_id];
+					}
+					
+					else if (onix_id == 94) {
+						document.getElementById('certifierReport').value = evaluationJSON.distribution.onix[onix_id];
+					}
+					
+					else if (onix_id == 98) {
+						document.getElementById('trustedIntermediaryContact').value = evaluationJSON.distribution.onix[onix_id];
+					}
+					
+					else if (onix_id == 99) {
+						document.getElementById('publisherContact').value = evaluationJSON.distribution.onix[onix_id];
 					}
 					
 					else {
@@ -487,7 +526,7 @@ var smartManage = (function() {
 		
 		var text_fields = {
 			publicationInfo: ['title', 'creator', 'identifier', 'modified', 'publisher', 'description', 'date', 'subject', 'optional-meta'],
-			evaluation: ['certifiedBy','certifierCredential','certifierReport']
+			evaluation: ['certifiedBy', 'certifierRole', 'certifierCredential', 'certifierReport', 'certificationDate', 'publisherContact', 'trustedIntermediaryContact']
 		};
 		
 		for (var key in text_fields) {
@@ -605,13 +644,7 @@ var smartManage = (function() {
 			
 			var checkbox = document.querySelector('#' + id + ' input[value="' + obj_value + '"]');
 			
-			if (checkbox === null) {
-				/* ignore except for accessibilityFeature, as indicates a user-defined feature */
-				if (id == 'accessibilityFeature') {
-					smartDiscovery.addCustomFeature(obj[i]);
-				}
-			}
-			else {
+			if (checkbox !== null) {
 				checkbox.checked = true;
 			}
 		}
@@ -621,14 +654,6 @@ var smartManage = (function() {
 	/* generic function to set the modes for an accessModeSufficient set */
 	
 	function setSufficientModes(modeSets) {
-		/* add any additional sets before loading */
-		var setCount = Object.keys(modeSets).length;
-		if (setCount > 2) {
-			for (var j = 1; j <= setCount - 2; j++) {
-				smartDiscovery.addNewSufficientSet();
-			}
-		}
-		
 		var sufficient_fields = document.querySelectorAll('#accessModeSufficient fieldset');
 		
 		var set_counter = 0;

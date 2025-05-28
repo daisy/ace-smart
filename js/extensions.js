@@ -5,7 +5,7 @@
 
 function extension_scripts() {
     
-    /* add a GCA credential to the distribution and result tabs */
+    /* add a GCA credential to the result tabs */
     if (smart_extensions.hasOwnProperty('born_accessible')) {
     	bornAccessible.setGCACredential();
     }

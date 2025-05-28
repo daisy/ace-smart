@@ -36,13 +36,13 @@ var smartReport = (function() {
 		
 		var is_valid = true;
 		
-		is_valid = validatePublicationMetadata() ? is_valid : false;
+		is_valid = smartValidation.validatePublicationMetadata() ? is_valid : false;
 		
-		is_valid = checkNoUnverifiedSC() ? is_valid : false;
+		is_valid = smartValidation.validateSuccessCriteria() ? is_valid : false;
 		
-		is_valid = smartEvaluation.validateEvaluationMetadata() ? is_valid : false;
+		is_valid = smartValidation.validateEvaluationMetadata() ? is_valid : false;
 		
-		is_valid = smartDiscovery.validateDiscoveryMetadata() ? is_valid : false;
+		is_valid = smartValidation.validateAccessibilityMetadata() ? is_valid : false;
 		
 		// validate user extensions
 		if (Object.keys(smart_extensions).length > 0) {
@@ -53,111 +53,6 @@ var smartReport = (function() {
 		
 		return is_valid;
 	}
-	
-	
-	/* checks the metadata input in the publication info tab */
-	
-	function validatePublicationMetadata() {
-		var is_valid = true;
-		
-		is_valid = validateRequiredPubMetadata() ? is_valid : false;
-		is_valid = validateOptionalPubMetadata() ? is_valid : false;
-		
-		return is_valid;
-	}
-	
-	
-	/* 
-	 * checks that the title and last modified fields have been set
-	 * as these are needed to identify the publication and what version
-	 * (by its date) was tested (e.g., in case someone reviewing the report
-	 * has a newer, possibly improved, version)
-	 * 
-	 */
-	
-	function validateRequiredPubMetadata() {
-		var is_valid = true;
-		
-		for (var meta_name in smart_ui.pubinfo.required_fields) {
-			var meta_element = document.getElementById(meta_name);
-			
-			if (meta_element.value.trim() == '') {
-				smartError.logError({tab_id: 'start', element_id: meta_name, severity: 'err', message: smart_errors.validation.pubinfo.required[smart_lang].replace('%%val%%', smart_ui.pubinfo.required_fields[meta_name][smart_lang])});
-				smartFormat.setFieldToError({id: meta_name, is_warning: false, highlight_parent: true});
-				is_valid = false;
-			}
-			
-			else {
-				smartFormat.setFieldToPass({id: meta_name, highlight_parent: true});
-			}
-		}
-		
-		return is_valid;
-	}
-	
-	
-	/* 
-	 * this function only checks the optional metadata input box to
-	 * ensure that any inputted text has been formatted properly
-	 * - it does not verify the optional metadata fields
-	 */
-	
-	function validateOptionalPubMetadata() {
-		var is_valid = true;
-		
-		var optional_meta_element = document.getElementById('optional-meta');
-		var optional_meta_value = optional_meta_element.value.trim();
-		
-		if (optional_meta_value != '') {
-		
-			var meta_lines = optional_meta_value.replace(/\r\n/g,'\n').split('\n');
-			var meta_error = false;
-			
-			for (var i = 0; i < meta_lines.length; i++) {
-				if (!meta_lines[i].match(/: /)) {
-					smartError.logError({tab_id: 'start', element_id: 'optional-meta', severity: 'err', message: smart_errors.validation.pubinfo.noSeparator[smart_lang].replace('%%val%%', (i+1))});
-					smartFormat.setFieldToError({id: 'optional-meta', highlight_parent: true});
-					is_valid = false;
-					meta_error = true;
-				}
-			}
-			
-			if (!meta_error) {
-				smartFormat.setFieldToPass({id: 'optional-meta', highlight_parent: true});
-			}
-		}
-		
-		else {
-			smartFormat.setFieldToPass({id: 'optional-meta', highlight_parent: true});
-		}
-		
-		return is_valid;
-	}
-	
-	
-	/* 
-	 * iterates over all the success criteria and checks that none still 
-	 * have their status set to unverified
-	 * 
-	 */
-	
-	function checkNoUnverifiedSC() {
-	
-		var selector = smartConformance.getSCStatusSelector({status: 'unverified', level: 'all', includeEPUB: true});
-		
-		var unverified_success_criteria = document.querySelectorAll(selector);
-		
-		if (unverified_success_criteria.length > 0) {
-			for (var i = 0; i < unverified_success_criteria.length; i++) {
-				smartError.logError({tab_id: 'conformance', element_id: unverified_success_criteria[i].name, severity: 'err', message: smart_errors.validation.pubinfo.unverifiedSC[smart_lang].replace('%%val%%', unverified_success_criteria[i].name.replace('sc-',''))});
-			}
-			
-			return false;
-		}
-		
-		return true;
-	}
-	
 	
 	
 	
@@ -292,7 +187,7 @@ var smartReport = (function() {
 			tab_list.setAttribute('class','js-tablist');
 			tab_list.setAttribute('data-existing-hx','h3');
 		
-		var tabs = [{id: 'overview', label: smart_ui.reporting.tabs.overview[smart_lang]}, {id: 'conformance', label: smart_ui.reporting.tabs.conformance[smart_lang]}];
+		var tabs = [{id: 'overview', label: smart_ui.reporting.tabs.overview[smart_lang]}, {id: 'a11y-metadata', label: smart_ui.reporting.tabs.a11y[smart_lang]}, {id: 'conformance', label: smart_ui.reporting.tabs.conformance[smart_lang]}];
 		
 		if (_smartExtensionTabs.length > 0) {
 			_smartExtensionTabs.forEach(function(tab) {
@@ -339,6 +234,9 @@ var smartReport = (function() {
 		// create the report summary - has to occur after generating tabs as extension properties may depend on tab having been created 
 		var reportSummary = createReportSummary();
 		
+		// add the accessibility metadata display statements 
+		var a11yMetadata = createA11yMetadata();
+		
 		// add additional info details
 		var additionalInfo = createReportAdditionalInfo({addedID: publicationInfo.addedID});
 		
@@ -351,6 +249,7 @@ var smartReport = (function() {
 		
 		// build the body
 		wrapper.appendChild(reportSummary);
+		wrapper.appendChild(a11yMetadata);
 		wrapper.appendChild(testResults.content);
 		etabs.forEach(function(etab) { wrapper.appendChild(etab)});
 		wrapper.appendChild(additionalInfo);
@@ -457,72 +356,6 @@ var smartReport = (function() {
 			}
 		}
 		
-		summaryTable.appendChild(formatPubInfoEntry({
-			id: 'accessibilitySummary',
-			label: smart_ui.a11yProperties.summary[smart_lang],
-			value: document.getElementById('accessibilitySummary').value,
-			property: 'accessibilitySummary'
-		}));
-		
-		summaryTable.appendChild(formatPubInfoEntry({
-			id: 'accessibilityFeatures',
-			label: smart_ui.a11yProperties.features[smart_lang],
-			value: compileCheckboxValues('accessibilityFeature')
-		}));
-		
-		summaryTable.appendChild(formatPubInfoEntry({
-			id: 'accessibilityHazards',
-			label: smart_ui.a11yProperties.hazards[smart_lang],
-			value: compileCheckboxValues('accessibilityHazard')
-		}));
-		
-		summaryTable.appendChild(formatPubInfoEntry({
-			id: 'accessModes',
-			label: smart_ui.a11yProperties.modes[smart_lang],
-			value: compileCheckboxValues('accessMode')
-		}));
-		
-		
-		// compile the sufficient access modes
-		var suffSet = document.querySelectorAll('fieldset#accessModeSufficient fieldset');
-		
-		var sufficient_ul = document.createElement('ul');
-		
-		for (var i = 0; i < suffSet.length; i++) {
-			var suffMode = suffSet[i].querySelectorAll('input:checked');
-			if (suffMode.length > 0) {
-				var li = document.createElement('li')
-				for (var j = 0; j < suffMode.length; j++) {
-					li.appendChild(document.createTextNode(suffMode[j].value));
-					if (j != suffMode.length-1) {
-						li.appendChild(document.createTextNode(', '));
-					}
-				}
-				sufficient_ul.appendChild(li);
-			}
-		}
-		
-		if (sufficient_ul.childElementCount > 0) {
-			var sufficientModes = document.createElement('div');
-				sufficientModes.setAttribute('id', 'accessModeSufficient');
-			
-			var label = document.createElement('div');
-				label.setAttribute('class', 'label');
-				label.appendChild(document.createTextNode(smart_ui.a11yProperties.ams[smart_lang] + ':'))
-			
-			sufficientModes.appendChild(label);
-			sufficientModes.appendChild(document.createTextNode(' '));
-			
-			var value = document.createElement('div');
-				value.setAttribute('class', 'value');
-				value.setAttribute('property', 'accessModeSufficient');
-				value.appendChild(sufficient_ul);
-			
-			sufficientModes.appendChild(value);
-			
-			summaryTable.appendChild(sufficientModes);
-		}
-		
 		var evaluator = document.getElementById('certifiedBy').value.trim();
 		
 		if (evaluator != '') {
@@ -533,9 +366,188 @@ var smartReport = (function() {
 			}));
 		}
 		
+		// add evaluation date
+		var date = document.getElementById('certificationDate').value;
+		
+		if (date) {
+			if (date.match(/\d+-\d+-\d+(T\d+-\d+-\d+Z)?/)) {
+				date = smartFormat.convertUTCDateToString(date, 'notime')
+			}
+		}
+		
+		else {
+			date = smartFormat.convertUTCDateToString(Date.now(), 'notime');
+		}
+		
+		summaryTable.appendChild(formatPubInfoEntry({
+			id: 'evaluation-date',
+			label: smart_ui.reporting.addinfo.date[smart_lang],
+			value: date
+		}));
+		
 		summary.appendChild(summaryTable);
 		
 		return summary;
+	}
+	
+	/* compile the accessibility metadata statements */
+	
+	function createA11yMetadata() {
+		
+		var summary = document.createElement('section');
+			summary.setAttribute('id', 'a11y-metadata');
+			summary.setAttribute('class', 'js-tabcontent');
+		
+		var summaryHD = document.createElement('h3');
+			summaryHD.appendChild(document.createTextNode(smart_ui.reporting.tabs.a11y[smart_lang]));
+		
+		summary.appendChild(summaryHD);
+			
+		var xml = smartMetadata.generateAccessibilityMetadata('epub', true);
+		
+		if (!metaDisplayProcessor.initialize({
+				record_as_text: xml
+			})) {
+			return;
+		}
+		
+		var suppressNoInfo = true;
+		
+		var result = document.createElement('div');
+			result.classList.add('grid');
+		
+		// 3.1 Ways of reading
+		
+		var ways_result = metaDisplayProcessor.processWaysOfReading();
+		
+		if (ways_result.hasMetadata || !suppressNoInfo) {
+		
+			result.appendChild(makeHeader('ways-of-reading'));
+			
+			// add grid styling to returned div
+			ways_result.displayHTML.classList.add('grid-body');
+	
+			result.appendChild(ways_result.displayHTML);
+		}
+		
+		// 3.2 Conformance
+		
+		var conf_result = metaDisplayProcessor.processConformance();
+		
+		if (conf_result.hasMetadata || !suppressNoInfo) {
+		
+			result.appendChild(makeHeader('conformance'));
+			
+			// add grid styling to returned div
+			conf_result.displayHTML.classList.add('grid-body');
+	
+			result.appendChild(conf_result.displayHTML);
+		}
+		
+		// 3.3 Navigation
+		
+		var nav_result = metaDisplayProcessor.processNavigation();
+		
+		if (nav_result.hasMetadata || !suppressNoInfo) {
+		
+			result.appendChild(makeHeader('navigation'));
+			
+			// add grid styling to returned div
+			nav_result.displayHTML.classList.add('grid-body');
+	
+			result.appendChild(nav_result.displayHTML);
+		}
+		
+		// 3.4 Rich content
+		
+		var rc_result = metaDisplayProcessor.processRichContent();
+		
+		if (rc_result.hasMetadata || !suppressNoInfo) {
+		
+			result.appendChild(makeHeader('rich-content'));
+			
+			// add grid styling to returned div
+			rc_result.displayHTML.classList.add('grid-body');
+	
+			result.appendChild(rc_result.displayHTML);
+		}
+		
+		// 3.5 Hazards
+		
+		var hazard_result = metaDisplayProcessor.processHazards();
+		
+		if (hazard_result.hasMetadata || !suppressNoInfo) {
+		
+			result.appendChild(makeHeader('hazards'));
+			
+			// add grid styling to returned div
+			hazard_result.displayHTML.classList.add('grid-body');
+	
+			result.appendChild(hazard_result.displayHTML);
+		}
+		
+		// 3.6 Accessibility summary
+		
+		var sum_result = metaDisplayProcessor.processAccessibilitySummary();
+		
+		if (sum_result.hasMetadata || !suppressNoInfo) {
+		
+			result.appendChild(makeHeader('accessibility-summary'));
+			
+			// add grid styling to returned div
+			sum_result.displayHTML.classList.add('grid-body');
+	
+			result.appendChild(sum_result.displayHTML);
+		}
+		
+		// 3.7 Legal considerations
+		
+		var legal_result = metaDisplayProcessor.processLegal();
+		
+		if (legal_result.hasMetadata || !suppressNoInfo) {
+		
+			result.appendChild(makeHeader('legal-considerations'));
+			
+			// add grid styling to returned div
+			legal_result.displayHTML.classList.add('grid-body');
+	
+			result.appendChild(legal_result.displayHTML);
+		}
+		
+		// 3.8 Additional accessibility information
+		
+		var aai_result = metaDisplayProcessor.processAdditionalA11yInfo();
+		
+		// additional information is never shown if there is nothing to display - it doesn't have a no information available string
+		if (aai_result.hasMetadata) {
+		
+			result.appendChild(makeHeader('additional-accessibility-information'));
+			
+			// add grid styling to returned div
+			aai_result.displayHTML.classList.add('grid-body');
+	
+			result.appendChild(aai_result.displayHTML);
+		}
+		
+		summary.appendChild(result);
+		
+		return summary;
+	}
+	
+	/* common header and explainer dialog */
+	
+	function makeHeader(id) {
+	
+		var hd_block = document.createElement('div');
+			hd_block.classList.add('grid-hd');
+		
+		var hd_str = metaDisplayProcessor.getHeader(id, '');
+		
+		var hd = document.createElement('h4');
+			hd.appendChild(document.createTextNode(hd_str + ':'));
+		hd_block.appendChild(hd);
+		
+		return hd_block;
 	}
 	
 	

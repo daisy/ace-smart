@@ -21,6 +21,7 @@
  * - jumpToError - called whne a user clicks on an error message to jump them to the location
  * 
  * - showErrorPane - makes the error pane visible
+ * 
  * - hideErrorPane - hides the error pane
  * 
  */
@@ -47,7 +48,7 @@ var smartError = (function() {
 		clearAll: function(scope) {
 			this.clearErrorPane();
 			this.clearAriaInvalid(scope);
-			this.clearErrorBGs(scope);
+			this.clearErrorBGs();
 		},
 		
 		
@@ -72,29 +73,14 @@ var smartError = (function() {
 		
 		
 		/* iterates over the elements whose background colors are changed based on their status and removes the classes */
-		clearErrorBGs: function(scope) {
+		clearErrorBGs: function() {
 			var errorFields = { "discovery": ['accessibilityFeature', 'accessibilitySummary-field', 'accessibilityHazard', 'accessMode', 'accessModeSufficient'],
 						   "evaluation": ['certifiedBy']};
 			
-			if (scope != null && scope != '') {
-				if (scope == 'distribution') {
-					errorFields[scope].forEach( function(id) {
-						document.getElementById(id).parentNode.classList.remove(smartFormat.BG.ERR, smartFormat.BG.WARN, smartFormat.BG.PASS, smartFormat.BG.NA);
-					});
-				}
-				else {
-					errorFields[scope].forEach( function(id) {
-						document.getElementById(id).classList.remove(smartFormat.BG.ERR, smartFormat.BG.WARN, smartFormat.BG.PASS, smartFormat.BG.NA);
-					});
-				}
-			}
-			
-			else {
-				for (var key in errorFields) {
-					errorFields[key].forEach( function(id) {
-						document.getElementById(id).classList.remove(smartFormat.BG.ERR, smartFormat.BG.WARN, smartFormat.BG.PASS, smartFormat.BG.NA);
-					});
-				}
+			for (var key in errorFields) {
+				errorFields[key].forEach( function(id) {
+					document.getElementById(id).classList.remove(smartFormat.BG.ERR, smartFormat.BG.WARN, smartFormat.BG.PASS, smartFormat.BG.NA);
+				});
 			}
 		},
 		

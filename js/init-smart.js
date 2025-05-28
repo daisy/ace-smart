@@ -51,12 +51,6 @@
 			smartConformance.showSCNoteField(this);
 		});
 		
-		/* add discovery metadata fields */
-		// smartDiscovery.addDiscoveryMetadata();
-		
-		/* add distribution metadata fields */
-		// smartDistribution.addDistributionMetadata();
-		
 		/* configure and populate the evaluation */
 		evaluationSetup();
 		
@@ -303,8 +297,13 @@
 	
 	/* watch for timestamp add */
 	$('#add-timestamp').click( function() {
-		document.getElementById('modified').value = smartFormat.convertUTCDateToString(Date.now());
+		document.getElementById('modified').value = smartFormat.convertUTCDateToString(Date.now(), 'readable');
 	});
+	
+	$('#add-eval-timestamp').click( function() {
+		document.getElementById('certificationDate').value = smartFormat.convertUTCDateToString(Date.now(), 'yyyy-mm-dd');
+	});
+	
 	
 	
 	/* CONFORMANCE TAB */
@@ -358,7 +357,7 @@
 		
 		meta_desc.innerHTML = 'Copy and paste the following metadata to the ' +  ((meta_format.value == 'epub') ? 'EPUB package document.' : 'ONIX record.');
 		
-		smartDiscovery.generateAccessibilityMetadata(meta_format.value);
+		smartMetadata.generateAccessibilityMetadata(meta_format.value, false);
 	});
 	
 	/* watch for click on button to copy metadata */

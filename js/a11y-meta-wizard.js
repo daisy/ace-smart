@@ -469,18 +469,6 @@ var smartMetaWizard = (function() {
 			meta_tags += smartFormat.createMetaTag({type: 'meta', property: 'accessibilityHazard', value: sound_hazard.value});
 		}
 		
-		// get an auto-generated accessibility summary
-		
-		var summary = smartDiscovery.generateAccessibilitySummary({'wizard': true});
-		
-		if (in_smart) {
-			document.getElementById('accessibilitySummary').value = summary;
-		}
-		
-		else {
-			meta_tags += smartFormat.createMetaTag({type: 'meta', property: 'accessibilitySummary', value: summary});
-		}
-		
 		if (in_smart) {
 			alert(smart_ui.metaWizard.done[smart_lang]);
 			meta_wiz_dialog.dialog('close');

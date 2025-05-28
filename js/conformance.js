@@ -447,9 +447,6 @@ var smartConformance = (function() {
 		
 		var incomplete = document.querySelectorAll(a_unverified_selector);
 		
-		// var onix_a = document.getElementById('onix02');
-		// var onix_aa = document.getElementById('onix03');
-		
 		var a_fail_selector = getSCStatusSelector({status: 'fail', level: 'a', includeEPUB: true});
 		var aa_fail_selector = getSCStatusSelector({status: 'fail', level: 'aa', includeEPUB: false});
 		
@@ -485,8 +482,6 @@ var smartConformance = (function() {
 				
 				status_input.value = 'aa';
 				
-				// if (!onix_aa.checked) { onix_aa.click(); }
-				// if (onix_a.checked) { onix_a.click(); }
 				return;
 			}
 		}
@@ -497,16 +492,11 @@ var smartConformance = (function() {
 			status_label.textContent = smart_ui.conformance.status.pass[smart_lang] + ': ' + spec_version + smart_ui.conformance.status.a[smart_lang];
 			
 			status_input.value = 'a';
-			
-			// if (onix_aa.checked) { onix_aa.click(); }
-			// if (!onix_a.checked) { onix_a.click(); }
 		}
 		
 		else {
 			status_label.textContent = smart_ui.conformance.status.fail[smart_lang] + ': ' + spec_version + smart_ui.conformance.status[smartWCAG.WCAGLevel()][smart_lang];
 			status_input.value = 'fail';
-			// if (onix_aa.checked) { onix_aa.click(); }
-			// if (onix_a.checked) { onix_a.click(); }
 		}
 	}
 	

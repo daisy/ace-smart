@@ -204,7 +204,7 @@ var smartAce = (function() {
 		
 		// set DCTERMS metadata
 		if (_aceReport['earl:testSubject']['metadata'].hasOwnProperty('dcterms:modified')) {
-			document.getElementById('modified').value = smartFormat.convertUTCDateToString(_aceReport['earl:testSubject']['metadata']['dcterms:modified']);
+			document.getElementById('modified').value = smartFormat.convertUTCDateToString(_aceReport['earl:testSubject']['metadata']['dcterms:modified'], 'readable');
 		}	
 		
 		// set discovery metadata
@@ -221,7 +221,6 @@ var smartAce = (function() {
 		
 		// writing each textarea separately as no reliable event to capture the js value change
 		document.getElementById('accessibilitySummary').value = summary; 
-		document.getElementById('onix00').value = summary; 
 		
 		// set evaluator metadata
 		
@@ -347,12 +346,6 @@ var smartAce = (function() {
 			
 			var checkbox = document.querySelector('#' + id + ' input[value="' + value + '"]');
 			
-			if (id == 'accessibilityFeature' && checkbox === null) {
-				smartDiscovery.addCustomFeature(report_property[i]);
-				checkbox = document.querySelector('#' + id + ' input[value="' + report_property[i] + '"]');
-				_loadMessages.features.push(report_property[i]);
-			}
-			
 			if (checkbox === null) {
 				console.log('Failed to load ace metadata string: #' + id + ' input[value="' + report_property[i] + '"]');
 				continue;
@@ -389,11 +382,6 @@ var smartAce = (function() {
 			for (var j = 0; j < access_modes.length; j++) {
 				document.querySelector('#set' + (i+1) + ' input[value="' + access_modes[j] + '"]').click();
 			}
-			
-			/* add an additional set so the user always has one blank one left to work with */
-			if (i > 0) {
-				smartDiscovery.addNewSufficientSet();
-			}
 		}
 	}
 	
@@ -404,14 +392,6 @@ var smartAce = (function() {
 	
 	function inferAccessibilityMetadata() {
 	
-		/* 
-		 * Note that ONIX fields are automatically synched to discovery fields
-		 * and vice-versa.
-		 * DO NOT set ONIX fields that have an equivalent discovery field or
-		 * the result will be that both the discovery and distribution fields
-		 * will be rendered unchecked.
-		 */
-		
 		if (_aceReport['a11y-metadata']['present'].length > 0) {
 			// if publication contains metadata, don't suggest more
 			return '';

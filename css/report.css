@@ -64,8 +64,12 @@ div#report-header {
 	top: 4.47rem;
 	margin-top: -2rem;
 	padding-top: 0.5rem;
+	margin-left: -3.3rem;
 }
 
+div#report-header {
+	padding-left: 3.3rem;
+}
 
 /* links */
 
@@ -117,20 +121,10 @@ div#report-header h2#title {
 }
 
 h3 {
-	font-size: 2.3rem;
+	font-size: 2.1rem;
 	font-weight: normal;
 	color: rgb(0,0,150);
 	margin: 3rem 0 2rem 0.5rem;
-}
-
-h4 {
-	font-size: 2rem;
-	color: rgb(0,0,150);
-	margin: 3rem 0 2rem 0.5rem;
-}
-
-h4:before {
-	content: '§ ';
 }
 
 /* summary tab */
@@ -144,9 +138,7 @@ h4:before {
 div.summaryTable {
 	max-width: 75rem;
 	display: table;
-	margin: 1rem 0rem 2rem 0.5rem;
-	border: 0.14rem solid rgb(0,0,0);
-	border-radius: 0.5rem;
+	margin: 1rem 0 2rem 0;
 }
 
 div.summaryTable > div {
@@ -158,28 +150,7 @@ div.summaryTable > div > div {
 	padding: 0.75rem;
 }
 
-div.summaryTable > div:first-child > div:first-child {
-	border-top-left-radius: 0.5rem;
-}
-
-div.summaryTable > div:first-child > div:last-child {
-	border-top-right-radius: 0.5rem;
-}
-
-div.summaryTable > div:last-child > div:first-child {
-	border-bottom-left-radius: 0.5rem;
-}
-
-div.summaryTable > div:last-child > div:last-child {
-	border-bottom-right-radius: 0.5rem;
-}
-
-div.summaryTable > div:nth-child(n+2) > div {
-	border-top: 0.1rem solid rgb(150,150,150);
-}
-
 div.summaryTable > div > div.label {
-	background-color: rgb(240,248,255);
 	min-width: 20rem;
 }
 
@@ -202,7 +173,7 @@ div.summaryTable > div > div.value > ul {
 
 .info > div {
 	padding: 0;
-	margin: 0.8rem 0 0 1.5rem;
+	margin: 0.8rem 0 0 0.5rem;
 }
 
 .info > div > div:first-child {
@@ -284,6 +255,36 @@ div.dataTables_wrapper div.dataTables_filter label {
 	background-color: rgb(255, 255, 240);
 }
 
+
+/* accessibility metadata */
+
+/* flex layout */
+
+div.grid {
+	display: grid;
+	grid-template-columns: fit-content(40%) 1fr;
+	gap: 2rem;
+	margin-left: 0.5rem;
+}
+
+div.grid-hd {
+}
+
+div.grid-body > * {
+	font-size: 98%;
+	padding-top: 0;
+	margin-top: 0;
+}
+
+div.grid-body ul {
+	padding-left: 2rem;
+}
+
+div.grid-hd h4 {
+	display: inline-block;
+	font-size: 94%;
+	margin: 0;
+}
 
 @media only screen
 	and (max-device-width: 600px)

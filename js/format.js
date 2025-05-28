@@ -46,6 +46,15 @@ var smartFormat = (function() {
 		"WARN": 'warn'
 	};
 	
+	var _onix = {
+		196: [],
+		175: [],
+		144: [],
+		143: [],
+		81: [],
+		21: []
+	};
+	
 	return {
 		BG: _BG,
 		
@@ -80,15 +89,32 @@ var smartFormat = (function() {
 			return '';
 		},
 		
-	
+		
+		/* resets the onix field tracker that prevents duplicate tagging */
+		resetONIXCodes: function() {
+			_onix = {
+				196: [],
+				175: [],
+				144: [],
+				143: [],
+				81: [],
+				21: []
+			};
+		},
+		
 		/* adds the general tagging wrapper for the accessibility metadata fields */
 		formatONIXEntry: function(options) {
 			
+			if (_onix[options.list].includes(options.code)) {
+				return '';
+			}
+			
 			var feature = '';
 			
-			if (options.list == 196) {
+			if (options.list == 196 || options.list == 143) {
+				var type_num = options.list == 196 ? '09' : '12';
 				feature = '\t\t\t<ProductFormFeature>\n'
-							+ '\t\t\t\t<ProductFormFeatureType>09</ProductFormFeatureType>\n'
+							+ '\t\t\t\t<ProductFormFeatureType>' + type_num + '</ProductFormFeatureType>\n'
 							+ '\t\t\t\t<ProductFormFeatureValue>' + options.code + '</ProductFormFeatureValue>\n';
 				
 				if (options.hasOwnProperty('description') && options.description !== '') {
@@ -97,6 +123,32 @@ var smartFormat = (function() {
 				
 				feature += '\t\t\t</ProductFormFeature>\n';
 			}
+			
+			else if (options.list == 175) {
+				feature += '\t\t\t<ProductFormDetail>' + options.code + '</ProductFormDetail>\n';
+				_onix['175'].push(options.code);
+			}
+			
+			else if (options.list == 144) {
+				feature += '\t\t\t<EpubTechnicalProtection>' + options.code + '</EpubTechnicalProtection>\n';
+				_onix['144'].push(options.code);
+			}
+			
+			else if (options.list == 81) {
+				feature += '\t\t\t<PrimaryContentType>' + options.code + '</PrimaryContentType>\n';
+				_onix['81'].push(options.code);
+			}
+			
+			else if (options.list == 21) {
+				feature += '\t\t\t<EditionType>' + options.code + '</EditionType>\n';
+				_onix['21'].push(options.code);
+			}
+			
+			else {
+				console.log('Unable to format onix code ' + options.code + ' from list ' + options.list);
+			}
+			
+			_onix[options.list].push(options.code);
 			
 			return feature;
 		},
@@ -114,11 +166,23 @@ var smartFormat = (function() {
 		},
 		
 		
-		/* convers a utc date (dcterms:modified) to a human-readable string */
-		convertUTCDateToString: function (utcDate) {
-			var date_options = { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" };  
+		/* convers a utc date to a string */
+		convertUTCDateToString: function (utcDate, form) {
+		
+			if (form == 'yyyy-mm-dd') {
+				return new Date(utcDate).toISOString().split('T')[0];
+			}
 			
-			return (utcDate == '') ? '' : new Date(utcDate).toLocaleDateString("en",date_options);
+			else if (form == 'notime') {
+				var date_options = { year: "numeric", month: "short", day: "numeric" };  
+				return (utcDate == '') ? '' : new Date(utcDate).toLocaleDateString("en",date_options);
+			}
+			
+			else {
+				// return a human readable string
+				var date_options = { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" };  
+				return (utcDate == '') ? '' : new Date(utcDate).toLocaleDateString("en",date_options);
+			}
 		},
 		
 		
