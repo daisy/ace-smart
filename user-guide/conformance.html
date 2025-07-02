@@ -41,7 +41,7 @@
 				
 				<figure>
 					<figcaption>Figure 1 &#8212; The status section appears after the links to the supporting
-						documentation and includes pass, fail and not applicable options.</figcaption>
+						documentation and includes unverified, pass, partial, fail and not applicable options.</figcaption>
 					<img src="images/status.png" width="700" alt="Status fields" />
 				</figure>
 				
@@ -70,21 +70,29 @@
 							content it does not. Use the <a href="#na">not applicable</a> status in these cases.</p>
 					</dd>
 
-					<dt id="fail">Fail</dt>
+					<dt id="fail">Partial / Fail</dt>
 					<dd>
-						<p>If the publication fails a success criterion, setting the status to <i>fail</i> will reveal a
-							field to describe why it failed.</p>
+						<p>The option to choose the partial or fail options when a success criterion has not been met
+							is up to the evaluator. Either one will result in a publication not passing conformance
+							since partial or total failure makes no difference to WCAG conformance.</p>
+						
+						<p>The reason for both options is to allow evaluators to give a more positive failure response
+							if the publisher has made some effort to meet a success criterion but has not been able
+							to fully meet it.</p>
+						
+						<p>Setting either status will reveal a field to describe why it failed or why it is not 
+							complete.</p>
 						
 						<figure>
 							<figcaption>Figure 2 &#8212; A text field for recording a note appears below the status
-								line when the fail setting is selected.</figcaption>
-							<img src="images/status_fail.png" width="600" alt="Fail setting" />
+								line when the partial or fail settings are selected.</figcaption>
+							<img src="images/status_fail.png" width="600" alt="Explanatory note field" />
 						</figure>
 						
-						<p>Failure notes are included in the final report for the publication by default but can be
+						<p>The explanatory note is included in the final report for the publication by default but can be
 							excluded to create reports for different audiences (e.g., to provide more detail to a
-							publisher about specific errors in the markup without revealing those details to a general
-							audience).</p>
+							publisher about specific errors or shortcomings in the markup without revealing those 
+							details to a general audience).</p>
 					</dd>
 
 					<dt id="na">N/A</dt>
