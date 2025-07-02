@@ -507,6 +507,10 @@ legend.eval-legend {
 	border-bottom: 0.1rem dashed rgb(0,0,220);
 }
 
+#conformance-options a {
+	border-bottom: none;
+}
+
 /* lists */
 
 ul{
