@@ -134,7 +134,7 @@ var smartManage = (function() {
 				evaluationJSON.conformance[i].id = success_criteria[i].id;
 				evaluationJSON.conformance[i].status = status;
 				
-				if (status == 'fail') {
+				if (status == 'fail' || status == 'partial') {
 					evaluationJSON.conformance[i].error = document.getElementById(success_criteria[i].id+'-err').value;
 				}
 				
