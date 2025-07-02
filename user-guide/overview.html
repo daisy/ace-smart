@@ -31,7 +31,7 @@
 							<li><a href="https://github.com/IDPF/epubcheck/releases">epubcheck</a> &#8212; The first
 								step in automated verification is to use the epubcheck validator to check for errors.
 								Although this tool does not specifically perform accessibility checks, it ensures that
-								publications are valid, which is necessary to pass WCAG success criterion 4.1.1.</li>
+								publications are valid to the EPUB standard.</li>
 
 							<li><a href="https://github.com/daisy/ace-core/releases">Ace</a> &#8212; The next step is to
 								use Ace validator to verify accessibility requirements that can be programmatically
@@ -56,8 +56,11 @@
 					and not fixing them, as you need access to the raw markup of the publication to verify many
 					accessibility requirements.</p>
 				
-				<p>The EPUB publication you are evaluating does not have to be zipped to carry out the manual
-					evaluation steps, as zipping does not directly affect the accessibility.</p>
+				<p>As an EPUB publication is a ZIP file with a different extension, you can unzip the publication
+					to carry out a manual evaluation rather than use editing programs designed to work on the zipped
+					content. In this case, however, you will have to rezip the files correctly after evaluating the
+					publication. As EPUB has rules on how to order the files in a ZIP container, standard ZIP programs
+					will not recreate valid EPUB files by default.</p>
 			</section>
 		</main>
 		

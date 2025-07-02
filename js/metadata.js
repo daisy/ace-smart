@@ -66,8 +66,8 @@ var smartMetadata = (function() {
 		var credential = document.getElementById('certifierCredential').value.trim();
 		var report = document.getElementById('certifierReport').value;
 		var cert_date = document.getElementById('certificationDate').value;
-		var pub_contact = document.getElementById('publisherContact').value;
-		var ti_contact = document.getElementById('trustedIntermediaryContact').value;
+		var eaa_exemption = document.getElementById('eaa').value;
+		var pub_contact = document.getElementById('contactEmail').value;
 		
 		if (!isEPUB) {
 		
@@ -87,6 +87,11 @@ var smartMetadata = (function() {
 				meta_tags += smartFormat.formatONIXEntry( {list: '196', code: ver_code} );
 			}
 			
+			if (eaa_exemption) {
+				var exemption_code = (eaa_exemption == 'eaa-disproportionate-burden') ? '76' : (eaa_exemption == 'eaa-fundamental-alteration' ? '77' : '75');
+				meta_tags += smartFormat.formatONIXEntry( {list: '196', code: exemption_code} );
+			}
+			
 			if (certifier) {
 				meta_tags += smartFormat.formatONIXEntry( {list: '196', code: '90', description: certifier} );
 			}
@@ -101,10 +106,6 @@ var smartMetadata = (function() {
 			
 			if (report) {
 				meta_tags += smartFormat.formatONIXEntry( {list: '196', code: '96', description: report} );
-			}
-			
-			if (ti_contact) {
-				meta_tags += smartFormat.formatONIXEntry( {list: '196', code: '98', description: ti_contact} );
 			}
 			
 			if (pub_contact) {
@@ -146,6 +147,7 @@ var smartMetadata = (function() {
 			meta_tags += smartFormat.createMetaTag({type: 'meta', property: 'dcterms:date', value: cert_date, refines: 'certifier'});
 			meta_tags += smartFormat.createMetaTag({type: 'meta', property: 'a11y:certifierCredential', value: credential, refines: 'certifier'});
 			meta_tags += smartFormat.createMetaTag({type: 'link', property: 'a11y:certifierReport', value: report, refines: 'certifier'});
+			meta_tags += smartFormat.createMetaTag({type: 'meta', property: 'a11y:exemption', value: eaa_exemption});
 		}
 		
 		if (!meta_tags) {
@@ -203,9 +205,10 @@ var smartMetadata = (function() {
 	
 	
 	/* concatenates the sufficient modes into a comma-separate string and generates the meta tag */
-	function addSufficientSetTags(isEPUB) {
+	function addSufficientSetTags(format) {
 	
-		var meta_tags = '';
+		var meta_tags = (format == 'json') ? '"schema:accessModeSufficient": "[' : '';
+		
 		var fieldsets = document.getElementById('accessModeSufficient').getElementsByTagName('fieldset');
 		
 		for (var i = 0; i < fieldsets.length; i++) {
@@ -214,15 +217,24 @@ var smartMetadata = (function() {
 			var sufficient_set = '';
 			
 			for (var j = 0; j < checked_modes.length; j++) {
-				sufficient_set += sufficient_set ? ',' : '';
-				sufficient_set += checked_modes[j].value;
+				sufficient_set += sufficient_set ? ', ' : '';
+				
+				if (format == 'json') {
+					sufficient_set += '"' + checked_modes[j].value + '"';
+				}
+				
+				else {
+					sufficient_set += checked_modes[j].value;
+				}
 			}
 			
 			if (sufficient_set) {
-				if (isEPUB) {
+			
+				if (format == 'epub') {
 					meta_tags += smartFormat.createMetaTag({type: 'meta', property: 'schema:accessModeSufficient', value: sufficient_set});
 				}
-				else {
+				
+				else if (format == 'onix') {
 					if (checked_modes.length == 1 && ('onixMap' in checked_modes[0].dataset)) {
 						var codes = checked_modes[0].dataset.onixMap.split(/, */);
 						codes.forEach(function(code) {
@@ -231,16 +243,74 @@ var smartMetadata = (function() {
 						});
 					}
 				}
+				
+				else if (format == 'json') {
+					meta_tags +=  (i === 0) ? '\n\t\t' : ',\n\t\t';
+					meta_tags += '[' + sufficient_set + ']';
+				}
 			}
+		}
+		
+		if (format == 'json') {
+			meta_tags += '\n\t]';
 		}
 		
 		return meta_tags;
 	}
 	
 	
+	
+	function generateJSONMetadata() {
+		
+		var json = '{\n\t';
+		
+		var prop_ending = ',\n\t\n\t';
+		
+		// add accessibility features
+		json += createJSONArray('schema:accessibilityFeature', 'accessibilityFeature') + prop_ending;
+		
+		// add the summary
+		json += '"schema:accessibilitySummary": "' + JSON.stringify(document.getElementById('accessibilitySummary').value) + '"' + prop_ending;
+		
+		// add hazards
+		json += createJSONArray('schema:accessibilityHazard', 'accessibilityHazard') + prop_ending;
+		
+		// add access modes
+		json += createJSONArray('schema:accessMode', 'accessMode') + prop_ending;
+		
+		// add sufficent access modes
+		json += addSufficientSetTags('json');
+		
+		json += '\n}';
+		
+		return json;
+	}
+	
+	
+	function createJSONArray(property, id) {
+	
+		var checked_values = document.getElementById(id).querySelectorAll('input:checked');
+		
+		var json_array = '';
+		
+		for (var i = 0; i < checked_values.length; i++) {
+			if (i > 0) {
+				json_array += ',\n\t\t';
+			}
+			json_array += '"' + checked_values[i].value + '"';
+		}
+		
+		return '"' + property + '": ' + ((json_array !== '') ? '[\n\t\t' + json_array + '\n\t]' : '""');
+	}
+	
+	
 	return {
 		generateAccessibilityMetadata: function(format, quiet) {
 			return generateAccessibilityMetadata(format, quiet);
+		},
+		
+		generateJSONMetadata: function() {
+			return generateJSONMetadata();
 		}
 	}
 

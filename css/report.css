@@ -187,6 +187,11 @@ div.summaryTable > div > div.value > ul {
 	vertical-align: top;
 }
 
+dt {
+	font-weight: bold;
+	margin: 1.5rem;
+}
+
 /* tables */
 
 table {
@@ -243,6 +248,10 @@ div.dataTables_wrapper div.dataTables_filter label {
 	background-color: rgb(239, 251, 245);
 }
 
+.partial {
+	background-color: rgb(255, 247, 220);
+}
+
 .fail {
 	background-color: rgb(251, 239, 245);
 }
@@ -284,6 +293,10 @@ div.grid-hd h4 {
 	display: inline-block;
 	font-size: 94%;
 	margin: 0;
+}
+
+pre {
+	font-size: 1.5rem;
 }
 
 @media only screen

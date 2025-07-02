@@ -249,6 +249,9 @@ var smart_ui = {
 			"pass": {
 				"en": "Pass"
 			},
+			"partial": {
+				"en": "Partial Pass"
+			},
 			"fail": {
 				"en": "Fail"
 			},
@@ -340,6 +343,9 @@ var smart_ui = {
 			"results": {
 				"pass": {
 					"en": "Pass"
+				},
+				"partial": {
+					"en": "Partial Pass"
 				},
 				"fail": {
 					"en": "Fail"

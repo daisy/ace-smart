@@ -20,8 +20,7 @@
 				<h2>The SMART User Interface</h2>
 				
 				<p>The SMART application is designed to make it easy to work your way through the evaluation process.
-					This section highlights the key areas of the application itself and how you will interact with
-					them.</p>
+					This section highlights the key areas of the application and how you will interact with them.</p>
 				
 				<section id="header">
 					<h3>Header Controls</h3>
@@ -29,30 +28,30 @@
 					<p>At the top right of the page are a set of general site controls.</p>
 					
 					<figure>
-						<figcaption>Figure 1 &#8212; User profile information is followed by a logout button.
-							Beneath these, in the application bar, are buttons to validate, save and
-							close.</figcaption>
+						<figcaption>Figure 1 &#8212; Icon buttons to output, validate, save and
+							close an evaluation.</figcaption>
 						<img src="images/user_controls.png" width="250" alt="User controls" />
 					</figure>
 					
 					<p>These controls provide the following functionality:</p>
 					
 					<ul>
-						<li>Log in info &#8212; in addition to identifying the account you logged in under, you can
-							click on your username to <a href="user-management.html">modify your user details</a>.</li>
+						<li>Create Outputs &#8212; The button to create outputs from your evaluation is a plus symbol
+							inside a circle. This button opens a dialog that allows you to <a 
+								href="eval-save.html">preview and save a report</a> from your evaluation, as well as
+							to <a href="discovery.html">create EPUB and ONIX accessibility metadata</a>.</li>
 						
-						<li>Log out &#8212; clicking this button will end your session and exit you from the SMART
-							tool.</li>
+						<li>Validate &#8212; The button to validate your evaluation is a checkmark. This button causes
+							the SMART tool <a href="validate.html">verify</a> that all necessary fields have been completed
+							and that there are no input errors.</li>
 						
-						<li>Validate &#8212; clicking this button will have the SMART tool check that all necessary
-							fields have been completed and that there are no input errors.</li>
+						<li>Save &#8212; The button to save your evaluation is a floppy disk. This button provides
+							the option to <a href="eval-save.html">save your current evaluation</a> to the SMART server
+							or to download the data locally.</li>
 						
-						<li>Close &#8212; clicking this button will close the current evaluation and return you to the
-							application starting page (i.e., where you can start a new evaluation and view your
-							evaluation history).</li>
-						
-						<li>Save &#8212; clicking the save button <a href="eval-save.html">saves your current
-								evaluation</a>.</li>
+						<li>Close &#8212; The button to close your evaluation is the letter X. This button will close 
+							the current evaluation and return you to the application starting page (i.e., where you
+							can start a new evaluation and view your evaluation history).</li>
 					</ul>
 				</section>
 				
@@ -65,7 +64,7 @@
 					<figure>
 						<figcaption>Figure 2 &#8212; Tab bar includes tabs for Publication Info, Conformance, Metadata, 
 							and Reporting. The active tab is indicated by a blue bar above its name.</figcaption>
-						<img src="images/tabs.png" width="600" alt="SMART Tabs"/>
+						<img src="images/tabs.png" width="500" alt="SMART Tabs"/>
 					</figure>
 					
 					<p>In a typical evaluation, you will work your way through each of these tabs one at a time, but you
@@ -77,9 +76,7 @@
 					<h3>Message Panel</h3>
 					
 					<p>The message panel appears at the bottom of the SMART interface whenever issues are found during
-						validation. You can manually validate an evaluation using the "Validate" button at the top of
-						the SMART interface, but automatic validation occurs whenever you generate metadata or
-						reports.</p>
+						<a href="validation.html">validation</a>.</p>
 					
 					<figure>
 						<figcaption>Figure 3 &#8212; The message panel is separated from the main content by a black
@@ -87,35 +84,15 @@
 						<img src="images/message_panel.png" width="700" alt="SMART message panel"/>
 					</figure>
 					
-					<p>The panel contains a list of validation warnings and errors that were discovered. The severity of
-						each message is indicated in square brackets at the start.</p>
+					<p>To close the message panel, click the X (close) button in the right-hand corner.</p>
 					
-					<figure>
-						<figcaption>Figure 4 &#8212; Error messages are prefaced by the text "[ERROR]".</figcaption>
-						<img src="images/error_message.png" width="400" alt="Error message"/>
-					</figure>
-					
-					<div class="note">
-						<p><strong>Note</strong>: While warnings may be ignored if they are determined not to apply,
-							errors should always be corrected before publishing a report or using the metadata the tool
-							generates in an EPUB.</p>
-					</div>
-					
-					<p>To go to the location of the warning or error, click on its message. Errors and warnings are also
-						distinguished visually in each tab by red and yellow backgrounds, respectively. The
-							<code>aria-invalid</code> attribute is also used to convey this information to assistive
-						technologies.</p>
-					
-					<p>To close the message panel, click the X button in the left-hand corner.</p>
-					
-					<p>To re-open the message panel, press <code>ctrl+m</code> or re-run the metadata or report
-						generation operation you were trying to perform.</p>
+					<p>To re-open the message panel, press <code>ctrl+m</code>.</p>
 				</section>
 			</section>
 		</main>
 		
 		<nav class="user-links">
-			<div class="prev-link"><a href="eval-blank.html">Creating a Blank Evaluation</a></div>
+			<div class="prev-link"><a href="eval-blank.html">Loading a Blank Evaluation</a></div>
 			<div class="next-link"><a href="pub-info.html">Adding Publication Information</a></div>
 		</nav>
 		

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Generating Metadata - Ace SMART</title>
+		<link rel="stylesheet" type="text/css" href="../css/a11y.css" />
+		<link rel="stylesheet" type="text/css" href="css/user-guide.css" />
+	</head>
+
+	<body class="page">
+		<header>
+			<h1><img src="../images/daisy_high.jpg" class="logo" alt="DAISY"/> 
+				<span>Ace <span class="smart_hd">SMART</span> &#8212; User Guide</span></h1>
+			<nav class="menubar">
+				<a href="index.html">Table of Contents</a>
+			</nav>
+		</header>
+		<main>
+			<section id="generate">
+				<h2>Generating Metadata</h2>
+				
+				<p>To create a set of metadata tags for an EPUB package document or ONIX record, the first step 
+					is to open the outputs dialog. To do so, click on the Create Outputs button in the evaluation 
+					interface.</p>
+				
+				<figure>
+					<figcaption>Figure 1 &#8212; The Create Outputs button is a plus symbol in a circle. It is
+						the first button in the set of application controls.</figcaption>
+					<img src="images/eval_controls.png" width="550" alt="Report tab" />
+				</figure>
+				
+				<p>Clicking on this button opens a new dialog containing the output options. The second set of
+					controls under the Metadata heading is for outputting metadata.</p>
+				
+				<figure>
+					<figcaption>Figure 2 &#8212; The outputs dialog with sections for outputting a report
+						and metadata.</figcaption>
+					<img src="images/outputs_dialog.png" width="600" alt="Outputs dialog" />
+				</figure>
+					
+				<p>When generating metadata, you have the option to have either EPUB or ONIX metadata tagging output.
+					When selecting EPUB metadata, the tagging will be compatible with the EPUB version you specified 
+					when <a href="pub-info.html">setting the publication information</a>.</p>
+				
+				<figure>
+					<figcaption>Figure 3 &#8212; The metadata output dialog box overlays the current screen when
+						opened. It contains the new markup inside a textbox.</figcaption>
+					<img src="images/discovery_metadata.png" width="550" alt="EPUB markup dialog" />
+				</figure>
+				
+				<p>The SMART tool will create minimal EPUB package document and ONIX record tagging so that you can
+					click the link to open the metadata in the <a href="https://daisy.github.io/a11y-meta-viewer/"
+						>Accessibility Metadata Viewer</a>.</p>
+				
+				<p>To add the accessibility and evaluation metadata to an existing package document, copy and paste the
+					tags inside &lt;metadata> tag. To add the metadata to an existing ONIX record, copy and paste the
+					tags inside the &lt;DescriptiveDetail> tag.</p>
+				
+				<p>If any validation errors are encountered while generating the tags, an alert dialog will first 
+					appear asking you if you wish to continue or exit and check the problems. Errors are listed in the <a 
+						href="ui.html#errors">message panel</a> that opens at the bottom of the page.</p>
+			</section>
+		</main>
+		
+		<nav class="user-links">
+			<div class="prev-link"><a href="generate-report.html">Generating Reports</a></div>
+			<div class="next-link"><a href="eval-save.html">Saving Evaluations</a></div>
+		</nav>
+		
+		<footer>
+			<p>Copyright 2022 <a href="http://daisy.org">DAISY Consortium</a>. All Rights Reserved.</p>
+			<p><a href="http://www.github.com/daisy/ace-smart/issues">Report a problem</a> | <a href="http://www.daisy.org/terms-use">Terms of Use</a></p>
+		</footer>
+	</body>
+</html>

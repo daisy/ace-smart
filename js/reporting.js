@@ -385,10 +385,133 @@ var smartReport = (function() {
 			value: date
 		}));
 		
+		// add the raw accessibilty metadata
+		
+		var recap = document.createElement('details');
+		
+		var recap_summary = document.createElement('summary');
+			recap_summary.appendChild(document.createTextNode('Expand to view'));
+		recap.appendChild(recap_summary);
+		
+		recap.appendChild( generateAccessibilityHTML() );
+		
+		summaryTable.appendChild(formatPubInfoEntry({
+			id: 'raw-a11y-metadata',
+			label: 'Accessibility Metadata',
+			value: recap
+		}));
+		
 		summary.appendChild(summaryTable);
 		
 		return summary;
 	}
+	
+	/* generate the raw accessibility metadata as html */
+	
+	function generateAccessibilityHTML() {
+		
+		var dl = document.createElement('dl');
+		
+		// add accessibility features
+		var dt_features = document.createElement('dt');
+			dt_features.appendChild(document.createTextNode('Accessibility Features'));
+		dl.appendChild(dt_features);
+		
+		dl.appendChild( createHTMLList('accessibilityFeature') );
+		
+		// add the summary
+		var dt_summary = document.createElement('dt');
+			dt_summary.appendChild(document.createTextNode('Accessibility Summary'));
+		dl.appendChild(dt_summary);
+		
+		var dd = document.createElement('dd');
+			dd.appendChild( document.createTextNode(document.getElementById('accessibilitySummary').value) );
+		dl.appendChild(dd);
+		
+		// add hazards
+		var dt_hazards = document.createElement('dt');
+			dt_hazards.appendChild(document.createTextNode('Accessibility Hazards'));
+		dl.appendChild(dt_hazards);
+		
+		dl.appendChild( createHTMLList('accessibilityHazard') );
+		
+		// add access modes
+		var dt_am = document.createElement('dt');
+			dt_am.appendChild(document.createTextNode('Access Modes'));
+		dl.appendChild(dt_am);
+		
+		dl.appendChild( createHTMLList('accessMode') );
+		
+		// add sufficent access modes
+		var dt_ams = document.createElement('dt');
+			dt_ams.appendChild(document.createTextNode('Sufficient Access Modes'));
+		dl.appendChild(dt_ams);
+		
+		dl.appendChild( addSufficientSetsHTML() );
+		
+		return dl;
+	
+	}
+	
+	function createHTMLList(id) {
+	
+		var checked_values = document.getElementById(id).querySelectorAll('input:checked');
+		
+		var ol = document.createElement('ul');
+		
+		if (checked_values.length) {
+			for (var i = 0; i < checked_values.length; i++) {
+				var li = document.createElement('li');
+					li.appendChild(document.createTextNode(checked_values[i].value));
+				ol.appendChild(li);
+			}
+		}
+		
+		else {
+			var li = document.createElement('li');
+				li.appendChild(document.createTextNode('Not specified.'));
+			ol.appendChild(li);
+		}
+		
+		return ol;
+	}
+	
+	
+	function addSufficientSetsHTML() {
+	
+		var ol = document.createElement('ul');
+		
+		var fieldsets = document.getElementById('accessModeSufficient').getElementsByTagName('fieldset');
+		
+		var hasSets = false;
+		
+		for (var i = 0; i < fieldsets.length; i++) {
+		
+			var checked_modes = fieldsets[i].querySelectorAll('input:checked');
+			var sufficient_set = '';
+			
+			for (var j = 0; j < checked_modes.length; j++) {
+				sufficient_set += sufficient_set ? ', ' : '';
+				sufficient_set += checked_modes[j].value;
+			}
+			
+			if (sufficient_set) {
+				var li = document.createElement('li');
+					li.appendChild(document.createTextNode(sufficient_set));
+				ol.appendChild(li);
+				hasSets = true;
+			}
+		}
+		
+		if (!hasSets) {
+			var li = document.createElement('li');
+				li.appendChild(document.createTextNode('Not specified.'));
+			ol.appendChild(li);
+		}
+		
+		return ol;
+	}
+	
 	
 	/* compile the accessibility metadata statements */
 	
@@ -565,7 +688,7 @@ var smartReport = (function() {
 		
 		result.content.appendChild(resultHD);
 		
-		result.count = { pass: 0, fail: 0, na: 0, unverified: 0, obsolete: 0 };
+		result.count = { pass: 0, partial: 0, fail: 0, na: 0, unverified: 0, obsolete: 0 };
 		
 		var showAA = document.getElementById('show-aa').checked;
 		var showAAA = document.getElementById('show-aaa').checked;
@@ -655,6 +778,30 @@ var smartReport = (function() {
 				resultColStatus.appendChild(resultColStatusLabel);
 				if (log) {
 					result.count.pass += 1;
+				}
+			}
+			
+			else if (status == 'partial') {
+				var err = document.getElementById(criteria[i].id+'-err').value;
+				resultColStatusLabel.appendChild(document.createTextNode(smart_ui.reporting.table.results.partial[smart_lang]));
+				resultColStatus.appendChild(resultColStatusLabel);
+				
+				// add the reason 
+				if ((err != '') && (_notesToDisplay == 'all' || _notesToDisplay == 'failures')) {
+					var lines = err.trim().split(/[\r\n]+/);
+					lines.forEach(function(line) {
+						if (line) {
+							var notePara = document.createElement('p');
+								notePara.appendChild(document.createTextNode(line));
+							resultColStatus.appendChild(notePara);
+						}
+					});
+				}
+				
+				if ((criteria['name'] != 'EPUB') || ((criteria['name'] == 'EPUB') && (criteria[i].id != 'eg-2'))) {
+					if (log) {
+						result.count.partial += 1;
+					}
 				}
 			}
 			
@@ -824,7 +971,12 @@ var smartReport = (function() {
 	/* get the count of pass/fail/na/unverified SCs */
 	
 	function createReportStats(count) {
+		
 		var stats = count.pass + ' ' + smart_ui.conformance.result.pass[smart_lang];
+
+		if (count.partial) {
+			stats += ', ' + count.partial + ' ' + smart_ui.conformance.result.partial[smart_lang];
+		}
 
 		if (count.fail) {
 			stats += ', ' + count.fail + ' ' + smart_ui.conformance.result.fail[smart_lang];
@@ -921,7 +1073,7 @@ var smartReport = (function() {
 			value.appendChild(document.createTextNode(options.value));
 		}
 		
-		else if (options.value.tagName.toLowerCase().match(/^(a|ul)$/)) {
+		else if (options.value.tagName.toLowerCase().match(/^(a|ul|details)$/)) {
 			value = document.createElement('div');
 			value.setAttribute('class', options.value_bg_class ? 'value ' + options.value_bg_class : 'value');
 			value.appendChild(options.value);

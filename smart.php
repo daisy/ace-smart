@@ -258,6 +258,7 @@ JS;
 								<legend>Hide success criteria with status:</legend>
 								<label><input type="checkbox" class="hide_sc" value="unverified"/> Unverified</label>
 								<label><input type="checkbox" class="hide_sc" value="pass"/> Pass</label>
+								<label><input type="checkbox" class="hide_sc" value="partial"/> Partial</label>
 								<label><input type="checkbox" class="hide_sc" value="fail"/> Fail</label>
 								<label><input type="checkbox" class="hide_sc" value="na"/> N/A</label>
 							</fieldset>
@@ -266,6 +267,7 @@ JS;
 								<legend>Set all success criteria to:</legend>
 								<a id="set-sc-unv" href="#set-sc-unv" onclick="smartConformance.setGlobalSCStatus('unverified',false); return false">Unverified</a>
 								<a id="set-sc-pass" href="#set-sc-pass" onclick="smartConformance.setGlobalSCStatus('pass',false); return false">Pass</a>
+								<a id="set-sc-partial" href="#set-sc-partial" onclick="smartConformance.setGlobalSCStatus('partial',false); return false">Partial</a>
 								<a id="set-sc-fail" href="#set-sc-fail" onclick="smartConformance.setGlobalSCStatus('fail',false); return false">Fail</a>
 								<a id="set-sc-na" href="#set-sc-na" onclick="smartConformance.setGlobalSCStatus('na',false); return false">N/A</a>
 							</fieldset>
@@ -333,6 +335,7 @@ JS;
 						<h4>Stats</h4>
 						<ul>
 							<li><span class="statLabel">Pass:</span> <span id="passCount" class="statCount"></span></li>
+							<li><span class="statLabel">Partial:</span> <span id="partialCount" class="statCount"></span></li>
 							<li><span class="statLabel">Fail:</span> <span id="failCount" class="statCount"></span></li>
 							<li><span class="statLabel">N/A:</span> <span id="naCount" class="statCount"></span></li>
 							<li><span class="statLabel">Unverified:</span> <span id="unverifiedCount" class="statCount"></span></li>
@@ -485,7 +488,7 @@ JS;
 					<p class="help"><a href="user-guide/evaluation.html" target="_blank">Need help?</a></p>
 					
 					<fieldset id="eval-report" aria-labelledby="er-legend">
-						<legend id="" class="eval-legend">Evaluation Info</legend>
+						<legend id="er-legend" class="eval-legend">Evaluation Info</legend>
 						
 						<div class="conformance-result">
 							<span class="hd">Result:</strong>
@@ -500,24 +503,42 @@ JS;
 						</div>
 					</fieldset>
 					
+					<fieldset id="eval-exemption" aria-labelledby="ee-legend">
+						<legend id="ee-legend" class="eval-legend">Exemptions</legend>
+						
+						<p><small>Even if a publication passes accessibility testing, it may be exempt from accessibility
+							requirements in some jurisdictions. If an exemption applies, please indicate it below. If unsure,
+							<strong>do not</strong> claim an exemption.</small></p>
+						
+						<label class="data"><span>Europe:</span> 
+							<select id="eaa">
+								<option value="">None</option>
+								<option value="eaa-disproportionate-burden">Disproportionate burden</option>
+								<option value="eaa-fundamental-alteration">Fundamental alteration</option>
+								<option value="eaa-microenterprise">Microenterprise</option>
+							</select>
+						</label>
+					</fieldset>
+					
 					<div id="extension-results"></div>
 					
 					<fieldset id="eval-info" aria-labelledby="ei-legend">
 						<legend id="ei-legend" class="eval-legend">Evaluator Info</legend>
 						<label class="data"><span>Name:<img src="/images/asterisk.png" alt="required"/></span> <input type="text" id="certifiedBy" aria-required="true"/></label>
-						<label class="data"><span>Role:<img src="/images/asterisk.png" alt="required"/></span> 
+						<!-- <label class="data"><span>Role:<img src="/images/asterisk.png" alt="required"/></span> 
 							<select id="certifierRole">
 								<option>Self-evaluator</option>
 								<option>Third-party evaluator</option>
 							</select>
-						</label>
+						</label> -->
 						<label class="data"><span>Credential:</span> <input type="text" id="certifierCredential"/></label>
 					</fieldset>
 					
 					<fieldset id="contact-info" aria-labelledby="ec-legend">
 						<legend id="ec-legend" class="eval-legend">Contact Info</legend>
-						<label class="data"><span>Publisher email:</span> <input type="text" id="publisherContact"/></label>
-						<label class="data"><span>Trusted intermediary email:</span> <input type="text" id="trustedIntermediaryContact"/></label>
+						<p><small>The contact is for users to enquire about the accessibility of the publication
+							or to report issues. It is not necessarily the contact of the evaluator.</small></p>
+						<label class="data"><span>Email:</span> <input type="text" id="contactEmail"/></label>
 					</fieldset>
 				</section>
 			</form>
@@ -545,8 +566,8 @@ JS;
 				</div>
 			</section>
 			
-			<section id="eval-meta-gen">
-				<h3>Evaluation Metadata</h3>
+			<section id="meta-gen">
+				<h3>Metadata</h3>
 				
 				<fieldset>
 					<legend>Format:</legend>

@@ -164,7 +164,7 @@ var smartManage = (function() {
 			
 			evaluationJSON.evaluation.certifiedBy = document.getElementById('certifiedBy').value;
 			
-			evaluationJSON.evaluation.role = document.getElementById('certifierRole').value;
+			// evaluationJSON.evaluation.role = document.getElementById('certifierRole').value;
 			
 			evaluationJSON.evaluation.certifierCredential = document.getElementById('certifierCredential').value;
 			
@@ -172,10 +172,15 @@ var smartManage = (function() {
 			
 			evaluationJSON.evaluation.certificationDate = document.getElementById('certificationDate').value;
 			
-			evaluationJSON.evaluation.publisherContact = document.getElementById('publisherContact').value;
+			evaluationJSON.evaluation.contactEmail = document.getElementById('contactEmail').value;
 			
-			evaluationJSON.evaluation.trustedIntermediaryContact = document.getElementById('trustedIntermediaryContact').value;
-			
+		
+		/* add exemption metadata */
+		
+		evaluationJSON.exemption = {};
+		
+			evaluationJSON.exemption.eaa = document.getElementById('eaa').value;
+		
 		
 		/* add extension data */
 		
@@ -456,7 +461,7 @@ var smartManage = (function() {
 		
 			var feature_map = {
 			
-				'8': 'unknown',
+				'08': 'unknown',
 				'10': 'unlocked',
 				'16': 'longDescription',
 				'22': 'ttsMarkup',
@@ -502,16 +507,16 @@ var smartManage = (function() {
 					}
 					
 					else if (onix_id == 98) {
-						document.getElementById('trustedIntermediaryContact').value = evaluationJSON.distribution.onix[onix_id];
+						document.getElementById('contactEmail').value = evaluationJSON.distribution.onix[onix_id];
 					}
 					
 					else if (onix_id == 99) {
-						document.getElementById('publisherContact').value = evaluationJSON.distribution.onix[onix_id];
+						document.getElementById('contactEmail').value = evaluationJSON.distribution.onix[onix_id];
 					}
 					
 					else {
-						if (evaluationJSON.distribution.onix[padded_id]) {
-							var id = feature_map[padded_id];
+						if (evaluationJSON.distribution.onix[onix_id]) {
+							var id = feature_map[onix_id];
 							var input = document.querySelector('#accessibilityFeature input[value="' + id + '"]');
 							if (input && !input.checked) {
 								input.checked = true;
@@ -526,7 +531,8 @@ var smartManage = (function() {
 		
 		var text_fields = {
 			publicationInfo: ['title', 'creator', 'identifier', 'modified', 'publisher', 'description', 'date', 'subject', 'optional-meta'],
-			evaluation: ['certifiedBy', 'certifierRole', 'certifierCredential', 'certifierReport', 'certificationDate', 'publisherContact', 'trustedIntermediaryContact']
+			evaluation: ['certifiedBy', 'certifierCredential', 'certifierReport', 'certificationDate', 'contactEmail'],
+			exemption: ['eaa']
 		};
 		
 		for (var key in text_fields) {

@@ -1073,12 +1073,16 @@ label.pad-left{
 	background-color: rgb(250, 250, 250) !important;
 }
 
-.pass{
+.pass {
 	border: 0.2rem solid rgb(10, 255, 10) !important;
 }
 
 
-.warn{
+.partial {
+	border: 0.2rem solid rgb(255, 172, 28) !important;
+}
+
+.warn {
 	border: 0.2rem solid rgb(255, 140, 0) !important;
 }
 
@@ -1092,6 +1096,7 @@ label.pad-left{
 
 .pass .sc-body,
 .err .sc-body,
+.partial .sc-body,
 .unverified .sc-body,
 .obsolete .sc-body {
 	display: block;
