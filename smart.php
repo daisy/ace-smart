@@ -490,6 +490,10 @@ JS;
 					<fieldset id="eval-report" aria-labelledby="er-legend">
 						<legend id="er-legend" class="eval-legend">Evaluation Info</legend>
 						
+						<p><small>Publications that fail WCAG 2 Level AA may still pass at Level A. Try switching
+							the level in the conformance tab to check if the publication passes at the lower
+							level.</small></p>
+						
 						<div class="conformance-result">
 							<span class="hd">Result:</strong>
 							<span id="conformance-result-status">Incomplete</span>

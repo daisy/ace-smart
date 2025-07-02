@@ -493,18 +493,23 @@ var smartConformance = (function() {
 			}
 		}
 		
-		// otherwise not having an else if here allows verification to fall through to A, even if testing AA
-		if (level_a_pass) {
-			
-			status_label.textContent = smart_ui.conformance.status.pass[smart_lang] + ': ' + spec_version + smart_ui.conformance.status.a[smart_lang];
-			
-			status_input.value = 'a';
+		else {
+			// otherwise not having an else if here allows verification to fall through to A, even if testing AA
+			if (level_a_pass) {
+				
+				status_label.textContent = smart_ui.conformance.status.pass[smart_lang] + ': ' + spec_version + smart_ui.conformance.status.a[smart_lang];
+				
+				status_input.value = 'a';
+				
+				return;
+			}
 		}
 		
-		else {
-			status_label.textContent = smart_ui.conformance.status.fail[smart_lang] + ': ' + spec_version + smart_ui.conformance.status[smartWCAG.WCAGLevel()][smart_lang];
-			status_input.value = 'fail';
-		}
+		// return statements above prevent falling through to this failure message
+		
+		status_label.textContent = smart_ui.conformance.status.fail[smart_lang] + ' — ' + spec_version + smart_ui.conformance.status[smartWCAG.WCAGLevel()][smart_lang];
+		status_input.value = 'fail';
+	
 	}
 	
 	

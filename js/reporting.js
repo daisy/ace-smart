@@ -330,7 +330,7 @@ var smartReport = (function() {
 		
 		var conf = document.getElementById('conformance-result').value;
 		
-		var result = document.getElementById('conformance-result-status').textContent.match(/^(?<status>Pass|Failed|Incomplete): (?<spec>.*?)$/).groups;
+		var result = document.getElementById('conformance-result-status').textContent.match(/^(?<status>Pass|Failed|Incomplete) — (?<spec>.*?)$/).groups;
 		
 		summaryTable.appendChild(formatPubInfoEntry({
 			id: 'conformance-spec',
