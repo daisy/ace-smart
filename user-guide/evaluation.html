@@ -20,68 +20,69 @@
 				<h2>Evaluation Result</h2>
 				
 				<p>The next step is to report the conformance of the publication and provide information about the
-					testing organization/individual in the Evaluation Result tab.</p>
+					testing organization/individual in the Result tab.</p>
 				
 				<figure>
-					<figcaption>Figure 1 &#8212; The Evaluation Result tab is the fifth in the tab bar. It indicates
+					<figcaption>Figure 1 &#8212; The Result tab is the fifth in the tab bar. It indicates
 						the current conformance status of the publication and includes fields for specifying 
 						information about the evaluator.</figcaption>
 					<img src="images/tab_eval_result.png" width="700" alt="Evaluation Result tab" />
 				</figure>
 				
-				<p>First, verify the pass or fail rating the tool provides:</p>
+				<p>First, verify the pass or fail rating the tool provides in the Evaluation Info section:</p>
 				
 				<figure>
 					<figcaption>Figure 2 &#8212; The result field shows that the publication has passed the EPUB
-						Accessibility 1.1 requirements and meets WCAG Level AA.</figcaption>
-					<img src="images/conf_result.png" width="600" alt="Conformance result field" />
+						Accessibility 1.1 requirements and meets WCAG 2.1 Level AA.</figcaption>
+					<img src="images/conf_result.png" width="550" alt="Conformance result field" />
 				</figure>
 				
 				<p>If this field shows the value <strong>Incomplete</strong>, not all of the required success criteria
-					have been set. <a href="generate.html">Creating the final report</a> in the next step will also
-					generate a list of any missed success criteria. If the field shows the value <strong>Failed</strong>
-					and you believe this to be incorrect, <a href="configuration.html#sc-filter">filter the list of
-						success criteria</a> by their status to find failures.</p>
+					have been set. To check which success criteria were missed, try <a href="validate.html">validating</a>
+					your report. If the field shows the value <strong>Failed</strong> and you believe this to be incorrect,
+					<a href="configuration.html#sc-filter">filter the list of success criteria</a> by their status to find
+					failures.</p>
 				
-				<p>Next, provide your name (or the name of your organization) as the evaluator of the report.</p>
+				<p>You can next specify a URL where the final report will be hosted (if you intend to generate one and 
+					make it available on the Web) and the date of the evaluation. These fields are only important if you 
+					are going to <a href="generate.html#metadata">generate new metadata</a> from the SMART tool.</p>
 				
 				<figure>
-					<figcaption>Figure 3 &#8212; Text fields for the evaluator name and report link.</figcaption>
+					<figcaption>Figure 3 &#8212; Text fields for the report URL and evaluation date.</figcaption>
+					<img src="images/conf_eval_info.png" width="600" alt="Reporting fields" />
+				</figure>
+				
+				<p>The next section allows you to specify if the publication is exempt from regional accessibility 
+					requirements. The SMART tool currently only provides the ability to set exemptions from the
+					requirements of the European Accessibility Act.</p>
+				
+				<figure>
+					<figcaption>Figure 4 &#8212; Exemption drop-down selector.</figcaption>
+					<img src="images/conf_exemption.png" width="600" alt="Exemption field" />
+				</figure>
+				
+				<p>The Evaluator Info section allows you to enter your name (or the name of your organization) as the 
+					evaluator of the report. If you have a credential, such as Benetech Globally Certified Accessible,
+					you can enter it in the credential field.</p>
+				
+				<figure>
+					<figcaption>Figure 4 &#8212; Text fields for the evaluator name and credential.</figcaption>
 					<img src="images/conf_tester.png" width="600" alt="Evaluator fields" />
 				</figure>
 				
-				<p>You can also specify a URL where the final report will be hosted if you intend to put the report on
-					the Web. This URL is only used if you generate metadata for the EPUB publication using the button at
-					the bottom of the tab. If you are not updating the publication, the field can be skipped.</p>
-				
-				<div class="note">
-					<p><strong>Note</strong>: Do not skip this step just because a publication has failed its
-						accessibility evaluation. It is important to note who carried out the evaluation and, if
-						possible, to provide a link to the detailed report explaining why.</p>
-				</div>
-				
-				<p>To generate result metadata that can be pasted into the EPUB publication, use the "Generate" button
-					at the bottom of the page.</p>
-				
-				<p>Metadata compatible with the EPUB version you specified when <a href="pub-info.html">setting the
-						publication information</a> will be generated and made available to copy and paste from a new
-					dialog box.</p>
+				<p>The final section, Contact Info, allows you to provide readers a contact email address for
+					inquiries about the accessibility of the publication or to report issues.</p>
 				
 				<figure>
-					<figcaption>Figure 4 &#8212; The evaluation metadata dialog box overlays the current screen when
-						opened. It contains the new markup inside a textbox.</figcaption>
-					<img src="images/evaluation_metadata.png" width="650" alt="Evaluation markup dialog" />
+					<figcaption>Figure 5 &#8212; Text field for the contact email.</figcaption>
+					<img src="images/conf_contact.png" width="600" alt="Contact field" />
 				</figure>
-				
-				<p>If any validation errors are encountered, an alert dialog will first appear asking you if you wish
-					to continue or exit and check the problems. Errors are listed in the <a href="errors.html">message
-						panel</a> that opens at the bottom of the page.</p>
 			</section>
 		</main>
 		
 		<nav class="user-links">
-			<div class="prev-link"><a href="distribution.html">Distribution Metadata</a></div>
-			<div class="next-link"><a href="generate.html">Generating Reports</a></div>
+			<div class="prev-link"><a href="metadata.html">Accessibility Metadata</a></div>
+			<div class="next-link"><a href="validate.html">Validation</a></div>
 		</nav>
 		
 		<footer>

@@ -187,6 +187,12 @@ h3{
 	font-size: 1.6rem;
 }
 
+#generate h3 {
+	font-size: 2rem;
+	border-top: 0.1rem solid rgb(128,128,128);
+	padding-top: 2rem;
+}
+
 body.page h2{
 	margin-top: 0;
 	padding-top: 2rem;
@@ -241,11 +247,13 @@ nav.appmenu {
 }
 
 a#save-button,
+a#create-button,
 a#validate-button {
 	margin-right: 2rem;
 }
 
 a#save-button:hover,
+a#create-button:hover,
 a#close-button:hover,
 a#validate-button:hover {
 	border-bottom: 0.3rem solid rgb(220,0,0);
@@ -427,7 +435,7 @@ p.help a {
 /* conformance results */
 
 div.conformance-result {
-	padding: 1rem 0 0 1.3rem;
+	padding: 1rem 0 0 0;
 }
 
 span.hd {
@@ -435,7 +443,7 @@ span.hd {
 }
 
 span#conformance-result-status {
-	padding-left: 5rem;
+	padding-left: 15rem;
 	color: rgb(0,0,0);
 }
 
@@ -447,8 +455,33 @@ fieldset#eval-info legend {
 	margin-top: 1.5rem;
 }
 
+legend.eval-legend {
+	color: black;
+	margin-top: 3rem;
+	margin-bottom: 1rem;
+}
 
 /* report generation */
+
+#outputs > section > *:nth-child(n+2) {
+	margin-left: 3rem;
+}
+
+#outputs div.buttons {
+	padding: 0;
+}
+
+#eval-meta-gen > h3 {
+	margin-top: 3rem;
+}
+
+#eval-meta-gen > fieldset > legend {
+	width: auto;
+}
+
+#eval-meta-gen > fieldset > legend +label {
+	clear: unset;
+}
 
 #generate details {
 	margin-top: 2rem;
@@ -467,6 +500,15 @@ fieldset#eval-info legend {
 
 #generate fieldset:first-of-type {
 	margin-top: 2rem;
+}
+
+.ui-widget-content a {
+	color: rgb(0,0,220);
+	border-bottom: 0.1rem dashed rgb(0,0,220);
+}
+
+#conformance-options a {
+	border-bottom: none;
 }
 
 /* lists */
@@ -524,13 +566,8 @@ li.epub-trigger {
 /* fieldsets */
 
 fieldset,
-div.conformance-result,
-div.onix {
+div.conformance-result {
 	border: none;
-}
-
-div.onix {
-	margin-left: 0.2rem;
 }
 
 fieldset {
@@ -865,6 +902,10 @@ div.combo {
 	margin: 1rem;
 }
 
+div.combo-eval {
+	margin: 1rem 1rem 1rem 0;
+}
+
 /* n/a notes */
 
 p.img,
@@ -884,6 +925,7 @@ label.data{
 
 label.data > span,
 div.data > span,
+div.combo-eval > label:first-child span,
 div.combo > label:first-child span {
 	display: inline-block;
 	width: 20rem;
@@ -892,7 +934,8 @@ div.combo > label:first-child span {
 }
 
 label.data > input[type = 'text'],
-div.combo > label > input[type='text'] {
+div.combo > label > input[type='text'],
+div.combo-eval > label > input[type='text'] {
 	width: 40rem;
 }
 
@@ -1034,12 +1077,16 @@ label.pad-left{
 	background-color: rgb(250, 250, 250) !important;
 }
 
-.pass{
+.pass {
 	border: 0.2rem solid rgb(10, 255, 10) !important;
 }
 
 
-.warn{
+.partial {
+	border: 0.2rem solid rgb(255, 172, 28) !important;
+}
+
+.warn {
 	border: 0.2rem solid rgb(255, 140, 0) !important;
 }
 
@@ -1053,6 +1100,7 @@ label.pad-left{
 
 .pass .sc-body,
 .err .sc-body,
+.partial .sc-body,
 .unverified .sc-body,
 .obsolete .sc-body {
 	display: block;
@@ -1096,53 +1144,6 @@ figcaption{
 	margin-bottom: 1rem;
 }
 
-
-/* onix metadata fields */
-
-fieldset.onix > legend {
-	margin-bottom: 2rem;
-}
-
-fieldset.onix > label {
-	display: block;
-	margin-top: 2rem;
-}
-
-div.onix {
-	margin-top: 2rem;
-	padding: 2rem;
-	font-weight: bold
-}
-
-div.onix > label {
-	padding-bottom: 1rem;
-	display: inline-block;
-	font-weight: normal;
-	font-size: 110%;
-	color: rgb(0,0,120);
-}
-
-div.onix input[type='text'],
-div.onix textarea {
-	display: block;
-	width: 65rem;
-	margin-top: 1rem;
-}
-
-.onix-optional {
-	margin-top: 2rem;
-	color: rgb(0,0,120);
-}
-
-#distribution-fields input[type=text] {
-	min-width: 40rem;
-}
-
-#distribution-fields dt {
-	font-weight: normal;
-	color: rgb(0,0,120);
-	margin-bottom: 1rem;
-}
 
 /* pub info fieldsets */
 
@@ -1191,9 +1192,7 @@ input[type='image'] {
 /* output options */
 
 div#output-opt {
-	margin-left: 2rem;
-	margin-top: 2rem;
-	margin-bottom: -1rem;
+	margin-bottom: 1rem;
 }
 
 /* display properties */
@@ -1344,11 +1343,11 @@ div#output-opt {
 		display: none;
 	}
 	
-	a#save-button, a#close-button, a#validate-button {
+	a#save-button, a#create-button, a#close-button, a#validate-button {
 		margin-right: 1rem;
 	}
 	
-	label.data > input[type = 'text'], div.combo > label > input[type='text'] {
+	label.data > input[type = 'text'], div.combo > label > input[type='text'], div.combo-eval > label > input[type='text'] {
 		width: 30rem;
     }
 }

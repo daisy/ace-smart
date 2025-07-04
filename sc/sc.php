@@ -853,6 +853,7 @@
 			<legend>Status:</legend>
 			<label><input id="%%id%%-unverified" type="radio" name="%%id%%" value="unverified" class="sc_status" aria-labelledby="%%id%%-legend" checked="checked"> Unverified</label>
 			<label><input id="%%id%%-pass" type="radio" name="%%id%%" value="pass" class="sc_status" aria-labelledby="%%id%%-legend"> Pass</label>
+			<label><input id="%%id%%-partial" type="radio" name="%%id%%" value="partial" class="sc_status" aria-labelledby="%%id%%-legend"> Partial</label>
 			<label><input id="%%id%%-fail" type="radio" name="%%id%%" value="fail" class="sc_status" aria-labelledby="%%id%%-legend"> Fail</label>
 			<label><input id="%%id%%-na" type="radio" name="%%id%%" value="na" class="sc_status" aria-labelledby="%%id%%-legend"> N/A</label>
 			%%obsolete%%

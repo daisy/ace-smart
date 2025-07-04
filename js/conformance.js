@@ -447,9 +447,13 @@ var smartConformance = (function() {
 		
 		var incomplete = document.querySelectorAll(a_unverified_selector);
 		
-		var onix_a = document.getElementById('onix02');
-		var onix_aa = document.getElementById('onix03');
+		/* check for partial passes */
+		var a_partial_selector = getSCStatusSelector({status: 'partial', level: 'a', includeEPUB: true});
+		var aa_partial_selector = getSCStatusSelector({status: 'partial', level: 'aa', includeEPUB: false});
 		
+		var a_partial_fail = document.querySelectorAll(a_partial_selector);
+		
+		/* check for failures */
 		var a_fail_selector = getSCStatusSelector({status: 'fail', level: 'a', includeEPUB: true});
 		var aa_fail_selector = getSCStatusSelector({status: 'fail', level: 'aa', includeEPUB: false});
 		
@@ -457,7 +461,7 @@ var smartConformance = (function() {
 
 		var epub_fail = document.querySelectorAll('input#epub-discovery-fail:checked');
 		
-		var level_a_pass = (level_a_fail.length == 0 && epub_fail.length == 0) ? true : false; 
+		var level_a_pass = (level_a_fail.length == 0 && epub_fail.length == 0 && a_partial_fail.length == 0) ? true : false; 
 
 		var wcag_ver = 'wcag' + wcag_version.replace('.','');
 		var epub_ver = 'epub' + epub_a11y.replace('.','');
@@ -479,35 +483,33 @@ var smartConformance = (function() {
 		// or if showing optional AA success criteria and all have been checked
 		if (smartWCAG.WCAGLevel() == 'aa' || (show_aa && document.querySelectorAll(aa_unverified_selector).length == 0)) {
 			
-			if (level_a_pass && document.querySelectorAll(aa_fail_selector).length == 0) {
+			if (level_a_pass && document.querySelectorAll(aa_partial_selector).length == 0 && document.querySelectorAll(aa_fail_selector).length == 0) {
 				
 				status_label.textContent = smart_ui.conformance.status.pass[smart_lang] + ': ' + spec_version + smart_ui.conformance.status.aa[smart_lang];
 				
 				status_input.value = 'aa';
 				
-				if (!onix_aa.checked) { onix_aa.click(); }
-				if (onix_a.checked) { onix_a.click(); }
 				return;
 			}
 		}
 		
-		// otherwise not having an else if here allows verification to fall through to A, even if testing AA
-		if (level_a_pass) {
-			
-			status_label.textContent = smart_ui.conformance.status.pass[smart_lang] + ': ' + spec_version + smart_ui.conformance.status.a[smart_lang];
-			
-			status_input.value = 'a';
-			
-			if (onix_aa.checked) { onix_aa.click(); }
-			if (!onix_a.checked) { onix_a.click(); }
+		else {
+			// otherwise not having an else if here allows verification to fall through to A, even if testing AA
+			if (level_a_pass) {
+				
+				status_label.textContent = smart_ui.conformance.status.pass[smart_lang] + ': ' + spec_version + smart_ui.conformance.status.a[smart_lang];
+				
+				status_input.value = 'a';
+				
+				return;
+			}
 		}
 		
-		else {
-			status_label.textContent = smart_ui.conformance.status.fail[smart_lang] + ': ' + spec_version + smart_ui.conformance.status[smartWCAG.WCAGLevel()][smart_lang];
-			status_input.value = 'fail';
-			if (onix_aa.checked) { onix_aa.click(); }
-			if (onix_a.checked) { onix_a.click(); }
-		}
+		// return statements above prevent falling through to this failure message
+		
+		status_label.textContent = smart_ui.conformance.status.fail[smart_lang] + ' — ' + spec_version + smart_ui.conformance.status[smartWCAG.WCAGLevel()][smart_lang];
+		status_input.value = 'fail';
+	
 	}
 	
 	
@@ -517,7 +519,7 @@ var smartConformance = (function() {
 		/* 
 		 * options requires three properties:
 		 *
-		 * - options.status = one of pass/fail/unverified/na
+		 * - options.status = one of pass/partial/fail/unverified/na
 		 * - options.level = a or aa (wcag level) 
 		 * - options.includeEPUB = true/false (whether to include the EPUB SC)
 		 * 
@@ -557,7 +559,7 @@ var smartConformance = (function() {
 		var sc_parent_section = document.getElementById(options.name); 
 		
 		/* reset the background */
-		sc_parent_section.classList.remove(smartFormat.BG.PASS,smartFormat.BG.FAIL,smartFormat.BG.NA,smartFormat.BG.OBSOLETE);
+		sc_parent_section.classList.remove(smartFormat.BG.PASS,smartFormat.BG.PARTIAL,smartFormat.BG.FAIL,smartFormat.BG.NA,smartFormat.BG.OBSOLETE);
 		
 		/* set background to new status */
 		if (options.value != 'unverified') {
@@ -568,7 +570,7 @@ var smartConformance = (function() {
 		var failure_message = document.getElementById(options.name + '-failnote');
 		
 		if (failure_message) {
-			if (options.value == 'fail') {
+			if (options.value == 'fail' || options.value == 'partial') {
 				failure_message.classList.add('visible');
 			}
 			else {
@@ -586,6 +588,7 @@ var smartConformance = (function() {
 		var sc = document.querySelectorAll('section#conformance section.visible div.reporting input.sc_status:checked');
 		
 		var pass = 0;
+		var partial = 0;
 		var fail = 0;
 		var na = 0;
 		var unverified = 0;
@@ -595,6 +598,10 @@ var smartConformance = (function() {
 			switch (sc[i].value) {
 				case 'pass':
 					pass += 1;
+					break;
+				
+				case 'partial':
+					partial += 1;
 					break;
 				
 				case 'fail':
@@ -616,6 +623,7 @@ var smartConformance = (function() {
 		}
 		
 		document.getElementById('passCount').innerHTML = pass;
+		document.getElementById('partialCount').innerHTML = partial;
 		document.getElementById('failCount').innerHTML = fail;
 		document.getElementById('naCount').innerHTML = na;
 		document.getElementById('unverifiedCount').innerHTML = unverified;

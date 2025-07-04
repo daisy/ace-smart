@@ -51,12 +51,6 @@
 			smartConformance.showSCNoteField(this);
 		});
 		
-		/* add discovery metadata fields */
-		smartDiscovery.addDiscoveryMetadata();
-		
-		/* add distribution metadata fields */
-		smartDistribution.addDistributionMetadata();
-		
 		/* configure and populate the evaluation */
 		evaluationSetup();
 		
@@ -174,16 +168,16 @@
 		buttons: close_button
 	});
 	
-	/* discovery_dialog is used to show the generated discovery tab metadata (it is initialized in the smartDiscovery module) */
-	discovery_dialog = $("#discovery-meta").dialog({
+	/* outputs dialog is used to show the report and metadata generation options */
+	var outputs_dialog = $("#outputs").dialog({
 		autoOpen: false,
 		height: 450,
 		modal: true,
 		buttons: close_button
 	});
 	
-	/* onix_dialog is used to show the generated distribution tab metadata (it is initialized in the smartReport module) */
-	onix_dialog = $("#distribution-meta").dialog({
+	/* meta_dialog is used to show the generated metadata */
+	var meta_dialog = $("#meta-output").dialog({
 		autoOpen: false,
 		height: 450,
 		modal: true,
@@ -195,14 +189,6 @@
 		autoOpen: false,
 		height: 425,
 		width: 600,
-		modal: true,
-		buttons: close_button
-	});
-	
-	/* evaluation_dialog is used to show the generated evaluation tab metadata (it is initialized in the smartEvaluation module) */
-	evaluation_dialog = $("#evaluation-meta").dialog({
-		autoOpen: false,
-		height: 350,
 		modal: true,
 		buttons: close_button
 	});
@@ -233,18 +219,16 @@
 	function adjustDialogWidth() {
 		if (document.body.clientWidth < 550) {
 			import_dialog.dialog("option", "width", 300);
-			discovery_dialog.dialog("option", "width", 400);
-			evaluation_dialog.dialog("option", "width", 400);
+			outputs_dialog.dialog("option", "width", 400);
+			meta_dialog.dialog("option", "width", 400);
 			meta_wiz_dialog.dialog("option", "width", 400);
-			onix_dialog.dialog("option", "width", 400);
 			save_dialog.dialog("option", "width", 400);
 		}
 		else {
 			import_dialog.dialog("option", "width", 550);
-			discovery_dialog.dialog("option", "width", 750);
-			evaluation_dialog.dialog("option", "width", 750);
+			outputs_dialog.dialog("option", "width", 750);
+			meta_dialog.dialog("option", "width", 750);
 			meta_wiz_dialog.dialog("option", "width", 750);
-			onix_dialog.dialog("option", "width", 750);
 			save_dialog.dialog("option", "width", 400);
 		}
 	}
@@ -265,6 +249,11 @@
 	
 	
 	/* INTERFACE */
+	
+	/* watch for output generation button click */
+	$('#create-button').click( function(){
+		outputs_dialog.dialog('open');
+	});
 	
 	/* watch for validate button click */
 	$('#validate-button').click( function(){
@@ -308,8 +297,13 @@
 	
 	/* watch for timestamp add */
 	$('#add-timestamp').click( function() {
-		document.getElementById('modified').value = smartFormat.convertUTCDateToString(Date.now());
+		document.getElementById('modified').value = smartFormat.convertUTCDateToString(Date.now(), 'readable');
 	});
+	
+	$('#add-eval-timestamp').click( function() {
+		document.getElementById('certificationDate').value = smartFormat.convertUTCDateToString(Date.now(), 'yyyy-mm-dd');
+	});
+	
 	
 	
 	/* CONFORMANCE TAB */
@@ -336,64 +330,6 @@
 	
 	
 	
-	
-	/* DISCOVERY TAB */
-	
-	/* watch for click to generate discovery metadata */
-	$('#discovery_button').click( function(){
-		smartDiscovery.generateDiscoveryMetadata();
-	});
-	
-	/* watch for click on button to copy evaluation metadata */
-	$('#discovery-copy').click( function(){
-		if (smartFormat.copyToClipboard('discovery-metadata')) {
-			alert('Text successfully copied.');
-		}
-		else {
-			alert('Failed to copy text.');
-		}
-	});
-	
-	
-	
-	
-	/* DISTRIBUTION TAB */
-	
-	/* watch for click to generate discovery metadata */
-	$('#distribution_button').click( function(){
-		smartDistribution.generateONIXMetadata();
-	});
-	
-	/* watch for click on button to copy evaluation metadata */
-	$('#distribution-copy').click( function(){
-		if (smartFormat.copyToClipboard('distribution-metadata')) {
-			alert('Text successfully copied.');
-		}
-		else {
-			alert('Failed to copy text.');
-		}
-	});
-	
-	
-	
-	/* EVALUATION TAB */
-	
-	/* watch for click on button to generate evaluation metadata */
-	$('#generate-evaluation-metadata').click( function(){
-		smartEvaluation.generateEvaluationMetadata();
-	});
-	
-	/* watch for click on button to copy evaluation metadata */
-	$('#evaluation-copy').click( function(){
-		if (smartFormat.copyToClipboard('evaluation-metadata')) {
-			alert('Text successfully copied.');
-		}
-		else {
-			alert('Failed to copy text.');
-		}
-	});
-	
-	
 	/* REPORTING TAB */
 	
 	/* watch for changes to note output */
@@ -410,6 +346,30 @@
 	$('#generate-report').click( function(){
 		smartReport.generateConformanceReport('report');
 	});
+	
+	var meta_desc = document.getElementById('meta-copy-desc');
+	var meta_sec = document.getElementById('meta-output');
+	
+	/* watch for click to generate metadata */
+	$('#meta_button').click( function(){
+		
+		var meta_format = document.querySelector('input[name="meta-format"]:checked');
+		
+		meta_desc.innerHTML = 'Copy and paste the following metadata to the ' +  ((meta_format.value == 'epub') ? 'EPUB package document.' : 'ONIX record.');
+		
+		smartMetadata.generateAccessibilityMetadata(meta_format.value, false);
+	});
+	
+	/* watch for click on button to copy metadata */
+	$('#meta-copy').click( function(){
+		if (smartFormat.copyToClipboard('meta-tags')) {
+			alert('Text successfully copied.');
+		}
+		else {
+			alert('Failed to copy text.');
+		}
+	});
+	
 	
 	
 	/* catch ctrl+m to view the message panel */

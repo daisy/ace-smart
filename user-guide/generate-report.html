@@ -19,18 +19,25 @@
 			<section id="generate">
 				<h2>Generating Reports</h2>
 				
-				<p>After completing all the evaluation steps, it is possible to generate a report based on your
-					findings. This report can be included in the EPUB publication or hosted on the web and linked to
-					from the publication.</p>
+				<p>To create a final evaluation report, the first step is to open the outputs dialog. 
+					To do so, click on the Create Outputs button in the evaluation interface.</p>
 				
 				<figure>
-					<figcaption>Figure 1 &#8212; The Reporting tab is the sixth in the tab bar. It provides the
-						options to preview and generate reports based on the evaluation and information
-						entered.</figcaption>
-					<img src="images/tab_report.png" width="700" alt="Report tab" />
+					<figcaption>Figure 1 &#8212; The Create Outputs button is a plus symbol in a circle. It is
+						the first button in the set of application controls.</figcaption>
+					<img src="images/eval_controls.png" width="550" alt="Report tab" />
 				</figure>
 				
-				<p>There are two buttons for generating reports:</p>
+				<p>Clicking on this button opens a new dialog containing the output options. The first set of
+					controls under the Evaluation Report heading is for outputting reports.</p>
+				
+				<figure>
+					<figcaption>Figure 2 &#8212; The outputs dialog with sections for outputting a report
+						or metadata.</figcaption>
+					<img src="images/outputs_dialog.png" width="600" alt="Outputs dialog" />
+				</figure>
+				
+				<p>There are two buttons for generating a report:</p>
 				
 				<dl>
 					<dt>Preview</dt>
@@ -57,18 +64,22 @@
 						
 						<p>As with previews, if any errors are encountered while compiling the report, you will receive
 							an alert and the errors will be listed in a message panel at the bottom of the page.</p>
+						
+						<p>This report can be included in the EPUB publication or hosted on the web and linked to
+							from the publication.</p>
 					</dd>
 				</dl>
 				
 				<section id="options">
-					<h3>Output Options</h3>
+					<h4>Output Options</h4>
 					
-					<p>The SMART tool allows some customization of the final reports in the output options.</p>
+					<p>The SMART tool allows some customization of the final reports. Click on the Output Options
+						link to open the options.</p>
 					
 					<figure>
-						<figcaption>Figure 2 &#8212; Expanding the Output Options field reveals additional
-							configuration fields.</figcaption>
-						<img src="images/report_notes.png" alt="Output options" width="450"/>
+						<figcaption>Figure 3 &#8212; Clicking the Output Options link reveals the option to configure
+							which types of note are output.</figcaption>
+						<img src="images/report_notes.png" alt="Output options" width="400"/>
 					</figure>
 					
 					
@@ -76,7 +87,7 @@
 						different levels of reports to be generated for different audiences.</p>
 					
 					<p>By default, all notes are included in the output. It is also possible to selectively include
-						only the following messages:</p>
+						messages:</p>
 					
 					<dl>
 						<dt>Failure descriptions</dt>
@@ -86,33 +97,43 @@
 						<dt>Notes</dt>
 						<dd>Notes are any messages input into the text field that automatically appears when the "Add note"
 							checkbox for a success criterion is selected.</dd>
+						
+						<dt>None</dt>
+						<dd>No notes are output.</dd>
 					</dl>
 				</section>
 				
 				<section id="reports">
-					<h3>Reports</h3>
+					<h4>Reports</h4>
 					
-					<p>The report documents are broken up into three tabs.</p>
+					<p>The report documents are broken up into four tabs.</p>
 					
 					<figure>
-						<figcaption>Figure 3 &#8212; An accessibility report page. It includes an overview,
-							a conformance report, and additional information.</figcaption>
-						<img src="images/a11y_report.png" alt="Smart report" width="600"/>
+						<figcaption>Figure 4 &#8212; An accessibility report page. It includes overview,
+							accessibility, conformance, and additional information tabs.</figcaption>
+						<img src="images/a11y_report.png" alt="Smart report" width="500"/>
 					</figure>
 					
 					<p>The default overview tab provides key information about the publication: its conformance
 						status, the discoverability metadata, and who evaluated the publication.</p>
 					
+					<p>The accessibility tab provides a description of the accessibility of the publication
+						based on the <a href="https://www.w3.org/publishing/a11y/metadata-display-guide/guidelines/"
+							>Accessibility Metadata Display Guide for Digital Publications</a>.</p>
+					
 					<p>The conformance tab contains a complete list of the statuses of each success criterion, and
 						the additional information tab lists more general metadata about the publication (e.g., the
 						format and when it was last modified).</p>
+					
+					<p>The additional information tab provides additional bibliographic information from the
+						overview tab of the SMART tool.</p>
 				</section>
 			</section>
 		</main>
 		
 		<nav class="user-links">
-			<div class="prev-link"><a href="evaluation.html">Evaluation Result</a></div>
-			<div class="next-link"><a href="eval-save.html">Saving Evaluations</a></div>
+			<div class="prev-link"><a href="validation.html">Validation</a></div>
+			<div class="next-link"><a href="generate-metadata.html">Generating Metadata</a></div>
 		</nav>
 		
 		<footer>

@@ -39,9 +39,6 @@ var smartManage = (function() {
 	 *     "discovery": {
 	 *        ...
 	 *     },
-	 *     "distribution": {
-	 *        ...
-	 *     },
 	 *     "evaluation": {
 	 *        ...
 	 *     }
@@ -55,7 +52,7 @@ var smartManage = (function() {
 	
 		var evaluationJSON = {};
 		
-		evaluationJSON.version = '1.1';
+		evaluationJSON.version = '1.2';
 		evaluationJSON.category = 'savedEvaluation';
 		evaluationJSON.id = ACE_ID;
 		
@@ -137,7 +134,7 @@ var smartManage = (function() {
 				evaluationJSON.conformance[i].id = success_criteria[i].id;
 				evaluationJSON.conformance[i].status = status;
 				
-				if (status == 'fail') {
+				if (status == 'fail' || status == 'partial') {
 					evaluationJSON.conformance[i].error = document.getElementById(success_criteria[i].id+'-err').value;
 				}
 				
@@ -159,32 +156,6 @@ var smartManage = (function() {
 			evaluationJSON.discovery.accessibilitySummary = document.getElementById('accessibilitySummary').value.trim();
 			evaluationJSON.discovery.accessModeSufficient = saveSufficientSets();
 		
-		/* add onix metadata */
-		
-		evaluationJSON.distribution = {};
-		
-			evaluationJSON.distribution.onix = {};
-			evaluationJSON.distribution.ProductFormFeatureDescription = {};
-			
-			evaluationJSON.distribution.onix['00'] = document.getElementById('onix00').value.trim();
-			
-			for (var o = 1; o < 93; o++) {
-				var onix_id = String(o).padStart(2,'0');
-				var onix_chkbox = document.getElementById('onix' + onix_id);
-				if (onix_chkbox) {
-					evaluationJSON.distribution.onix[onix_id] = onix_chkbox.checked;
-				}
-				
-				var onix_opt = document.getElementById(onix_id + '-ProductFormFeatureDescription');
-				if (onix_opt) {
-					evaluationJSON.distribution.ProductFormFeatureDescription[onix_id] = onix_opt.value;
-				}
-			}
-			
-			for (var p = 93; p < 100; p++) {
-				evaluationJSON.distribution.onix[p] = document.getElementById('onix'+p).value.trim();
-			}
-		
 		/* add conformance metadata */
 		
 		evaluationJSON.evaluation = {};
@@ -193,9 +164,23 @@ var smartManage = (function() {
 			
 			evaluationJSON.evaluation.certifiedBy = document.getElementById('certifiedBy').value;
 			
+			// evaluationJSON.evaluation.role = document.getElementById('certifierRole').value;
+			
 			evaluationJSON.evaluation.certifierCredential = document.getElementById('certifierCredential').value;
 			
 			evaluationJSON.evaluation.certifierReport = document.getElementById('certifierReport').value;
+			
+			evaluationJSON.evaluation.certificationDate = document.getElementById('certificationDate').value;
+			
+			evaluationJSON.evaluation.contactEmail = document.getElementById('contactEmail').value;
+			
+		
+		/* add exemption metadata */
+		
+		evaluationJSON.exemption = {};
+		
+			evaluationJSON.exemption.eaa = document.getElementById('eaa').value;
+		
 		
 		/* add extension data */
 		
@@ -464,27 +449,78 @@ var smartManage = (function() {
 			}
 		}
 		
-		/* load onix metadata */
+		/* 
+		 * load onix metadata
+		 * 
+		 * NOTE: This code is only retained for old evaluations created when there
+		 * 		was a separate tab for distribution metadata. It only handles
+		 * 		metadata that wasn't auto-synced between the tabs.
+		*/
 		
 		if (evaluationJSON.hasOwnProperty('distribution')) {
+		
+			var feature_map = {
+			
+				'08': 'unknown',
+				'10': 'unlocked',
+				'16': 'longDescription',
+				'22': 'ttsMarkup',
+				'26': 'ultraHighContrastDisplay',
+				'27': 'highContrastAudio',
+				'28': 'highContrastDisplay',
+				'29': 'structuralNavigation',
+				'30': 'ARIA',
+				'34': 'MathML-chemistry',
+				'35': 'latex',
+				'36': 'displayTransformability',
+				'37': 'ultraHighContrastDisplay'
+			}
+			
 			if (evaluationJSON.distribution.hasOwnProperty('onix')) {
+			
 				for (var onix_id in evaluationJSON.distribution.onix) {
-					var padded_id = onix_id.padStart(2,'0');
-					if (onix_id == 0 || onix_id > 90) {
-						document.getElementById('onix' + padded_id).value = evaluationJSON.distribution.onix.hasOwnProperty(padded_id) ? evaluationJSON.distribution.onix[padded_id] : '';
+					
+					if (onix_id == 0) {
+						document.getElementById('accessibilitySummary').value = evaluationJSON.distribution.onix[onix_id];
 					}
-					else {
-						if (evaluationJSON.distribution.onix[padded_id]) {
-							var id = 'onix' + padded_id;
-							var input = document.getElementById(id);
-							if (!input.checked) {
-								input.checked = true;
-								smartDiscovery.syncFeature('distribution', id, true);
-							}
+					
+					else if (onix_id == 51) {
+						var input = document.querySelector('#accessMode input[value="auditory"]');
+						if (input && !input.checked) {
+							input.checked = true;
 						}
-						
-						if (evaluationJSON.distribution.hasOwnProperty('ProductFormFeatureDescription') && evaluationJSON.distribution.ProductFormFeatureDescription.hasOwnProperty(padded_id)) {
-							document.getElementById(padded_id + '-ProductFormFeatureDescription').value = evaluationJSON.distribution.ProductFormFeatureDescription[padded_id];
+					}
+					
+					else if (onix_id == 52) {
+						var input = document.querySelector('#accessMode input[value="textual"]');
+						if (input && !input.checked) {
+							input.checked = true;
+						}
+					}
+					
+					else if (onix_id == 93) {
+						document.getElementById('certifierCredential').value = evaluationJSON.distribution.onix[onix_id];
+					}
+					
+					else if (onix_id == 94) {
+						document.getElementById('certifierReport').value = evaluationJSON.distribution.onix[onix_id];
+					}
+					
+					else if (onix_id == 98) {
+						document.getElementById('contactEmail').value = evaluationJSON.distribution.onix[onix_id];
+					}
+					
+					else if (onix_id == 99) {
+						document.getElementById('contactEmail').value = evaluationJSON.distribution.onix[onix_id];
+					}
+					
+					else {
+						if (evaluationJSON.distribution.onix[onix_id]) {
+							var id = feature_map[onix_id];
+							var input = document.querySelector('#accessibilityFeature input[value="' + id + '"]');
+							if (input && !input.checked) {
+								input.checked = true;
+							}
 						}
 					}
 				}
@@ -495,7 +531,8 @@ var smartManage = (function() {
 		
 		var text_fields = {
 			publicationInfo: ['title', 'creator', 'identifier', 'modified', 'publisher', 'description', 'date', 'subject', 'optional-meta'],
-			evaluation: ['certifiedBy','certifierCredential','certifierReport']
+			evaluation: ['certifiedBy', 'certifierCredential', 'certifierReport', 'certificationDate', 'contactEmail'],
+			exemption: ['eaa']
 		};
 		
 		for (var key in text_fields) {
@@ -613,15 +650,8 @@ var smartManage = (function() {
 			
 			var checkbox = document.querySelector('#' + id + ' input[value="' + obj_value + '"]');
 			
-			if (checkbox === null) {
-				/* ignore except for accessibilityFeature, as indicates a user-defined feature */
-				if (id == 'accessibilityFeature') {
-					smartDiscovery.addCustomFeature(obj[i]);
-				}
-			}
-			else {
+			if (checkbox !== null) {
 				checkbox.checked = true;
-				smartDiscovery.syncFeature('discovery', obj[id], true);
 			}
 		}
 	}
@@ -630,14 +660,6 @@ var smartManage = (function() {
 	/* generic function to set the modes for an accessModeSufficient set */
 	
 	function setSufficientModes(modeSets) {
-		/* add any additional sets before loading */
-		var setCount = Object.keys(modeSets).length;
-		if (setCount > 2) {
-			for (var j = 1; j <= setCount - 2; j++) {
-				smartDiscovery.addNewSufficientSet();
-			}
-		}
-		
 		var sufficient_fields = document.querySelectorAll('#accessModeSufficient fieldset');
 		
 		var set_counter = 0;

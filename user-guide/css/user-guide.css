@@ -65,6 +65,7 @@ div.caution > p {
 }
 
 figure {
+	text-align: center;
 	margin-left: 6rem !important;
 }
 

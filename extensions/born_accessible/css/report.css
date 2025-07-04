@@ -1,24 +1,27 @@
 
+#born_accessible h4 {
+	font-size: 1.8rem;
+	font-weight: normal;
+	color: rgb(0,0,150);
+	margin: 3rem 0 2rem 0.5rem;
+}
+
+#born_accessible h4:before {
+	content: '§ ';
+}
+
 #born_accessible section#ba-scores ul.ba-score-list {
 	max-width: 80rem;
 	list-style-type: none;
 	padding-left: 2rem;
 }
 
-#born_accessible section#ba-scores ul.ba-score-list > li:nth-child(n) {
-	background-color: rgb(240,248,255);
-}
-
-#born_accessible section#ba-scores ul.ba-score-list > li:nth-child(2n) {
-	background-color: inherit;
-}
-
 #born_accessible section#ba-scores ul.ba-score-list ul {
 	list-style-type: none;
 }
 
-#born_accessible section#ba-scores ul.ba-score-list  li {
-	border-top: 0.1rem dotted rgb(200,200,200);
+#born_accessible section#ba-scores li.ba-score span {
+	padding: 1rem;
 }
 
 #born_accessible section#ba-scores > ul.ba-score-list > li.ba-score > span {
