@@ -474,7 +474,7 @@ var smartConformance = (function() {
 		
 		// bail out if not all criteria have been evaluated
 		if (incomplete.length > 0) {
-			status_label.textContent = smart_ui.conformance.status.incomplete[smart_lang] + ': ' + spec_version + smart_ui.conformance.status[smartWCAG.WCAGLevel()][smart_lang];
+			status_label.textContent = smart_ui.conformance.status.incomplete[smart_lang] + ' — ' + spec_version + smart_ui.conformance.status[smartWCAG.WCAGLevel()][smart_lang];
 			status_input.value = 'incomplete';
 			return;
 		}
@@ -485,7 +485,7 @@ var smartConformance = (function() {
 			
 			if (level_a_pass && document.querySelectorAll(aa_partial_selector).length == 0 && document.querySelectorAll(aa_fail_selector).length == 0) {
 				
-				status_label.textContent = smart_ui.conformance.status.pass[smart_lang] + ': ' + spec_version + smart_ui.conformance.status.aa[smart_lang];
+				status_label.textContent = smart_ui.conformance.status.pass[smart_lang] + ' — ' + spec_version + smart_ui.conformance.status.aa[smart_lang];
 				
 				status_input.value = 'aa';
 				
@@ -497,7 +497,7 @@ var smartConformance = (function() {
 			// otherwise not having an else if here allows verification to fall through to A, even if testing AA
 			if (level_a_pass) {
 				
-				status_label.textContent = smart_ui.conformance.status.pass[smart_lang] + ': ' + spec_version + smart_ui.conformance.status.a[smart_lang];
+				status_label.textContent = smart_ui.conformance.status.pass[smart_lang] + ' — ' + spec_version + smart_ui.conformance.status.a[smart_lang];
 				
 				status_input.value = 'a';
 				
