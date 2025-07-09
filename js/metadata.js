@@ -144,7 +144,7 @@ var smartMetadata = (function() {
 				meta_tags += smartFormat.createMetaTag({type: 'meta', property: 'a11y:certifiedBy', value: certifier, id: 'certifier'});
 			}
 			
-			meta_tags += smartFormat.createMetaTag({type: 'meta', property: 'dcterms:date', value: cert_date, refines: 'certifier'});
+			meta_tags += smartFormat.createMetaTag({type: 'meta', property: 'dcterms:date', value: cert_date, refines: 'epub-conformance'});
 			meta_tags += smartFormat.createMetaTag({type: 'meta', property: 'a11y:certifierCredential', value: credential, refines: 'certifier'});
 			meta_tags += smartFormat.createMetaTag({type: 'link', property: 'a11y:certifierReport', value: report, refines: 'certifier'});
 			meta_tags += smartFormat.createMetaTag({type: 'meta', property: 'a11y:exemption', value: eaa_exemption});

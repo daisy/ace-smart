@@ -548,9 +548,9 @@ var smartReport = (function() {
 			result.appendChild(makeHeader('ways-of-reading'));
 			
 			// add grid styling to returned div
-			ways_result.displayHTML.classList.add('grid-body');
+			ways_result.display.classList.add('grid-body');
 	
-			result.appendChild(ways_result.displayHTML);
+			result.appendChild(ways_result.display);
 		}
 		
 		// 3.2 Conformance
@@ -562,9 +562,9 @@ var smartReport = (function() {
 			result.appendChild(makeHeader('conformance'));
 			
 			// add grid styling to returned div
-			conf_result.displayHTML.classList.add('grid-body');
+			conf_result.display.classList.add('grid-body');
 	
-			result.appendChild(conf_result.displayHTML);
+			result.appendChild(conf_result.display);
 		}
 		
 		// 3.3 Navigation
@@ -576,9 +576,9 @@ var smartReport = (function() {
 			result.appendChild(makeHeader('navigation'));
 			
 			// add grid styling to returned div
-			nav_result.displayHTML.classList.add('grid-body');
+			nav_result.display.classList.add('grid-body');
 	
-			result.appendChild(nav_result.displayHTML);
+			result.appendChild(nav_result.display);
 		}
 		
 		// 3.4 Rich content
@@ -590,9 +590,9 @@ var smartReport = (function() {
 			result.appendChild(makeHeader('rich-content'));
 			
 			// add grid styling to returned div
-			rc_result.displayHTML.classList.add('grid-body');
+			rc_result.display.classList.add('grid-body');
 	
-			result.appendChild(rc_result.displayHTML);
+			result.appendChild(rc_result.display);
 		}
 		
 		// 3.5 Hazards
@@ -604,9 +604,9 @@ var smartReport = (function() {
 			result.appendChild(makeHeader('hazards'));
 			
 			// add grid styling to returned div
-			hazard_result.displayHTML.classList.add('grid-body');
+			hazard_result.display.classList.add('grid-body');
 	
-			result.appendChild(hazard_result.displayHTML);
+			result.appendChild(hazard_result.display);
 		}
 		
 		// 3.6 Accessibility summary
@@ -618,9 +618,9 @@ var smartReport = (function() {
 			result.appendChild(makeHeader('accessibility-summary'));
 			
 			// add grid styling to returned div
-			sum_result.displayHTML.classList.add('grid-body');
+			sum_result.display.classList.add('grid-body');
 	
-			result.appendChild(sum_result.displayHTML);
+			result.appendChild(sum_result.display);
 		}
 		
 		// 3.7 Legal considerations
@@ -632,9 +632,9 @@ var smartReport = (function() {
 			result.appendChild(makeHeader('legal-considerations'));
 			
 			// add grid styling to returned div
-			legal_result.displayHTML.classList.add('grid-body');
+			legal_result.display.classList.add('grid-body');
 	
-			result.appendChild(legal_result.displayHTML);
+			result.appendChild(legal_result.display);
 		}
 		
 		// 3.8 Additional accessibility information
@@ -647,9 +647,9 @@ var smartReport = (function() {
 			result.appendChild(makeHeader('additional-accessibility-information'));
 			
 			// add grid styling to returned div
-			aai_result.displayHTML.classList.add('grid-body');
+			aai_result.display.classList.add('grid-body');
 	
-			result.appendChild(aai_result.displayHTML);
+			result.appendChild(aai_result.display);
 		}
 		
 		summary.appendChild(result);

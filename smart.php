@@ -553,7 +553,7 @@ JS;
 			<section id="eval-report-gen">
 				<h3>Evaluation Report</h3>
 				
-				<p class="help"><a href="user-guide/generate.html" target="_blank">Need help?</a></p>
+				<p class="help"><a href="user-guide/generate-report.html" target="_blank">Need help?</a></p>
 				
 				<div id="output-opt">
 					<a href="#output-opt" onclick="smartReport.showOptions(); return false;">Output Options</a>
