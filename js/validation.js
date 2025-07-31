@@ -175,14 +175,12 @@ var smartValidation = (function() {
 		
 		is_valid = verifyOneItemChecked('accessibilityFeature');
 		
-		if (document.getElementById('accessibilitySummary').value.replace(/\s/g,'') == '') {
-			smartError.logError({tab_id: 'discovery', element_id: 'accessibilitySummary-field', severity: 'warn', message: _PROP_ERROR['accessibilitySummary'].msg});
-			smartFormat.setFieldToError({id: 'accessibilitySummary-field', is_warning: _PROP_ERROR['accessibilitySummary'].warn, highlight_parent: false});
-			is_valid = false;
-		}
-		
-		else {
-			smartFormat.setFieldToPass({id: 'accessibilitySummary-field', highlight_parent: false});
+		if (!document.getElementById('no-summary').checked) {
+			if (document.getElementById('accessibilitySummary').value.replace(/\s/g,'') == '') {
+				smartError.logError({tab_id: 'discovery', element_id: 'accessibilitySummary-field', severity: 'warn', message: _PROP_ERROR['accessibilitySummary'].msg});
+				smartFormat.setFieldToError({id: 'accessibilitySummary-field', is_warning: _PROP_ERROR['accessibilitySummary'].warn, highlight_parent: false});
+				is_valid = false;
+			}
 		}
 		
 		is_valid = verifyOneItemChecked('accessibilityHazard') ? is_valid : false;

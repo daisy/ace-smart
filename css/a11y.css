@@ -893,6 +893,10 @@ textarea#accessibilitySummary {
 	margin-top: 2rem;
 }
 
+legend#accSumLegend {
+	margin-bottom: 1rem;
+}
+
 label.data > textarea {
 	width: 39.8rem;
 	display: inline-block;

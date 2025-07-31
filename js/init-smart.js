@@ -329,6 +329,18 @@
 	});
 	
 	
+	/* METADATA TAB */
+	
+	$('#no-summary').click( function(){
+		var summary = document.getElementById('accessibilitySummary');
+		if (!summary.disabled) {
+			summary.disabled = true;
+			summary.value = '';
+		}
+		else {
+			summary.disabled = false;
+		}
+	});
 	
 	/* REPORTING TAB */
 	

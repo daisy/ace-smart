@@ -586,7 +586,7 @@ var smart_errors = {
 				"en": "At least one access mode must be selected."
 			},
 			"accessibilitySummary": {
-				"en": "An accessibility summary is recommended."
+				"en": "If an accessibility summary is not needed, please select the option to ignore the field."
 			},
 			"accessModeSufficient_missing": {
 				"en": "Sufficient access mode '%%val%%' checked but is not listed as an access mode. It is not common for a publication to have a sufficient access mode that is not also an access mode."

@@ -476,7 +476,8 @@ JS;
 						</fieldset>
 						
 						<fieldset id="accessibilitySummary-field">
-							<legend><label for="accessibilitySummary">Accessibility Summary</label><a href="https://www.w3.org/TR/epub-a11y-tech-11/#meta-005" target="_blank" class="usage"><img src="/images/info.png" height="20px" alt="How to specify accessibility summary" title="How to specify accessibility summary" onmouseover="this.src='/images/info_hover.png'" onmouseout="this.src='/images/info.png'"></a></legend>
+							<legend id="accSumLegend"><label for="accessibilitySummary">Accessibility Summary</label><a href="https://www.w3.org/TR/epub-a11y-tech-11/#meta-005" target="_blank" class="usage"><img src="/images/info.png" height="20px" alt="How to specify accessibility summary" title="How to specify accessibility summary" onmouseover="this.src='/images/info_hover.png'" onmouseout="this.src='/images/info.png'"></a></legend>
+							<input type="checkbox" id="no-summary" aria-labelledby="no-sum-label"> <small><span id="no-sum-label">No additional information needs to be expressed in the summary.</span> (Caution: checking this box will delete any text in the field.)</small></span>
 							<textarea id="accessibilitySummary" rows="5"></textarea>
 						</fieldset>
 					</div>

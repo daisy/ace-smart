@@ -57,7 +57,7 @@ var smartMetadata = (function() {
 		meta_tags += addMetaTag('schema:accessMode', 'accessMode', isEPUB);
 		
 		// add sufficent access modes
-		meta_tags += addSufficientSetTags(isEPUB);
+		meta_tags += addSufficientSetTags(format);
 		
 		// conformance claims are significantly incompatible between the formats so are handled separately
 		
