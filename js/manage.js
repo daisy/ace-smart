@@ -154,6 +154,7 @@ var smartManage = (function() {
 			});
 			
 			evaluationJSON.discovery.accessibilitySummary = document.getElementById('accessibilitySummary').value.trim();
+			evaluationJSON.discovery.noSummary = document.getElementById('no-summary').checked ? 'true' : 'false';
 			evaluationJSON.discovery.accessModeSufficient = saveSufficientSets();
 		
 		/* add conformance metadata */
@@ -442,6 +443,10 @@ var smartManage = (function() {
 			
 			if (evaluationJSON.discovery.hasOwnProperty('accessibilitySummary')) {
 				document.getElementById('accessibilitySummary').value = evaluationJSON.discovery.accessibilitySummary;
+			}
+			
+			if (evaluationJSON.discovery.hasOwnProperty('noSummary') && evaluationJSON.discovery.noSummary === 'true') {
+				document.getElementById('no-summary').click();
 			}
 			
 			if (evaluationJSON.discovery.hasOwnProperty('accessModeSufficient')) {
