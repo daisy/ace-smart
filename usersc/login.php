@@ -237,7 +237,7 @@ if (!$res['success']) {
         
 
         <?php   if($settings->recaptcha == 1){ ?>
-          <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+          <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
           <script>
           function submitForm() {
             document.getElementById("login-form").submit();
