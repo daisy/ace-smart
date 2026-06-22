@@ -8,25 +8,27 @@
 	$err = "";
 	$updated = false;
 	
-	// check id email and access are set in input parameters
+	// check id email, access, and credential status are set in input parameters
 	$email = isset($_GET['email']) ? $_GET['email'] : (isset($_POST['email']) ? $_POST['email'] : "");
 	$access = isset($_GET['gcaUser']) ? $_GET['gcaUser'] : (isset($_POST['gcaUser']) ? $_POST['gcaUser'] : "");
+	$credential = isset($_GET['gcaCredential']) ? $_GET['gcaCredential'] : (isset($_POST['gcaCredential']) ? $_POST['gcaCredential'] : "");
 	
-	if ($email && $access) {
+	if ($email && $access && ($credential !== "")) {
 	
 		$modules = "born_accessible";
 		
 		if ($access == "false") {
 			$modules = "";
+			$credential = 0;
 		}
 		
 		$db = new SMART_DB();
 		
 		if ($db->connect()) {
 		
-			if ($db->prepare("UPDATE users SET modules = ? WHERE email = ?")) {
+			if ($db->prepare("UPDATE users SET modules = ?, gca_credential = ? WHERE email = ?")) {
 			
-				if ($db->bind_param("ss", array($modules, $email))) {
+				if ($db->bind_param("sds", array($modules, $credential, $email))) {
 				
 				    if ($db->execute()) {
 				    	$updated = true;
@@ -111,7 +113,7 @@
 			<?php
 				if ($updated) {
 					
-					$status_msg = $access == "true" ? "now has" : "no longer has";
+					$status_msg = $access == "true" ? "has" : "no longer has";
 					
 					echo <<<HTML
 	<div class="alert" role="alert">
@@ -139,6 +141,11 @@ HTML;
 						<label><input type="radio" id="gca-yes" name="gcaUser" value="true" checked> Grant</label>
 						<label><input type="radio" id="gca-no" name="gcaUser" value="false"> Revoke</label>
 					</div>
+					<div role="radiogroup" aria-labelledby="access-type-label">
+						<span id="access-type-label">Credentialed:</span>
+						<label><input type="radio" id="gca-cred-yes" name="gcaCredential" value="1" checked> Yes</label>
+						<label><input type="radio" id="gca-cred-no" name="gcaCredential" value="0"> No</label>
+					</div>
 					<input type="submit" value="Update">
 				</form>
 			</section>
@@ -148,7 +155,7 @@ HTML;
 					<?php
 						$db = new SMART_DB();
 						if ($db->connect()) {
-							$user_query = "SELECT fname, lname, email FROM users WHERE modules LIKE '%born_accessible%' ORDER BY fname, lname, email";
+							$user_query = "SELECT fname, lname, email, gca_credential FROM users WHERE modules LIKE '%born_accessible%' ORDER BY fname, lname, email";
 							
 							if ($db->prepare($user_query)) {
 							
@@ -162,7 +169,7 @@ HTML;
 									
 									else {
 										foreach ($emails as $row) {
-											echo "<li>${row['fname']} ${row['lname']} &#8212; ${row['email']}</li>";
+											echo "<li>${row['fname']} ${row['lname']} &#8212; ${row['email']} &#8212; ", ($row['gca_credential'] == 0 ? "Not credentialed" : "Credentialed"), "</li>";
 										}
 									}
 									

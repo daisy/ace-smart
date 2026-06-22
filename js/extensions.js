@@ -7,6 +7,11 @@ function extension_scripts() {
     
     /* add a GCA credential to the result tabs */
     if (smart_extensions.hasOwnProperty('born_accessible')) {
-    	bornAccessible.setGCACredential();
+    	if (gca_credential) {
+	    	bornAccessible.setGCACredential();
+    	}
+    	else {
+    		document.getElementById('credential_field').style.display = 'none';
+    	}
     }
 }

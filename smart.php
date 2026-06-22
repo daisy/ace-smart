@@ -110,6 +110,7 @@
 			var saveChanges = false;
 			var firstSave = {$eval->need_to_save()};
 			var noDesignElements = {$user->data()->baDesignElementsOff};
+			var gca_credential = {$user->data()->gca_credential};
 						
 			var meta_wiz_dialog;
 		</script>
@@ -530,13 +531,7 @@ JS;
 					<fieldset id="eval-info" aria-labelledby="ei-legend">
 						<legend id="ei-legend" class="eval-legend">Evaluator Info</legend>
 						<label class="data"><span>Name:<img src="/images/asterisk.png" alt="required"/></span> <input type="text" id="certifiedBy" aria-required="true"/></label>
-						<!-- <label class="data"><span>Role:<img src="/images/asterisk.png" alt="required"/></span> 
-							<select id="certifierRole">
-								<option>Self-evaluator</option>
-								<option>Third-party evaluator</option>
-							</select>
-						</label> -->
-						<label class="data"><span>Credential:</span> <input type="text" id="certifierCredential"/></label>
+						<label class="data" id="credential_field"><span>Credential:</span> <input type="text" id="certifierCredential"/></label>
 					</fieldset>
 					
 					<fieldset id="contact-info" aria-labelledby="ec-legend">
