@@ -226,6 +226,9 @@ var smart_ui = {
 			"epub11": {
 				"en": "EPUB Accessibility 1.1"
 			},
+			"epub12": {
+				"en": "EPUB Accessibility 1.2"
+			},
 			"wcag20": {
 				"en": "WCAG 2.0"
 			},

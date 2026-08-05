@@ -185,9 +185,16 @@ var smartValidation = (function() {
 		
 		is_valid = verifyOneItemChecked('accessibilityHazard') ? is_valid : false;
 		
-		is_valid = verifyOneItemChecked('accessMode') ? is_valid : false;
+		// access mode and sufficient access modes switched priority in EPUB Accessibility 1.2
+		if (document.getElementById('epub-a11y').value < 1.2) {
+    		is_valid = verifyOneItemChecked('accessMode') ? is_valid : false;
+			is_valid = verifySufficientModes() ? is_valid : false;
+		}
 		
-		is_valid = verifySufficientModes() ? is_valid : false;
+		else {
+    		is_valid = verifyOneItemChecked('accessMode') ?  false : is_valid;
+			is_valid = verifySufficientModes() ? false : is_valid;
+		}
 		
 		return is_valid;
 		

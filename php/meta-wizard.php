@@ -28,6 +28,7 @@
 				<select id="wiz-epub">
 					<option>1.0</option>
 					<option selected="">1.1</option>
+					<option>1.2</option>
 				</select>
 			</div>
 			
