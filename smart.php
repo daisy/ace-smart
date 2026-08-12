@@ -213,8 +213,8 @@ JS;
 							<legend id="espec-lbl">EPUB Accessibility:</legend>
 							<select id="epub-a11y" aria-labelledby="espec-lbl">
 								<option>1.0</option>
-								<option selected="">1.1</option>
-								<option>1.2</option>
+								<option>1.1</option>
+								<option selected="">1.2</option>
 							</select>
 						</fieldset>
 						
@@ -429,19 +429,8 @@ JS;
 							</div>
 						</fieldset>
 						
-						<fieldset id="accessMode">
-							<legend>Access Modes <img src="/images/asterisk.png" alt="required"><a href="https://www.w3.org/TR/epub-a11y-tech-11/#meta-001" target="_blank" class="usage"><img src="/images/info.png" height="20px" alt="How to specify access modes" title="How to specify access modes" onmouseover="this.src='/images/info_hover.png'" onmouseout="this.src='/images/info.png'"></a></legend>
-							
-							<div class="cols">
-								<label><input type="checkbox" data-onix-map="81-01" value="auditory"> auditory</label>
-								<label><input type="checkbox" value="tactile"> tactile</label>
-								<label><input type="checkbox" data-onix-map="81-10" value="textual"> textual</label>
-								<label><input type="checkbox" data-onix-map="81-07" value="visual"> visual</label>
-							</div>
-						</fieldset>
-						
 						<fieldset id="accessModeSufficient">
-							<legend>Sufficient Access Modes<a href="https://www.w3.org/TR/epub-a11y-tech-11/#meta-002" target="_blank" class="usage"><img src="/images/info.png" height="20px" alt="How to specify sufficient access modes" title="How to specify sufficient access modes" onmouseover="this.src='/images/info_hover.png'" onmouseout="this.src='/images/info.png'"></a></legend>
+							<legend>Sufficient Access Modes <span id="amsReq"><img src="/images/asterisk.png" alt="required"></span><a href="https://www.w3.org/TR/epub-a11y-tech-11/#meta-002" target="_blank" class="usage"><img src="/images/info.png" height="20px" alt="How to specify sufficient access modes" title="How to specify sufficient access modes" onmouseover="this.src='/images/info_hover.png'" onmouseout="this.src='/images/info.png'"></a></legend>
 							
 							<fieldset id="set1">
 								<legend>Set 1</legend>
@@ -475,6 +464,17 @@ JS;
 									<label><input type="checkbox" value="visual"> visual</label>
 								</div>
 							</fieldset>
+						</fieldset>
+						
+						<fieldset id="accessMode">
+							<legend>Access Modes <span id="amReq"></span><a href="https://www.w3.org/TR/epub-a11y-tech-11/#meta-001" target="_blank" class="usage"><img src="/images/info.png" height="20px" alt="How to specify access modes" title="How to specify access modes" onmouseover="this.src='/images/info_hover.png'" onmouseout="this.src='/images/info.png'"></a></legend>
+							
+							<div class="cols">
+								<label><input type="checkbox" data-onix-map="81-01" value="auditory"> auditory</label>
+								<label><input type="checkbox" value="tactile"> tactile</label>
+								<label><input type="checkbox" data-onix-map="81-10" value="textual"> textual</label>
+								<label><input type="checkbox" data-onix-map="81-07" value="visual"> visual</label>
+							</div>
 						</fieldset>
 						
 						<fieldset id="accessibilitySummary-field">

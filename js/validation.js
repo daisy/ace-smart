@@ -38,7 +38,10 @@ var smartValidation = (function() {
 		_PROP_ERROR.accessibilityHazard.warn = false;
 		
 		_PROP_ERROR.accessMode.msg = smart_errors.validation.discovery.accessMode[smart_lang];
-		_PROP_ERROR.accessMode.warn = false;
+		_PROP_ERROR.accessMode.warn = {};
+		_PROP_ERROR.accessMode.warn['1.0'] = false;
+		_PROP_ERROR.accessMode.warn['1.1'] = false;
+		_PROP_ERROR.accessMode.warn['1.2'] = true;
 		
 		_PROP_ERROR.accessibilitySummary.msg = smart_errors.validation.discovery.accessibilitySummary[smart_lang];
 		_PROP_ERROR.accessibilitySummary.warn = true;
@@ -49,7 +52,10 @@ var smartValidation = (function() {
 		_PROP_ERROR.accessModeSufficient.missing.warn = true;
 		 
 		_PROP_ERROR.accessModeSufficient.none.msg = smart_errors.validation.discovery.accessModeSufficient_none[smart_lang];
-		_PROP_ERROR.accessModeSufficient.none.warn = true;
+		_PROP_ERROR.accessModeSufficient.none.warn = {};
+		_PROP_ERROR.accessModeSufficient.none.warn['1.0'] = true;
+		_PROP_ERROR.accessModeSufficient.none.warn['1.1'] = true;
+		_PROP_ERROR.accessModeSufficient.none.warn['1.2'] = false;
 
 		_PROP_ERROR.accessModeSufficient.duplicate.msg = smart_errors.validation.discovery.accessModeSufficient_duplicate[smart_lang];
 		_PROP_ERROR.accessModeSufficient.duplicate.warn = false;
@@ -186,14 +192,16 @@ var smartValidation = (function() {
 		is_valid = verifyOneItemChecked('accessibilityHazard') ? is_valid : false;
 		
 		// access mode and sufficient access modes switched priority in EPUB Accessibility 1.2
-		if (document.getElementById('epub-a11y').value < 1.2) {
-    		is_valid = verifyOneItemChecked('accessMode') ? is_valid : false;
-			is_valid = verifySufficientModes() ? is_valid : false;
+		var epub_ver = document.getElementById('epub-a11y').value;
+		
+		if (epub_ver < 1.2) {
+    		is_valid = verifyOneItemChecked('accessMode', epub_ver) ? is_valid : false;
+			is_valid = verifySufficientModes(epub_ver) ? is_valid : false;
 		}
 		
 		else {
-    		is_valid = verifyOneItemChecked('accessMode') ?  false : is_valid;
-			is_valid = verifySufficientModes() ? false : is_valid;
+    		is_valid = verifyOneItemChecked('accessMode', epub_ver) ?  false : is_valid;
+			is_valid = verifySufficientModes(epub_ver) ? false : is_valid;
 		}
 		
 		return is_valid;
@@ -211,7 +219,7 @@ var smartValidation = (function() {
 	
 	/* checks that at least one checkbox in the specified fieldset is checked */
 	
-	function verifyOneItemChecked(id, found) {
+	function verifyOneItemChecked(id, epub_ver) {
 		var checked_items = document.querySelectorAll('fieldset#' + id + ' input:checked')
 		
 		if (checked_items.length > 0) {
@@ -231,8 +239,12 @@ var smartValidation = (function() {
 		}
 		
 		else {
-			smartError.logError({tab_id: 'discovery', element_id: id, severity: 'err', message: _PROP_ERROR[id].msg});
-			smartFormat.setFieldToError({id: id, is_warning: _PROP_ERROR[id].warn, highlight_parent: false});
+			var warning = epub_ver ? _PROP_ERROR[id].warn[epub_ver] : _PROP_ERROR[id].warn;
+			var severity = epub_ver ? (warning ? 'warn' : 'err') : 'err';
+			
+			smartError.logError({tab_id: 'discovery', element_id: id, severity: severity, message: _PROP_ERROR[id].msg});
+			smartFormat.setFieldToError({id: id, is_warning: warning, highlight_parent: false});
+			
 			return false;
 		}
 	}
@@ -346,7 +358,7 @@ var smartValidation = (function() {
 	
 	/* checks that sufficient modes are set and don't repeat themselves */
 	
-	function verifySufficientModes() {
+	function verifySufficientModes(epub_ver) {
 		var fieldsets = document.getElementById('accessModeSufficient').getElementsByTagName('fieldset');
 		var sufficient_mode_sets = [];
 		
@@ -372,8 +384,12 @@ var smartValidation = (function() {
 		}
 	
 		if (sufficient_mode_sets.length == 0) {
-			smartError.logError({tab_id: 'discovery', element_id: 'accessModeSufficient', severity: 'warn', message: _PROP_ERROR.accessModeSufficient.none.msg});
-			smartFormat.setFieldToError({id: 'accessModeSufficient', is_warning: _PROP_ERROR.accessModeSufficient.none.warn, highlight_parent: false});
+			var warning = epub_ver ? _PROP_ERROR['accessModeSufficient'].none.warn[epub_ver] : _PROP_ERROR['accessModeSufficient'].warn;
+			var severity = epub_ver ? (warning ? 'warn' : 'err') : 'err';
+			
+			smartError.logError({tab_id: 'discovery', element_id: 'accessModeSufficient', severity: severity, message: _PROP_ERROR.accessModeSufficient.none.msg});
+			smartFormat.setFieldToError({id: 'accessModeSufficient', is_warning: warning, highlight_parent: false});
+			
 			return false;
 		}
 		

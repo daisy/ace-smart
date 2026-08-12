@@ -419,21 +419,19 @@ var smartReport = (function() {
 		
 		dl.appendChild( createHTMLList('accessibilityFeature') );
 		
-		// add the summary
-		var dt_summary = document.createElement('dt');
-			dt_summary.appendChild(document.createTextNode('Accessibility Summary'));
-		dl.appendChild(dt_summary);
-		
-		var dd = document.createElement('dd');
-			dd.appendChild( document.createTextNode(document.getElementById('accessibilitySummary').value) );
-		dl.appendChild(dd);
-		
 		// add hazards
 		var dt_hazards = document.createElement('dt');
 			dt_hazards.appendChild(document.createTextNode('Accessibility Hazards'));
 		dl.appendChild(dt_hazards);
 		
 		dl.appendChild( createHTMLList('accessibilityHazard') );
+		
+		// add sufficent access modes
+		var dt_ams = document.createElement('dt');
+			dt_ams.appendChild(document.createTextNode('Sufficient Access Modes'));
+		dl.appendChild(dt_ams);
+		
+		dl.appendChild( addSufficientSetsHTML() );
 		
 		// add access modes
 		var dt_am = document.createElement('dt');
@@ -442,12 +440,14 @@ var smartReport = (function() {
 		
 		dl.appendChild( createHTMLList('accessMode') );
 		
-		// add sufficent access modes
-		var dt_ams = document.createElement('dt');
-			dt_ams.appendChild(document.createTextNode('Sufficient Access Modes'));
-		dl.appendChild(dt_ams);
+		// add the summary
+		var dt_summary = document.createElement('dt');
+			dt_summary.appendChild(document.createTextNode('Accessibility Summary'));
+		dl.appendChild(dt_summary);
 		
-		dl.appendChild( addSufficientSetsHTML() );
+		var dd = document.createElement('dd');
+			dd.appendChild( document.createTextNode(document.getElementById('accessibilitySummary').value) );
+		dl.appendChild(dd);
 		
 		return dl;
 	

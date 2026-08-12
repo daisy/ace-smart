@@ -586,7 +586,7 @@ var smart_errors = {
 				"en": "The 'no sound risk' value cannot be set when 'sound risk unknown' is selected."
 			},
 			"accessMode": {
-				"en": "At least one access mode must be selected."
+				"en": "Access modes of the content not specified."
 			},
 			"accessibilitySummary": {
 				"en": "If an accessibility summary is not needed, please select the option to ignore the field."

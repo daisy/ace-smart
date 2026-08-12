@@ -29,6 +29,15 @@
 		/* watch for changes to epub accessibility version */
 		$('select#epub-a11y').change( function(){
 			smartConformance.setEPUBA11yVersion(this.value);
+			
+			var required_field = '<img src="/images/asterisk.png" alt="required">';
+			
+			document.getElementById('amsReq').innerHTML = (this.value < 1.2) ? '' : required_field;
+			document.getElementById('amReq').innerHTML = (this.value < 1.2) ? required_field : '';
+			
+			if (this.value == 1.2) {
+				alert('The EPUB Accessibility 1.2 standard is only a W3C Candidate Recommendation at this time. Reporting conformance to this standard is not recommended until it becomes a W3C Recommendation.');
+			}
 		});
 		
 		/* watch for changes to wcag version */
