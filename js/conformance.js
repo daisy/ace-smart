@@ -147,7 +147,7 @@ var smartConformance = (function() {
 	
 		var wcag_ver = document.getElementById('wcag-version');
 		
-		if (version == '1.1') {
+		if (version >= '1.1') {
 			wcag_ver.disabled = false;
 		}
 		
