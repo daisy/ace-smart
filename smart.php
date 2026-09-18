@@ -132,7 +132,7 @@ JS;
 		<script src="js/init-smart.js<?= '?v=' . $smart_version ?>" defer></script>
 		
 		<!-- accessibility viewer -->
-		<script src="https://daisy.github.io/a11y-meta-viewer/js/xpaths.js<?= '?v=' . $smart_version ?>" defer></script>
+		<script src="https://daisy.github.io/a11y-meta-viewer/js/config/xpaths.js<?= '?v=' . $smart_version ?>" defer></script>
 		<script src="https://daisy.github.io/a11y-meta-viewer/js/lang/en/vocabulary.js<?= '?v=' . $smart_version ?>" defer></script>
 		<script src="https://daisy.github.io/a11y-meta-viewer/js/metaDisplayProcessor.js<?= '?v=' . $smart_version ?>" defer></script>
 		
