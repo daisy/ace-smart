@@ -582,11 +582,20 @@ smart_extensions['born_accessible'] = (function() {
 				
 				// load test scores
 				if (savedJSON.born_accessible.hasOwnProperty('scores')) {
+				
 					savedJSON.born_accessible.scores.forEach(function(test) {
+					
+						// test switched ids when priority changed
+						if (test.id === 'optional-accessibility-metadata-accessmodesufficient') {
+							test.id = 'required-accessibility-metadata-accessmodesufficient';
+						}
+						
 						var field = document.getElementById(test.id);
+						
 						if (!field) {
 							console.log('Could not set born accessible field with ID: ' + test.id);
 						}
+						
 						else {
 							if (test.hasOwnProperty('score') && test.score != '') {
 							
