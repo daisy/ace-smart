@@ -134,7 +134,7 @@ JS;
 		<!-- accessibility viewer -->
 		<script src="https://daisy.github.io/a11y-meta-viewer/js/config/xpaths.js<?= '?v=' . $smart_version ?>" defer></script>
 		<script src="https://daisy.github.io/a11y-meta-viewer/js/lang/en/vocabulary.js<?= '?v=' . $smart_version ?>" defer></script>
-		<script src="https://daisy.github.io/a11y-meta-viewer/js/metaDisplayProcessor.js<?= '?v=' . $smart_version ?>" defer></script>
+		<script src="js/viewer/metaDisplayProcessor.js<?= '?v=' . $smart_version ?>" defer></script>
 		
 		<style>
 			h1 { font-size: 2rem; }
